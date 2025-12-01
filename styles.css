@@ -9,26 +9,81 @@ body {
     font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FFE5F1 0%, #FFF0F5 50%, #F0E6FF 100%);
     min-height: 100vh;
     padding: 20px;
+    position: relative;
+}
+
+body::before {
+    content: '🌸 🐼 🌸';
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 2em;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+body::after {
+    content: '🌸 🐼 🌸';
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    opacity: 0.2;
+    z-index: 0;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
     overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
 /* ヘッダー */
 header {
-    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    background: linear-gradient(135deg, #FFB7D5 0%, #FFC1CC 50%, #FFE6F0 100%);
     color: white;
     text-align: center;
     padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '🌸';
+    position: absolute;
+    font-size: 3em;
+    opacity: 0.3;
+    animation: sakuraFloat 8s ease-in-out infinite;
+}
+
+header::after {
+    content: '🐼';
+    position: absolute;
+    font-size: 4em;
+    bottom: 20px;
+    right: 30px;
+    animation: pandaBounce 2s ease-in-out infinite;
+}
+
+@keyframes sakuraFloat {
+    0% { top: -50px; left: 10%; transform: rotate(0deg); }
+    25% { top: 30%; left: 80%; transform: rotate(90deg); }
+    50% { top: 60%; left: 20%; transform: rotate(180deg); }
+    75% { top: 30%; left: 70%; transform: rotate(270deg); }
+    100% { top: -50px; left: 10%; transform: rotate(360deg); }
+}
+
+@keyframes pandaBounce {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
 }
 
 header h1 {
@@ -52,11 +107,22 @@ section {
 }
 
 h2 {
-    color: #667eea;
+    color: #FF69B4;
     font-size: 1.8em;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 3px solid #FFE66D;
+    border-bottom: 3px solid #FFB7D5;
+    position: relative;
+}
+
+h2::before {
+    content: '🌸';
+    margin-right: 10px;
+}
+
+h2::after {
+    content: '🐼';
+    margin-left: 10px;
 }
 
 /* イベント情報カード */
@@ -85,7 +151,7 @@ h2 {
 
 .label {
     font-weight: bold;
-    color: #667eea;
+    color: #FF69B4;
     margin-right: 10px;
 }
 
@@ -133,12 +199,20 @@ h2 {
 .btn {
     display: inline-block;
     padding: 10px 25px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB7D5 100%);
     color: white;
     text-decoration: none;
     border-radius: 25px;
     transition: all 0.3s ease;
     font-weight: bold;
+}
+
+.btn::before {
+    content: '🌸 ';
+}
+
+.btn::after {
+    content: ' 🐼';
 }
 
 .btn:hover {
@@ -191,7 +265,7 @@ h2 {
 .step-number {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB7D5 100%);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -200,6 +274,7 @@ h2 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0 auto 15px;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
 }
 
 .step h3 {
@@ -301,11 +376,19 @@ h2 {
 
 /* フッター */
 footer {
-    background: #333;
+    background: linear-gradient(135deg, #FFB7D5 0%, #DDA0DD 100%);
     color: white;
     text-align: center;
     padding: 20px;
     margin-top: 40px;
+    position: relative;
+}
+
+footer::before {
+    content: '🌸🐼🌸';
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
 /* レスポンシブ対応 */
