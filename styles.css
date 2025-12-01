@@ -521,6 +521,22 @@ footer::before {
         font-size: 1.1em;
     }
 
+    /* モバイルでパンダサイズを調整 */
+    header::after {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* モバイルで桜を3つに減らす */
+    .sakura4,
+    .sakura5 {
+        display: none;
+    }
+
+    .sakura {
+        font-size: 2em;
+    }
+
     .link-grid {
         grid-template-columns: 1fr;
     }
@@ -574,6 +590,50 @@ footer::before {
 
     .subtitle {
         font-size: 1em;
+    }
+
+    /* 小さい画面でパンダをさらに縮小 */
+    header::after {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* 小さい画面で桜を2つに減らす */
+    .sakura3 {
+        display: none;
+    }
+
+    .sakura {
+        font-size: 1.8em;
+    }
+
+    /* パンダの移動範囲を調整 */
+    @keyframes pandaMove {
+        0% {
+            top: 10%;
+            right: 5%;
+            transform: scale(1);
+        }
+        25% {
+            top: 35%;
+            right: 50%;
+            transform: scale(1.1);
+        }
+        50% {
+            top: 10%;
+            right: 80%;
+            transform: scale(1);
+        }
+        75% {
+            top: 20%;
+            right: 50%;
+            transform: scale(1.1);
+        }
+        100% {
+            top: 10%;
+            right: 5%;
+            transform: scale(1);
+        }
     }
 
     main {
