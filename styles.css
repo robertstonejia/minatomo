@@ -125,7 +125,7 @@ header::after {
 @keyframes pandaMove {
     0% {
         top: 10%;
-        right: 10%;
+        right: 5%;
         transform: scale(1);
     }
     25% {
@@ -135,7 +135,7 @@ header::after {
     }
     50% {
         top: 10%;
-        right: 85%;
+        right: 92%;
         transform: scale(1);
     }
     75% {
@@ -145,7 +145,7 @@ header::after {
     }
     100% {
         top: 10%;
-        right: 10%;
+        right: 5%;
         transform: scale(1);
     }
 }
