@@ -8,11 +8,15 @@
 body {
     font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #000;
     background: linear-gradient(135deg, #FFE5F1 0%, #FFF0F5 50%, #F0E6FF 100%);
     min-height: 100vh;
     padding: 20px;
     position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-weight: 500;
 }
 
 body::before {
@@ -182,6 +186,7 @@ h2 {
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     font-weight: 700;
     letter-spacing: 0.05em;
+    -webkit-font-smoothing: antialiased;
 }
 
 h2::before {
@@ -241,7 +246,7 @@ h2::after {
 
 .value {
     color: #000;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.6;
 }
 
@@ -282,9 +287,10 @@ h2::after {
 }
 
 .link-card p {
-    color: #666;
+    color: #000;
     margin-bottom: 15px;
     font-size: 0.9em;
+    font-weight: 500;
 }
 
 .btn {
@@ -375,9 +381,10 @@ h2::after {
 }
 
 .step p {
-    color: #666;
+    color: #000;
     margin-bottom: 8px;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .step p:last-child {
@@ -394,6 +401,8 @@ h2::after {
 .participation-note p {
     margin-bottom: 10px;
     font-size: 1.1em;
+    color: #000;
+    font-weight: 500;
 }
 
 .participation-note p:last-child {
@@ -439,9 +448,10 @@ h2::after {
 }
 
 .ideal-card p {
-    color: #555;
+    color: #000;
     margin-bottom: 8px;
     line-height: 1.6;
+    font-weight: 500;
 }
 
 .ideal-card .chinese {
@@ -459,6 +469,8 @@ h2::after {
 .about p {
     margin-bottom: 15px;
     line-height: 1.8;
+    color: #000;
+    font-weight: 500;
 }
 
 .about p:last-child {
