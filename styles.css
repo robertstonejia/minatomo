@@ -9,7 +9,7 @@ body {
     font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
     line-height: 1.6;
     color: #000;
-    background: linear-gradient(135deg, #FFE5F1 0%, #FFF0F5 50%, #F0E6FF 100%);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #fef3f8 100%);
     min-height: 100vh;
     padding: 20px;
     position: relative;
@@ -43,8 +43,8 @@ body::after {
     max-width: 1200px;
     margin: 0 auto;
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(255, 182, 193, 0.4);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -52,10 +52,10 @@ body::after {
 
 /* ヘッダー */
 header {
-    background: linear-gradient(135deg, #4A90E2 0%, #5DA5E8 50%, #A8D8FF 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #93c5fd 100%);
     color: white;
     text-align: center;
-    padding: 40px 20px;
+    padding: 60px 20px;
     position: relative;
     overflow: hidden;
 }
@@ -169,19 +169,19 @@ header h1 {
 
 /* メインコンテンツ */
 main {
-    padding: 40px 20px;
+    padding: 60px 40px;
 }
 
 section {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 h2 {
-    color: #FF69B4;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid #FFB7D5;
+    color: #3b82f6;
+    font-size: 2em;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 4px solid #dbeafe;
     position: relative;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     font-weight: 700;
@@ -205,11 +205,11 @@ h2::after {
 }
 
 .info-card {
-    background: linear-gradient(135deg, #FFF0F5 0%, #FFF8F0 100%);
-    border: 3px solid #FFD4E5;
-    border-radius: 25px;
-    padding: 35px;
-    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+    border: 2px solid #e0f2fe;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(59, 130, 246, 0.05);
 }
 
 .info-item {
@@ -218,16 +218,18 @@ h2::after {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    padding: 15px;
+    padding: 20px 24px;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(255, 182, 193, 0.15);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .info-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 182, 193, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.12);
+    border-color: #bfdbfe;
 }
 
 .info-item:last-child {
@@ -236,11 +238,11 @@ h2::after {
 
 .label {
     font-weight: 700;
-    color: #333;
+    color: #1e40af;
     margin-right: 10px;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     letter-spacing: 0.05em;
-    font-size: 1.2em;
+    font-size: 1.15em;
     margin-bottom: 8px;
 }
 
@@ -266,18 +268,19 @@ h2::after {
 
 .link-card {
     background: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 25px;
+    border: 2px solid #e0f2fe;
+    border-radius: 16px;
+    padding: 32px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .link-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    border-color: #667eea;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    border-color: #93c5fd;
 }
 
 .link-card h3 {
@@ -295,13 +298,14 @@ h2::after {
 
 .btn {
     display: inline-block;
-    padding: 10px 25px;
-    background: linear-gradient(135deg, #FF69B4 0%, #FFB7D5 100%);
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
-    font-weight: bold;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 .btn::before {
@@ -313,8 +317,9 @@ h2::after {
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
 }
 
 /* 準備中バッジ */
@@ -346,23 +351,24 @@ h2::after {
 
 .step {
     background: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 25px;
+    border: 2px solid #e0f2fe;
+    border-radius: 16px;
+    padding: 32px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .step:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.2);
-    border-color: #667eea;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    border-color: #93c5fd;
 }
 
 .step-number {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #FF69B4 0%, #FFB7D5 100%);
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -370,8 +376,8 @@ h2::after {
     justify-content: center;
     font-size: 1.5em;
     font-weight: bold;
-    margin: 0 auto 15px;
-    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .step h3 {
@@ -392,10 +398,11 @@ h2::after {
 }
 
 .participation-note {
-    background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
-    border-left: 4px solid #FFE66D;
-    padding: 20px 25px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left: 4px solid #3b82f6;
+    padding: 24px 28px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.08);
 }
 
 .participation-note p {
@@ -422,18 +429,19 @@ h2::after {
 }
 
 .ideal-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 25px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid #e0f2fe;
+    border-radius: 16px;
+    padding: 32px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .ideal-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-color: #FFE66D;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    border-color: #93c5fd;
 }
 
 .icon {
@@ -461,9 +469,11 @@ h2::after {
 
 /* 説明セクション */
 .about {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 40px;
+    border-radius: 16px;
+    border: 2px solid #e0f2fe;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .about p {
@@ -479,11 +489,11 @@ h2::after {
 
 /* フッター */
 footer {
-    background: linear-gradient(135deg, #FFB7D5 0%, #DDA0DD 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 32px;
+    margin-top: 60px;
     position: relative;
 }
 
@@ -496,6 +506,14 @@ footer::before {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+    main {
+        padding: 40px 24px;
+    }
+
+    header {
+        padding: 40px 20px;
+    }
+
     header h1 {
         font-size: 1.8em;
     }
@@ -509,13 +527,14 @@ footer::before {
     }
 
     .info-card {
-        padding: 20px;
+        padding: 28px;
     }
 
     .info-item {
         font-size: 1em;
         flex-direction: column;
         align-items: flex-start;
+        padding: 16px 20px;
     }
 
     .label {
@@ -531,7 +550,7 @@ footer::before {
     }
 
     .link-card {
-        padding: 20px;
+        padding: 24px;
     }
 }
 
@@ -541,11 +560,11 @@ footer::before {
     }
 
     header {
-        padding: 25px 15px;
+        padding: 30px 16px;
     }
 
     header h1 {
-        font-size: 1.5em;
+        font-size: 1.6em;
     }
 
     .subtitle {
@@ -553,20 +572,21 @@ footer::before {
     }
 
     main {
-        padding: 20px 15px;
+        padding: 32px 20px;
     }
 
     h2 {
-        font-size: 1.4em;
+        font-size: 1.6em;
     }
 
     .info-card {
-        padding: 15px;
+        padding: 20px;
     }
 
     .info-item {
         font-size: 0.95em;
         margin-bottom: 15px;
+        padding: 14px 18px;
     }
 
     .value {
@@ -578,20 +598,24 @@ footer::before {
     }
 
     .link-card h3 {
-        font-size: 1.1em;
+        font-size: 1.2em;
+    }
+
+    .step {
+        padding: 24px;
     }
 
     .btn {
-        padding: 8px 20px;
-        font-size: 0.9em;
+        padding: 10px 24px;
+        font-size: 0.95em;
     }
 
     .about {
-        padding: 20px 15px;
+        padding: 28px 20px;
     }
 
     .participation-note {
-        padding: 15px 20px;
+        padding: 20px 24px;
     }
 
     .participation-note p {
