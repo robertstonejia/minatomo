@@ -216,8 +216,8 @@ h2::after {
     margin-bottom: 20px;
     font-size: 1.15em;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 20px 24px;
     background: white;
     border-radius: 12px;
@@ -239,17 +239,16 @@ h2::after {
 .label {
     font-weight: 700;
     color: #1e40af;
-    margin-right: 10px;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     letter-spacing: 0.05em;
     font-size: 1.15em;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .value {
     color: #000;
     font-weight: 500;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 .red-x {
@@ -532,13 +531,11 @@ footer::before {
 
     .info-item {
         font-size: 1em;
-        flex-direction: column;
-        align-items: flex-start;
         padding: 16px 20px;
     }
 
     .label {
-        margin-bottom: 5px;
+        margin-bottom: 8px;
     }
 
     .steps {
