@@ -72,6 +72,9 @@
                 </div>
             </div>
         </div>
+        <div class="forecast-bar" id="forecast-bar">
+            <span class="weather-loading">予報を取得中...</span>
+        </div>
         <header>
             <h1>みんなの日中交流会</h1>
             <span class="sakura sakura1">🌸</span>
@@ -319,17 +322,31 @@
             return weatherCodes[code] || { icon: '🌡️', desc: '不明' };
         }
 
+        // 日付をフォーマット（M/D形式）
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return `${date.getMonth() + 1}/${date.getDate()}`;
+        }
+
+        // 曜日を取得
+        function getDayOfWeek(dateStr) {
+            const date = new Date(dateStr);
+            return weekdays[date.getDay()];
+        }
+
         // 天気を取得
         async function fetchWeather() {
             const location = locations[currentLocation];
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current=temperature_2m,weather_code,relative_humidity_2m&timezone=Asia/Tokyo`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&current=temperature_2m,weather_code,relative_humidity_2m&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia/Tokyo&forecast_days=3`;
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
                 const current = data.current;
+                const daily = data.daily;
                 const weatherInfo = getWeatherInfo(current.weather_code);
 
+                // 現在の天気を表示
                 const weatherInfoEl = document.getElementById('weather-info');
                 weatherInfoEl.innerHTML = `
                     <span class="weather-icon">${weatherInfo.icon}</span>
@@ -337,9 +354,33 @@
                     <span class="weather-desc">${weatherInfo.desc}</span>
                     <span class="weather-humidity">💧${current.relative_humidity_2m}%</span>
                 `;
+
+                // 3日間の予報を表示
+                const forecastBar = document.getElementById('forecast-bar');
+                let forecastHTML = '';
+                for (let i = 0; i < 3; i++) {
+                    const dayWeather = getWeatherInfo(daily.weather_code[i]);
+                    const dayLabel = i === 0 ? '今日' : (i === 1 ? '明日' : '明後日');
+                    const dateStr = formatDate(daily.time[i]);
+                    const dayOfWeek = getDayOfWeek(daily.time[i]);
+                    forecastHTML += `
+                        <div class="forecast-day">
+                            <span class="forecast-label">${dayLabel}</span>
+                            <span class="forecast-date">${dateStr}(${dayOfWeek})</span>
+                            <span class="forecast-icon">${dayWeather.icon}</span>
+                            <span class="forecast-temps">
+                                <span class="temp-high">${Math.round(daily.temperature_2m_max[i])}°</span>
+                                <span class="temp-low">${Math.round(daily.temperature_2m_min[i])}°</span>
+                            </span>
+                        </div>
+                    `;
+                }
+                forecastBar.innerHTML = forecastHTML;
             } catch (error) {
                 const weatherInfoEl = document.getElementById('weather-info');
                 weatherInfoEl.innerHTML = '<span class="weather-error">取得エラー</span>';
+                const forecastBar = document.getElementById('forecast-bar');
+                forecastBar.innerHTML = '<span class="weather-error">予報を取得できませんでした</span>';
             }
         }
 
