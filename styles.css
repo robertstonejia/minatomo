@@ -158,7 +158,7 @@ body::after {
 
 /* 天気予報バー */
 .forecast-bar {
-    background: linear-gradient(135deg, #152a47 0%, #1e3a5f 100%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
     padding: 12px 20px;
     display: flex;
@@ -182,18 +182,18 @@ body::after {
 }
 
 .forecast-day.today {
-    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 .forecast-day.tomorrow {
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
 }
 
 .forecast-label {
     font-weight: 700;
-    color: #fbbf24;
+    color: white;
 }
 
 .forecast-date {
@@ -212,11 +212,11 @@ body::after {
 }
 
 .temp-high {
-    color: #fca5a5;
+    color: #fff;
 }
 
 .temp-low {
-    color: #93c5fd;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* ヘッダー */
