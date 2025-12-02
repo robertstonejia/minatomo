@@ -653,14 +653,6 @@ h2::after {
     margin-bottom: 40px;
 }
 
-.gachi-chuka h2::before {
-    content: '🍜';
-}
-
-.gachi-chuka h2::after {
-    content: '🥬';
-}
-
 .restaurant-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
