@@ -8,6 +8,9 @@
 </head>
 <body>
     <div class="container">
+        <div class="weather-bar" id="weather-bar">
+            <span class="weather-loading">天気情報を取得中...</span>
+        </div>
         <header>
             <h1>みんなの日中交流会</h1>
             <span class="sakura sakura1">🌸</span>
@@ -144,5 +147,73 @@
             <p>&copy; 2024 みんなの日中交流会</p>
         </footer>
     </div>
+
+    <script>
+        // 天気コードから天気アイコンと説明を取得
+        function getWeatherInfo(code) {
+            const weatherCodes = {
+                0: { icon: '☀️', desc: '快晴' },
+                1: { icon: '🌤️', desc: '晴れ' },
+                2: { icon: '⛅', desc: 'くもり時々晴れ' },
+                3: { icon: '☁️', desc: 'くもり' },
+                45: { icon: '🌫️', desc: '霧' },
+                48: { icon: '🌫️', desc: '霧氷' },
+                51: { icon: '🌧️', desc: '小雨' },
+                53: { icon: '🌧️', desc: '雨' },
+                55: { icon: '🌧️', desc: '強い雨' },
+                56: { icon: '🌧️', desc: '凍る霧雨' },
+                57: { icon: '🌧️', desc: '凍る霧雨' },
+                61: { icon: '🌧️', desc: '小雨' },
+                63: { icon: '🌧️', desc: '雨' },
+                65: { icon: '🌧️', desc: '大雨' },
+                66: { icon: '🌧️', desc: '凍る雨' },
+                67: { icon: '🌧️', desc: '凍る大雨' },
+                71: { icon: '🌨️', desc: '小雪' },
+                73: { icon: '🌨️', desc: '雪' },
+                75: { icon: '🌨️', desc: '大雪' },
+                77: { icon: '🌨️', desc: '霧雪' },
+                80: { icon: '🌦️', desc: 'にわか雨' },
+                81: { icon: '🌦️', desc: 'にわか雨' },
+                82: { icon: '⛈️', desc: '激しいにわか雨' },
+                85: { icon: '🌨️', desc: 'にわか雪' },
+                86: { icon: '🌨️', desc: '激しいにわか雪' },
+                95: { icon: '⛈️', desc: '雷雨' },
+                96: { icon: '⛈️', desc: '雷雨（雹）' },
+                99: { icon: '⛈️', desc: '激しい雷雨（雹）' }
+            };
+            return weatherCodes[code] || { icon: '🌡️', desc: '不明' };
+        }
+
+        // 池袋の天気を取得
+        async function fetchWeather() {
+            const lat = 35.7295;
+            const lon = 139.7109;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,relative_humidity_2m&timezone=Asia/Tokyo`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const current = data.current;
+                const weatherInfo = getWeatherInfo(current.weather_code);
+
+                const weatherBar = document.getElementById('weather-bar');
+                weatherBar.innerHTML = `
+                    <span class="weather-location">📍 池袋</span>
+                    <span class="weather-icon">${weatherInfo.icon}</span>
+                    <span class="weather-temp">${Math.round(current.temperature_2m)}°C</span>
+                    <span class="weather-desc">${weatherInfo.desc}</span>
+                    <span class="weather-humidity">💧${current.relative_humidity_2m}%</span>
+                `;
+            } catch (error) {
+                const weatherBar = document.getElementById('weather-bar');
+                weatherBar.innerHTML = '<span class="weather-error">天気情報を取得できませんでした</span>';
+            }
+        }
+
+        // ページ読み込み時に天気を取得
+        fetchWeather();
+        // 10分ごとに更新
+        setInterval(fetchWeather, 600000);
+    </script>
 </body>
 </html>

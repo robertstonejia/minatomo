@@ -50,6 +50,47 @@ body::after {
     z-index: 1;
 }
 
+/* 天気バー */
+.weather-bar {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.95em;
+    font-weight: 500;
+    flex-wrap: wrap;
+}
+
+.weather-location {
+    font-weight: 600;
+}
+
+.weather-icon {
+    font-size: 1.4em;
+}
+
+.weather-temp {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.weather-desc {
+    opacity: 0.95;
+}
+
+.weather-humidity {
+    opacity: 0.9;
+    font-size: 0.9em;
+}
+
+.weather-loading,
+.weather-error {
+    opacity: 0.8;
+}
+
 /* ヘッダー */
 header {
     background: linear-gradient(135deg, #f4e4c1 0%, #f7e9cd 30%, #faf0db 70%, #fdf6e8 100%);
@@ -507,6 +548,12 @@ footer::before {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+    .weather-bar {
+        padding: 10px 16px;
+        gap: 12px;
+        font-size: 0.9em;
+    }
+
     main {
         padding: 40px 24px;
     }
@@ -576,6 +623,20 @@ footer::before {
 }
 
 @media (max-width: 480px) {
+    .weather-bar {
+        padding: 8px 12px;
+        gap: 8px;
+        font-size: 0.85em;
+    }
+
+    .weather-icon {
+        font-size: 1.2em;
+    }
+
+    .weather-temp {
+        font-size: 1.1em;
+    }
+
     body {
         padding: 10px;
     }
