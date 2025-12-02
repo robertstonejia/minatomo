@@ -653,6 +653,14 @@ h2::after {
     margin-bottom: 40px;
 }
 
+.gachi-chuka h2::before {
+    content: '🍜';
+}
+
+.gachi-chuka h2::after {
+    content: '🥟';
+}
+
 .restaurant-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -679,7 +687,7 @@ h2::after {
 .restaurant-name {
     font-size: 1.2em;
     font-weight: 700;
-    color: #dc2626;
+    color: #333;
     margin-bottom: 8px;
 }
 
