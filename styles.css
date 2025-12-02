@@ -174,28 +174,35 @@ body::after {
     gap: 10px;
     padding: 10px 20px;
     border-radius: 12px;
-    transition: transform 0.2s ease;
-    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
 }
 
 .forecast-day:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px);
 }
 
 .forecast-day.today {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.forecast-day.today:hover {
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
 }
 
 .forecast-day.tomorrow {
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+}
+
+.forecast-day.tomorrow:hover {
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.5);
 }
 
 .forecast-label {
     font-weight: 700;
-    color: #fbbf24;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .forecast-date {
@@ -214,11 +221,13 @@ body::after {
 }
 
 .temp-high {
-    color: #fca5a5;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .temp-low {
-    color: #93c5fd;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* ヘッダー */
