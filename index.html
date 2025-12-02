@@ -355,16 +355,17 @@
                     <span class="weather-humidity">💧${current.relative_humidity_2m}%</span>
                 `;
 
-                // 3日間の予報を表示
+                // 2日間の予報を表示（今日・明日）
                 const forecastBar = document.getElementById('forecast-bar');
                 let forecastHTML = '';
-                for (let i = 0; i < 3; i++) {
+                for (let i = 0; i < 2; i++) {
                     const dayWeather = getWeatherInfo(daily.weather_code[i]);
-                    const dayLabel = i === 0 ? '今日' : (i === 1 ? '明日' : '明後日');
+                    const dayLabel = i === 0 ? '今日' : '明日';
+                    const dayClass = i === 0 ? 'today' : 'tomorrow';
                     const dateStr = formatDate(daily.time[i]);
                     const dayOfWeek = getDayOfWeek(daily.time[i]);
                     forecastHTML += `
-                        <div class="forecast-day">
+                        <div class="forecast-day ${dayClass}">
                             <span class="forecast-label">${dayLabel}</span>
                             <span class="forecast-date">${dateStr}(${dayOfWeek})</span>
                             <span class="forecast-icon">${dayWeather.icon}</span>

@@ -156,14 +156,14 @@ body::after {
     opacity: 0.8;
 }
 
-/* 3日間予報バー */
+/* 天気予報バー */
 .forecast-bar {
-    background: linear-gradient(135deg, #0f2744 0%, #1e3a5f 100%);
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
     font-size: 0.9em;
     flex-wrap: wrap;
 }
@@ -171,38 +171,52 @@ body::after {
 .forecast-day {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 6px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.forecast-day:hover {
+    transform: translateY(-2px);
+}
+
+.forecast-day.today {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.forecast-day.tomorrow {
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
 }
 
 .forecast-label {
     font-weight: 700;
-    color: #fbbf24;
+    color: white;
 }
 
 .forecast-date {
-    font-size: 0.85em;
-    opacity: 0.85;
+    font-size: 0.9em;
+    opacity: 0.9;
 }
 
 .forecast-icon {
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 
 .forecast-temps {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     font-weight: 600;
 }
 
 .temp-high {
-    color: #f87171;
+    color: #fff;
 }
 
 .temp-low {
-    color: #60a5fa;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 /* ヘッダー */
