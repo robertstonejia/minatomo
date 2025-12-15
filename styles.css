@@ -787,6 +787,24 @@ footer::before {
     font-size: 1.5em;
 }
 
+/* 訪問者カウンター */
+.visitor-counter {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.counter-label {
+    opacity: 0.9;
+}
+
+.counter-value {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .weather-bar {

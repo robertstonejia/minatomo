@@ -264,6 +264,10 @@
         </main>
 
         <footer>
+            <div id="visitor-counter" class="visitor-counter" style="display: none;">
+                <span class="counter-label">累計訪問者数：</span>
+                <span id="counter-value" class="counter-value"></span>
+            </div>
             <p>&copy; 2024 みんなの日中交流会</p>
         </footer>
     </div>
@@ -450,6 +454,24 @@
             fetchWeather();
         }
 
+        // アクセスカウンターを取得
+        async function fetchCounter() {
+            try {
+                const response = await fetch('/api/counter');
+                const data = await response.json();
+
+                // 1000回を超えたら表示
+                if (data.show) {
+                    const counterEl = document.getElementById('visitor-counter');
+                    const valueEl = document.getElementById('counter-value');
+                    valueEl.textContent = data.count.toLocaleString() + '人';
+                    counterEl.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Counter error:', error);
+            }
+        }
+
         // ページ読み込み時に初期化
         document.addEventListener('DOMContentLoaded', function() {
             // ローカルストレージから保存された地域を復元
@@ -464,6 +486,7 @@
 
             updateDateTime();
             fetchWeather();
+            fetchCounter();
             // 日時は毎秒更新
             setInterval(updateDateTime, 1000);
             // 天気は10分ごとに更新
