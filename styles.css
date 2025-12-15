@@ -491,6 +491,13 @@ h2::after {
     display: block;
 }
 
+/* 関連リンクの画像を統一サイズに */
+.links .card-image,
+.nihongo-class .card-image {
+    height: 180px;
+    object-fit: cover;
+}
+
 .link-card h3 {
     color: #333;
     font-size: 1.3em;
