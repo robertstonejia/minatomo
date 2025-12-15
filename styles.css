@@ -718,10 +718,13 @@ h2::after {
 .restaurant-card.with-image {
     padding: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .restaurant-card.with-image .restaurant-name,
 .restaurant-card.with-image .restaurant-address,
+.restaurant-card.with-image .halal-badge,
 .restaurant-card.with-image .map-link {
     margin-left: 24px;
     margin-right: 24px;
@@ -731,8 +734,13 @@ h2::after {
     margin-top: 16px;
 }
 
+.restaurant-card.with-image .restaurant-address {
+    flex-grow: 1;
+}
+
 .restaurant-card.with-image .map-link {
     margin-bottom: 20px;
+    align-self: flex-end;
 }
 
 .restaurant-name {
