@@ -632,6 +632,54 @@ h2::after {
     margin-bottom: 0;
 }
 
+/* コンパクトセクション共通 */
+.compact {
+    margin-bottom: 30px;
+}
+
+.compact h2 {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+}
+
+.compact-info {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left: 4px solid #3b82f6;
+    padding: 16px 20px;
+    border-radius: 8px;
+}
+
+.compact-info p {
+    margin: 0;
+    color: #000;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.compact-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
+    border: 1px solid #bfdbfe;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: #1e40af;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.15);
+}
+
 /* こんな方におすすめセクション */
 .ideal-for {
     margin-bottom: 40px;
