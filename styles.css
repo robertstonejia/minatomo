@@ -491,9 +491,10 @@ h2::after {
     display: block;
 }
 
-/* 関連リンクの画像を統一サイズに */
+/* 画像を統一サイズに */
 .links .card-image,
-.nihongo-class .card-image {
+.nihongo-class .card-image,
+.gachi-chuka .card-image {
     height: 180px;
     object-fit: cover;
 }
