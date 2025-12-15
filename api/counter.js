@@ -1,4 +1,13 @@
-import { kv } from '@vercel/kv';
+import Redis from 'ioredis';
+
+let redis;
+
+function getRedis() {
+  if (!redis) {
+    redis = new Redis(process.env.REDIS_URL);
+  }
+  return redis;
+}
 
 export default async function handler(req, res) {
   // CORS設定
@@ -6,8 +15,9 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
 
   try {
+    const client = getRedis();
     // カウンターをインクリメントして現在値を取得
-    const count = await kv.incr('page_views');
+    const count = await client.incr('page_views');
 
     res.status(200).json({
       count: count,
