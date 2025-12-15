@@ -714,6 +714,7 @@ h2::after {
 }
 
 .restaurant-card.with-image .restaurant-name,
+.restaurant-card.with-image .restaurant-address,
 .restaurant-card.with-image .map-link {
     margin-left: 24px;
     margin-right: 24px;
