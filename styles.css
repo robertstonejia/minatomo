@@ -708,6 +708,25 @@ h2::after {
     border-color: #93c5fd;
 }
 
+.restaurant-card.with-image {
+    padding: 0;
+    overflow: hidden;
+}
+
+.restaurant-card.with-image .restaurant-name,
+.restaurant-card.with-image .map-link {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.restaurant-card.with-image .restaurant-name {
+    margin-top: 16px;
+}
+
+.restaurant-card.with-image .map-link {
+    margin-bottom: 20px;
+}
+
 .restaurant-name {
     font-size: 1.2em;
     font-weight: 700;
