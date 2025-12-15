@@ -464,6 +464,34 @@ h2::after {
     border-color: #93c5fd;
 }
 
+/* 画像付きリンクカード */
+.link-card.with-image {
+    padding: 0;
+    overflow: hidden;
+}
+
+.link-card.with-image h3,
+.link-card.with-image p,
+.link-card.with-image .btn {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.link-card.with-image h3 {
+    margin-top: 20px;
+}
+
+.link-card.with-image .btn {
+    margin-bottom: 24px;
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
 .link-card h3 {
     color: #333;
     font-size: 1.3em;
