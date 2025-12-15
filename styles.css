@@ -394,8 +394,22 @@ h2::after {
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(59, 130, 246, 0.05);
 }
 
-.info-item {
+.info-row {
+    display: flex;
+    gap: 20px;
     margin-bottom: 20px;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-row .info-item {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.info-item {
     font-size: 1.15em;
     display: flex;
     flex-direction: column;
@@ -961,6 +975,11 @@ footer::before {
 
     .link-grid {
         grid-template-columns: 1fr;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 15px;
     }
 
     .info-card {
