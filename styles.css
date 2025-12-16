@@ -513,6 +513,14 @@ h2::after {
     object-fit: cover;
 }
 
+/* 行政書士カード画像 */
+.ikedo-card .card-image {
+    height: 180px;
+    object-fit: contain;
+    background: #f8fafc;
+    padding: 10px;
+}
+
 .link-card h3 {
     color: #333;
     font-size: 1.3em;
