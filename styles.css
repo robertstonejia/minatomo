@@ -513,12 +513,39 @@ h2::after {
     object-fit: cover;
 }
 
-/* 行政書士カード画像 */
+/* 行政書士カード画像スライドショー */
+.ikedo-slideshow {
+    position: relative;
+    display: block;
+    height: 180px;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
 .ikedo-card .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 180px;
     object-fit: contain;
     background: #f8fafc;
     padding: 10px;
+}
+
+.ikedo-img1 {
+    animation: ikedo-fade 6s ease-in-out infinite;
+}
+
+.ikedo-img2 {
+    animation: ikedo-fade 6s ease-in-out infinite 3s;
+    opacity: 0;
+}
+
+@keyframes ikedo-fade {
+    0%, 40% { opacity: 1; }
+    50%, 90% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .link-card h3 {
