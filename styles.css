@@ -539,6 +539,11 @@ h2::after {
     padding: 10px;
 }
 
+/* 採用情報の画像は上部を表示 */
+.seekjob-image {
+    object-position: top;
+}
+
 /* 恋愛カード（单身找对象） */
 .love-card {
     border-color: #f9a8d4;
