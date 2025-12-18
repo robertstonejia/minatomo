@@ -207,11 +207,12 @@ header {
 .main-nav {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    gap: 10px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
     flex-wrap: wrap;
     transition: all 0.3s ease;
+    border-bottom: 2px solid #f9a8d4;
 }
 
 .main-nav.fixed {
@@ -220,23 +221,39 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
 }
 
 .nav-link {
-    color: white;
+    color: #be185d;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 8px 18px;
+    border-radius: 25px;
     font-weight: 600;
     font-size: 0.9em;
-    transition: all 0.2s ease;
-    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    background: white;
+    border: 2px solid #f9a8d4;
+    box-shadow: 0 2px 8px rgba(244, 114, 182, 0.15);
+    position: relative;
+}
+
+.nav-link::before {
+    content: '✿';
+    margin-right: 4px;
+    font-size: 0.85em;
 }
 
 .nav-link:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+    color: white;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3);
+    border-color: #ec4899;
+}
+
+.nav-link:active {
+    transform: translateY(-1px) scale(1.02);
 }
 
 /* 返回顶部按钮 */
@@ -1059,13 +1076,18 @@ footer::before {
 
     /* 导航栏移动端样式 */
     .main-nav {
-        gap: 6px;
-        padding: 10px 12px;
+        gap: 8px;
+        padding: 12px 15px;
     }
 
     .nav-link {
-        padding: 6px 12px;
+        padding: 6px 14px;
         font-size: 0.8em;
+    }
+
+    .nav-link::before {
+        font-size: 0.75em;
+        margin-right: 3px;
     }
 
     /* 返回顶部按钮移动端 */
@@ -1205,13 +1227,18 @@ footer::before {
 
     /* 导航栏小屏幕样式 */
     .main-nav {
-        gap: 4px;
-        padding: 8px 10px;
+        gap: 6px;
+        padding: 10px 12px;
     }
 
     .nav-link {
-        padding: 5px 10px;
+        padding: 5px 12px;
         font-size: 0.75em;
+    }
+
+    .nav-link::before {
+        font-size: 0.7em;
+        margin-right: 2px;
     }
 
     /* 返回顶部按钮小屏幕 */
