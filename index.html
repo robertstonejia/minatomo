@@ -80,12 +80,18 @@
             <span class="sakura sakura1">🌸</span>
             <span class="sakura sakura2">🌸</span>
             <span class="sakura sakura3">🌸</span>
-            <span class="sakura sakura4">🌸</span>
-            <span class="sakura sakura5">🌸</span>
         </header>
 
+        <nav class="main-nav" id="main-nav">
+            <a href="#event-info" class="nav-link">イベント情報</a>
+            <a href="#links" class="nav-link">関連リンク</a>
+            <a href="#nihongo" class="nav-link">日本語教室</a>
+            <a href="#gachi-chuka" class="nav-link">ガチ中華</a>
+            <a href="#about" class="nav-link">について</a>
+        </nav>
+
         <main>
-            <section class="event-info">
+            <section class="event-info" id="event-info">
                 <h2>イベント情報</h2>
                 <div class="info-card">
                     <div class="info-row">
@@ -131,7 +137,7 @@
                 </div>
             </section>
 
-            <section class="links">
+            <section class="links" id="links">
                 <h2>関連リンク</h2>
                 <div class="link-grid">
                     <div class="link-card with-image">
@@ -182,7 +188,7 @@
                 </div>
             </section>
 
-            <section class="nihongo-class">
+            <section class="nihongo-class" id="nihongo">
                 <h2>ボランティア日本語教室</h2>
                 <div class="link-grid">
                     <div class="link-card with-image zenkoku-card">
@@ -212,9 +218,9 @@
                 </div>
             </section>
 
-            <section class="gachi-chuka">
+            <section class="gachi-chuka" id="gachi-chuka">
                 <h2>ガチ中華推薦</h2>
-                <div class="restaurant-grid">
+                <div class="restaurant-grid" id="restaurant-grid">
                     <div class="restaurant-card with-image">
                         <a href="https://tabelog.com/tokyo/A1304/A130401/13178762/" target="_blank">
                             <img src="volunteer/shanxit.jpeg" alt="山西亭" class="card-image">
@@ -231,7 +237,7 @@
                         <div class="restaurant-address">〒171-0021 東京都豊島区西池袋1-38-3 dvort池袋 B1F</div>
                         <a href="https://maps.google.com/?q=東京都豊島区西池袋1丁目38-3" target="_blank" class="map-link">店に行く</a>
                     </div>
-                    <div class="restaurant-card with-image">
+                    <div class="restaurant-card with-image hidden-card">
                         <a href="https://tabelog.com/tokyo/A1305/A130501/13211080/" target="_blank">
                             <img src="volunteer/mapo.jpeg" alt="座・麻婆唐府" class="card-image">
                         </a>
@@ -239,7 +245,7 @@
                         <div class="restaurant-address">〒171-0021 東京都豊島区西池袋1丁目38−3 3F</div>
                         <a href="https://maps.google.com/?q=東京都豊島区西池袋1丁目38-3" target="_blank" class="map-link">店に行く</a>
                     </div>
-                    <div class="restaurant-card with-image">
+                    <div class="restaurant-card with-image hidden-card">
                         <a href="https://tabelog.com/tokyo/A1305/A130501/13226753/" target="_blank">
                             <img src="volunteer/niujia.jpeg" alt="牛家兄弟" class="card-image">
                         </a>
@@ -248,7 +254,7 @@
                         <div class="restaurant-address">〒171-0014 東京都豊島区池袋2丁目13−8 大久保商事ビル</div>
                         <a href="https://maps.app.goo.gl/upTRWXXw3oh3vh2M8" target="_blank" class="map-link">店に行く</a>
                     </div>
-                    <div class="restaurant-card with-image">
+                    <div class="restaurant-card with-image hidden-card">
                         <a href="https://tabelog.com/tokyo/A1305/A130501/13218774/" target="_blank">
                             <img src="volunteer/aliya.jpeg" alt="阿丽娅アリヤ" class="card-image">
                         </a>
@@ -258,9 +264,10 @@
                         <a href="https://maps.google.com/?q=東京都豊島区西池袋1丁目43-3" target="_blank" class="map-link">店に行く</a>
                     </div>
                 </div>
+                <button class="show-more-btn" id="show-more-restaurants" onclick="toggleRestaurants()">もっと見る ▼</button>
             </section>
 
-            <section class="about">
+            <section class="about" id="about">
                 <h2>交流会について</h2>
                 <p>
                     みんなの日中交流会は、日本人と中国人が気軽に交流できる場所を提供しています。
@@ -268,6 +275,9 @@
                 </p>
             </section>
         </main>
+
+        <!-- 返回顶部按钮 -->
+        <button id="back-to-top" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
         <footer>
             <div id="visitor-counter" class="visitor-counter" style="display: none;">
@@ -478,8 +488,47 @@
             }
         }
 
+        // 餐厅展开/折叠功能
+        let restaurantsExpanded = false;
+        function toggleRestaurants() {
+            const hiddenCards = document.querySelectorAll('.hidden-card');
+            const btn = document.getElementById('show-more-restaurants');
+            restaurantsExpanded = !restaurantsExpanded;
+
+            hiddenCards.forEach(card => {
+                card.style.display = restaurantsExpanded ? 'flex' : 'none';
+            });
+            btn.textContent = restaurantsExpanded ? '閉じる ▲' : 'もっと見る ▼';
+        }
+
+        // 返回顶部按钮显示逻辑
+        function handleScroll() {
+            const backToTop = document.getElementById('back-to-top');
+            const nav = document.getElementById('main-nav');
+
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+
+            // 导航栏固定
+            if (window.scrollY > 400) {
+                nav.classList.add('fixed');
+            } else {
+                nav.classList.remove('fixed');
+            }
+        }
+
         // ページ読み込み時に初期化
         document.addEventListener('DOMContentLoaded', function() {
+            // 滚动事件监听
+            window.addEventListener('scroll', handleScroll);
+
+            // 初始隐藏餐厅卡片
+            document.querySelectorAll('.hidden-card').forEach(card => {
+                card.style.display = 'none';
+            });
             // ローカルストレージから保存された地域を復元
             const savedLocation = localStorage.getItem('weatherLocation');
             if (savedLocation && locations[savedLocation]) {

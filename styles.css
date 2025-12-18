@@ -54,14 +54,14 @@ body::after {
 .weather-bar {
     background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
     color: white;
-    padding: 12px 20px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.95em;
+    font-size: 0.9em;
     font-weight: 500;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
 }
 
 .datetime-section {
@@ -158,22 +158,22 @@ body::after {
 
 /* 天気予報バー */
 .forecast-bar {
-    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #0f2847 0%, #1e3a5f 100%);
     color: white;
-    padding: 12px 20px;
+    padding: 8px 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    font-size: 0.9em;
+    gap: 15px;
+    font-size: 0.85em;
     flex-wrap: wrap;
 }
 
 .forecast-day {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border-radius: 12px;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 10px;
     transition: all 0.2s ease;
 }
 
@@ -235,11 +235,77 @@ header {
     background: linear-gradient(135deg, #f4e4c1 0%, #f7e9cd 30%, #faf0db 70%, #fdf6e8 100%);
     color: #2c1810;
     text-align: center;
-    padding: 80px 20px;
+    padding: 60px 20px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border-bottom: 3px solid #d4af37;
+}
+
+/* 导航栏 */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+}
+
+.main-nav.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* 返回顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
 .sakura {
@@ -251,41 +317,31 @@ header {
 }
 
 .sakura1 {
-    left: 10%;
-    animation: sakuraFall 6s linear infinite;
+    left: 15%;
+    animation: sakuraFall 12s linear infinite;
 }
 
 .sakura2 {
-    left: 30%;
-    animation: sakuraFall 7s linear infinite 1s;
+    left: 50%;
+    animation: sakuraFall 14s linear infinite 2s;
 }
 
 .sakura3 {
-    left: 50%;
-    animation: sakuraFall 8s linear infinite 2s;
-}
-
-.sakura4 {
-    left: 70%;
-    animation: sakuraFall 6.5s linear infinite 0.5s;
-}
-
-.sakura5 {
-    left: 85%;
-    animation: sakuraFall 7.5s linear infinite 1.5s;
+    left: 80%;
+    animation: sakuraFall 16s linear infinite 4s;
 }
 
 header::after {
     content: '';
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background-image: url('panda.jpg');
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    animation: pandaMove 10s ease-in-out infinite;
-    opacity: 0.85;
+    animation: pandaMove 20s ease-in-out infinite;
+    opacity: 0.7;
     filter: drop-shadow(2px 2px 6px rgba(0,0,0,0.25));
 }
 
@@ -381,14 +437,24 @@ h2::after {
     margin-left: 10px;
 }
 
-/* イベント情報カード */
+/* イベント情報カード - 強調 */
 .event-info {
     margin-bottom: 40px;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+    padding: 30px;
+    border-radius: 24px;
+    border: 3px solid #3b82f6;
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+}
+
+.event-info h2 {
+    color: #1e40af;
+    font-size: 2.2em;
 }
 
 .info-card {
-    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
-    border: 2px solid #e0f2fe;
+    background: white;
+    border: 2px solid #93c5fd;
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(59, 130, 246, 0.05);
@@ -509,8 +575,15 @@ h2::after {
 .links .card-image,
 .nihongo-class .card-image,
 .gachi-chuka .card-image {
-    height: 180px;
+    height: 160px;
     object-fit: cover;
+    background: #f8fafc;
+}
+
+/* 全国/東京日本語教室のカードはcontainを使用 */
+.zenkoku-card .card-image {
+    object-fit: contain;
+    padding: 10px;
 }
 
 /* 恋愛カード（单身找对象） */
@@ -555,19 +628,12 @@ h2::after {
     content: ' 💕' !important;
 }
 
-/* 全国日本語教室カード画像 */
-.zenkoku-card .card-image {
-    height: 180px;
-    object-fit: contain;
-    background: #f8fafc;
-    padding: 10px;
-}
 
 /* 行政書士カード画像スライドショー */
 .ikedo-slideshow {
     position: relative;
     display: block;
-    height: 180px;
+    height: 160px;
     overflow: hidden;
     background: #f8fafc;
 }
@@ -577,7 +643,7 @@ h2::after {
     top: 0;
     left: 0;
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: contain;
     background: #f8fafc;
     padding: 10px;
@@ -846,6 +912,28 @@ h2::after {
     margin-top: 20px;
 }
 
+/* 查看更多按钮 */
+.show-more-btn {
+    display: block;
+    margin: 20px auto 0;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.show-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+}
+
 .restaurant-card {
     background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
     border: 2px solid #e0f2fe;
@@ -994,9 +1082,9 @@ footer::before {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .weather-bar {
-        padding: 10px 16px;
-        gap: 10px;
-        font-size: 0.9em;
+        padding: 8px 12px;
+        gap: 8px;
+        font-size: 0.85em;
         justify-content: center;
     }
 
@@ -1009,31 +1097,51 @@ footer::before {
     }
 
     .weather-info {
-        gap: 8px;
+        gap: 6px;
     }
 
     .location-select {
-        font-size: 0.85em;
+        font-size: 0.8em;
         padding: 3px 6px;
     }
 
     .forecast-bar {
-        gap: 15px;
-        padding: 8px 16px;
-        font-size: 0.85em;
+        gap: 10px;
+        padding: 6px 12px;
+        font-size: 0.8em;
     }
 
     .forecast-day {
-        gap: 6px;
+        gap: 5px;
         padding: 5px 10px;
     }
 
+    /* 导航栏移动端样式 */
+    .main-nav {
+        gap: 6px;
+        padding: 10px 12px;
+    }
+
+    .nav-link {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+
+    /* 返回顶部按钮移动端 */
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+    }
+
     main {
-        padding: 40px 24px;
+        padding: 30px 20px;
     }
 
     header {
-        padding: 50px 20px;
+        padding: 40px 20px;
     }
 
     header h1 {
@@ -1044,18 +1152,21 @@ footer::before {
 
     /* モバイルでパンダサイズを調整 */
     header::after {
-        width: 80px;
-        height: 80px;
-    }
-
-    /* モバイルで桜を3つに減らす */
-    .sakura4,
-    .sakura5 {
-        display: none;
+        width: 70px;
+        height: 70px;
     }
 
     .sakura {
-        font-size: 2em;
+        font-size: 1.8em;
+    }
+
+    /* イベント情報強調 */
+    .event-info {
+        padding: 20px;
+    }
+
+    .event-info h2 {
+        font-size: 1.8em;
     }
 
     .link-grid {
@@ -1068,7 +1179,7 @@ footer::before {
     }
 
     .info-card {
-        padding: 28px;
+        padding: 20px;
     }
 
     .info-item {
@@ -1154,12 +1265,32 @@ footer::before {
         font-size: 1.1em;
     }
 
+    /* 导航栏小屏幕样式 */
+    .main-nav {
+        gap: 4px;
+        padding: 8px 10px;
+    }
+
+    .nav-link {
+        padding: 5px 10px;
+        font-size: 0.75em;
+    }
+
+    /* 返回顶部按钮小屏幕 */
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
     body {
         padding: 10px;
     }
 
     header {
-        padding: 40px 16px;
+        padding: 30px 16px;
     }
 
     header h1 {
@@ -1170,8 +1301,8 @@ footer::before {
 
     /* 小さい画面でパンダをさらに縮小 */
     header::after {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     /* 小さい画面で桜を2つに減らす */
@@ -1180,7 +1311,17 @@ footer::before {
     }
 
     .sakura {
-        font-size: 1.8em;
+        font-size: 1.5em;
+    }
+
+    /* イベント情報小屏幕 */
+    .event-info {
+        padding: 15px;
+        border-width: 2px;
+    }
+
+    .event-info h2 {
+        font-size: 1.5em;
     }
 
     /* パンダの移動範囲を調整 */
