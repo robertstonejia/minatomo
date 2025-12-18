@@ -156,78 +156,39 @@ body::after {
     opacity: 0.8;
 }
 
-/* 天気予報バー */
-.forecast-bar {
-    background: linear-gradient(135deg, #0f2847 0%, #1e3a5f 100%);
-    color: white;
-    padding: 8px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    font-size: 0.85em;
-    flex-wrap: wrap;
-}
-
-.forecast-day {
+/* 天気予報セクション（ヘッダー内） */
+.forecast-section {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 10px;
-    transition: all 0.2s ease;
+    gap: 12px;
 }
 
-.forecast-day:hover {
-    transform: translateY(-3px);
-}
-
-.forecast-day.today {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-}
-
-.forecast-day.today:hover {
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
-}
-
-.forecast-day.tomorrow {
-    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
-    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
-}
-
-.forecast-day.tomorrow:hover {
-    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.5);
+.forecast-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 10px;
+    border-radius: 6px;
 }
 
 .forecast-label {
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.forecast-date {
-    font-size: 0.9em;
-    opacity: 0.9;
+    font-weight: 600;
+    font-size: 0.85em;
 }
 
 .forecast-icon {
-    font-size: 1.5em;
-}
-
-.forecast-temps {
-    display: flex;
-    gap: 8px;
-    font-weight: 600;
+    font-size: 1.1em;
 }
 
 .temp-high {
-    color: #fff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #fca5a5;
+    font-weight: 600;
 }
 
 .temp-low {
-    color: rgba(255, 255, 255, 0.85);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    color: #93c5fd;
+    font-weight: 600;
 }
 
 /* ヘッダー */
@@ -235,7 +196,7 @@ header {
     background: linear-gradient(135deg, #f4e4c1 0%, #f7e9cd 30%, #faf0db 70%, #fdf6e8 100%);
     color: #2c1810;
     text-align: center;
-    padding: 60px 20px;
+    padding: 30px 20px;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -368,7 +329,7 @@ header::after {
 
 
 header h1 {
-    font-size: 3em;
+    font-size: 2.2em;
     margin: 0;
     font-family: 'STXingkai', 'KaiTi', 'STKaiti', 'BiauKai', 'AR PL UKai CN', 'AR PL UKai HK', 'AR PL UKai TW', 'AR PL UKai TW MBE', '楷体', 'DFKai-SB', serif;
     color: #1a1a1a;
@@ -1079,15 +1040,21 @@ footer::before {
         padding: 3px 6px;
     }
 
-    .forecast-bar {
-        gap: 10px;
-        padding: 6px 12px;
+    .forecast-section {
+        gap: 8px;
+    }
+
+    .forecast-item {
+        padding: 3px 8px;
+        gap: 3px;
+    }
+
+    .forecast-label {
         font-size: 0.8em;
     }
 
-    .forecast-day {
-        gap: 5px;
-        padding: 5px 10px;
+    .forecast-icon {
+        font-size: 1em;
     }
 
     /* 导航栏移动端样式 */
@@ -1115,23 +1082,25 @@ footer::before {
     }
 
     header {
-        padding: 40px 20px;
+        padding: 20px 15px;
     }
 
     header h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
         padding: 0;
         letter-spacing: 0.08em;
     }
 
     /* モバイルでパンダサイズを調整 */
     header::after {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
+        top: 10px;
+        right: 10px;
     }
 
     .sakura {
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     /* イベント情報強調 */
@@ -1224,19 +1193,14 @@ footer::before {
         font-size: 1.1em;
     }
 
-    .forecast-bar {
-        gap: 8px;
-        padding: 6px 10px;
-        font-size: 0.75em;
+    .forecast-section {
+        gap: 6px;
     }
 
-    .forecast-day {
-        gap: 4px;
-        padding: 4px 8px;
-    }
-
-    .forecast-icon {
-        font-size: 1.1em;
+    .forecast-item {
+        padding: 2px 6px;
+        gap: 2px;
+        font-size: 0.85em;
     }
 
     /* 导航栏小屏幕样式 */
@@ -1264,19 +1228,21 @@ footer::before {
     }
 
     header {
-        padding: 30px 16px;
+        padding: 15px 12px;
     }
 
     header h1 {
-        font-size: 1.5em;
+        font-size: 1.3em;
         padding: 0;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.05em;
     }
 
     /* 小さい画面でパンダをさらに縮小 */
     header::after {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
+        top: 8px;
+        right: 8px;
     }
 
     /* 小さい画面で桜を2つに減らす */
@@ -1285,7 +1251,7 @@ footer::before {
     }
 
     .sakura {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
     /* イベント情報小屏幕 */

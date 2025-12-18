@@ -12,6 +12,9 @@
             <div class="datetime-section" id="datetime-section">
                 <span class="datetime-loading">...</span>
             </div>
+            <div class="forecast-section" id="forecast-section">
+                <span class="weather-loading">...</span>
+            </div>
             <div class="weather-section" id="weather-section">
                 <select id="location-select" class="location-select">
                     <optgroup label="東京23区">
@@ -71,9 +74,6 @@
                     <span class="weather-loading">天気情報を取得中...</span>
                 </div>
             </div>
-        </div>
-        <div class="forecast-bar" id="forecast-bar">
-            <span class="weather-loading">天気予報を取得中...</span>
         </div>
         <header>
             <h1>みんなの日中交流会</h1>
@@ -432,29 +432,26 @@
                 `;
 
                 // 2日間の予報を表示（今日・明日）
-                const forecastBar = document.getElementById('forecast-bar');
+                const forecastSection = document.getElementById('forecast-section');
                 let forecastHTML = '';
                 for (let i = 0; i < 2; i++) {
                     const dayWeather = getWeatherInfo(daily.weather_code[i]);
                     const dayLabel = i === 0 ? '今日' : '明日';
-                    const dayClass = i === 0 ? 'today' : 'tomorrow';
                     forecastHTML += `
-                        <div class="forecast-day ${dayClass}">
+                        <span class="forecast-item">
                             <span class="forecast-label">${dayLabel}</span>
                             <span class="forecast-icon">${dayWeather.icon}</span>
-                            <span class="forecast-temps">
-                                <span class="temp-high">${Math.round(daily.temperature_2m_max[i])}°</span>
-                                <span class="temp-low">${Math.round(daily.temperature_2m_min[i])}°</span>
-                            </span>
-                        </div>
+                            <span class="temp-high">${Math.round(daily.temperature_2m_max[i])}°</span>
+                            <span class="temp-low">${Math.round(daily.temperature_2m_min[i])}°</span>
+                        </span>
                     `;
                 }
-                forecastBar.innerHTML = forecastHTML;
+                forecastSection.innerHTML = forecastHTML;
             } catch (error) {
                 const weatherInfoEl = document.getElementById('weather-info');
                 weatherInfoEl.innerHTML = '<span class="weather-error">取得エラー</span>';
-                const forecastBar = document.getElementById('forecast-bar');
-                forecastBar.innerHTML = '<span class="weather-error">天気予報を取得できませんでした</span>';
+                const forecastSection = document.getElementById('forecast-section');
+                forecastSection.innerHTML = '<span class="weather-error">--</span>';
             }
         }
 
