@@ -451,6 +451,17 @@ h2::after {
     margin-bottom: 0;
 }
 
+.info-item.full-width {
+    flex: 1 1 100%;
+}
+
+.event-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+}
+
 .label {
     font-weight: 700;
     color: #1e40af;
