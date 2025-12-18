@@ -354,11 +354,11 @@ header h1 {
 
 /* メインコンテンツ */
 main {
-    padding: 30px 25px;
+    padding: 40px 30px;
 }
 
 section {
-    margin-bottom: 35px;
+    margin-bottom: 45px;
 }
 
 /* 锚点定位偏移，避免被固定导航栏遮挡 */
@@ -368,9 +368,9 @@ section[id] {
 
 h2 {
     color: #3b82f6;
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    font-size: 1.7em;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
     border-bottom: 3px solid #dbeafe;
     position: relative;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
@@ -391,32 +391,32 @@ h2::after {
 
 /* イベント情報カード - 強調 */
 .event-info {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
-    padding: 20px;
-    border-radius: 16px;
+    padding: 25px;
+    border-radius: 18px;
     border: 2px solid #3b82f6;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
 }
 
 .event-info h2 {
     color: #1e40af;
-    font-size: 1.6em;
-    margin-bottom: 12px;
+    font-size: 1.8em;
+    margin-bottom: 15px;
 }
 
 .info-card {
     background: white;
     border: 1px solid #93c5fd;
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 14px;
+    padding: 25px;
     box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 
 .info-row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
 .info-row:last-child {
@@ -429,13 +429,13 @@ h2::after {
 }
 
 .info-item {
-    font-size: 0.95em;
+    font-size: 1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 12px 16px;
+    padding: 15px 18px;
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #f1f5f9;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -456,8 +456,8 @@ h2::after {
     color: #1e40af;
     font-family: 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
     letter-spacing: 0.05em;
-    font-size: 0.9em;
-    margin-bottom: 6px;
+    font-size: 1em;
+    margin-bottom: 8px;
 }
 
 .value {
@@ -528,7 +528,7 @@ h2::after {
 .links .card-image,
 .nihongo-class .card-image,
 .gachi-chuka .card-image {
-    height: 120px;
+    height: 140px;
     object-fit: cover;
     background: #f8fafc;
 }
@@ -591,7 +591,7 @@ h2::after {
 .ikedo-slideshow {
     position: relative;
     display: block;
-    height: 120px;
+    height: 140px;
     overflow: hidden;
     background: #f8fafc;
 }
@@ -601,7 +601,7 @@ h2::after {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 140px;
     object-fit: contain;
     background: #f8fafc;
     padding: 8px;
@@ -624,28 +624,28 @@ h2::after {
 
 .link-card h3 {
     color: #333;
-    font-size: 1.1em;
-    margin-bottom: 6px;
+    font-size: 1.15em;
+    margin-bottom: 8px;
 }
 
 .link-card p {
     color: #000;
-    margin-bottom: 10px;
-    font-size: 0.8em;
+    margin-bottom: 12px;
+    font-size: 0.85em;
     font-weight: 500;
 }
 
 .btn {
     display: inline-block;
-    padding: 8px 18px;
+    padding: 10px 20px;
     background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
-    font-size: 0.85em;
-    box-shadow: 0 3px 8px rgba(59, 130, 246, 0.2);
+    font-size: 0.9em;
+    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.2);
 }
 
 .btn::before {
@@ -758,42 +758,42 @@ h2::after {
 
 /* コンパクトセクション共通 */
 .compact {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .compact h2 {
-    margin-bottom: 10px;
-    font-size: 1.3em;
+    margin-bottom: 12px;
+    font-size: 1.5em;
 }
 
 .compact-info {
     background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     border-left: 3px solid #3b82f6;
-    padding: 12px 15px;
-    border-radius: 6px;
+    padding: 14px 18px;
+    border-radius: 8px;
 }
 
 .compact-info p {
     margin: 0;
     color: #000;
     font-weight: 500;
-    line-height: 1.5;
-    font-size: 0.85em;
+    line-height: 1.6;
+    font-size: 0.9em;
 }
 
 .compact-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
 }
 
 .tag {
     display: inline-block;
     background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%);
     border: 1px solid #bfdbfe;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8em;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 0.85em;
     font-weight: 500;
     color: #1e40af;
     transition: all 0.2s ease;
@@ -943,38 +943,38 @@ h2::after {
 }
 
 .restaurant-name {
-    font-size: 0.95em;
+    font-size: 1em;
     font-weight: 700;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .halal-badge {
     display: inline-block;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
-    padding: 2px 8px;
+    padding: 3px 10px;
     border-radius: 12px;
-    font-size: 0.65em;
+    font-size: 0.7em;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .restaurant-address {
-    font-size: 0.75em;
+    font-size: 0.8em;
     color: #666;
-    margin-bottom: 8px;
-    line-height: 1.4;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 .map-link {
     display: inline-block;
-    padding: 5px 12px;
+    padding: 6px 14px;
     background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
     color: white;
     text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.75em;
+    border-radius: 8px;
+    font-size: 0.8em;
     font-weight: 600;
     transition: all 0.2s ease;
 }
