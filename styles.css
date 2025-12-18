@@ -361,6 +361,11 @@ section {
     margin-bottom: 60px;
 }
 
+/* 锚点定位偏移，避免被固定导航栏遮挡 */
+section[id] {
+    scroll-margin-top: 70px;
+}
+
 h2 {
     color: #3b82f6;
     font-size: 2em;
