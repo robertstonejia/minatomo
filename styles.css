@@ -238,11 +238,6 @@ header {
     position: relative;
 }
 
-.nav-link::before {
-    content: '✿';
-    margin-right: 4px;
-    font-size: 0.85em;
-}
 
 .nav-link:hover {
     background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
@@ -1085,11 +1080,6 @@ footer::before {
         font-size: 0.8em;
     }
 
-    .nav-link::before {
-        font-size: 0.75em;
-        margin-right: 3px;
-    }
-
     /* 返回顶部按钮移动端 */
     .back-to-top {
         bottom: 20px;
@@ -1234,11 +1224,6 @@ footer::before {
     .nav-link {
         padding: 5px 12px;
         font-size: 0.75em;
-    }
-
-    .nav-link::before {
-        font-size: 0.7em;
-        margin-right: 2px;
     }
 
     /* 返回顶部按钮小屏幕 */
