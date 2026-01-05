@@ -52,7 +52,7 @@ body::after {
 
 /* 天気バー */
 .weather-bar {
-    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    background: #065aa8;
     color: white;
     padding: 10px 20px;
     display: flex;
@@ -123,7 +123,7 @@ body::after {
 
 .location-select option,
 .location-select optgroup {
-    background: #1e3a5f;
+    background: #065aa8;
     color: white;
 }
 
@@ -193,14 +193,14 @@ body::after {
 
 /* ヘッダー */
 header {
-    background: linear-gradient(135deg, #f4e4c1 0%, #f7e9cd 30%, #faf0db 70%, #fdf6e8 100%);
-    color: #2c1810;
+    background: #fff;
+    color: #065aa8;
     text-align: center;
     padding: 30px 20px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border-bottom: 3px solid #d4af37;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-bottom: 2px solid #065aa8;
 }
 
 /* 导航栏 */
@@ -209,10 +209,10 @@ header {
     justify-content: center;
     gap: 10px;
     padding: 14px 20px;
-    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fbcfe8 100%);
+    background: #fff;
     flex-wrap: wrap;
     transition: all 0.3s ease;
-    border-bottom: 2px solid #f9a8d4;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .main-nav.fixed {
@@ -221,30 +221,29 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(244, 114, 182, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link {
-    color: #be185d;
+    color: #065aa8;
     text-decoration: none;
     padding: 8px 18px;
-    border-radius: 25px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 0.9em;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     background: white;
-    border: 2px solid #f9a8d4;
-    box-shadow: 0 2px 8px rgba(244, 114, 182, 0.15);
+    border: 1px solid #065aa8;
     position: relative;
 }
 
 
 .nav-link:hover {
-    background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
+    background: #1280e6;
     color: white;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.3);
-    border-color: #ec4899;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.25);
+    border-color: #1280e6;
 }
 
 .nav-link:active {
@@ -258,7 +257,7 @@ header {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     border: none;
     border-radius: 50%;
@@ -267,7 +266,7 @@ header {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.3);
     z-index: 999;
 }
 
@@ -278,7 +277,8 @@ header {
 
 .back-to-top:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+    background: #1280e6;
+    box-shadow: 0 6px 20px rgba(6, 90, 168, 0.4);
 }
 
 .sakura {
@@ -344,12 +344,12 @@ header h1 {
     font-size: 2.2em;
     margin: 0;
     font-family: 'STXingkai', 'KaiTi', 'STKaiti', 'BiauKai', 'AR PL UKai CN', 'AR PL UKai HK', 'AR PL UKai TW', 'AR PL UKai TW MBE', '楷体', 'DFKai-SB', serif;
-    color: #1a1a1a;
+    color: #065aa8;
     display: inline-block;
     padding: 0;
     letter-spacing: 0.1em;
     font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(212, 175, 55, 0.3);
+    text-shadow: none;
 }
 
 /* メインコンテンツ */
@@ -649,14 +649,14 @@ h2::after {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     text-decoration: none;
-    border-radius: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 4px;
+    transition: all 0.2s ease;
     font-weight: 600;
     font-size: 0.9em;
-    box-shadow: 0 3px 10px rgba(59, 130, 246, 0.2);
+    box-shadow: none;
 }
 
 .btn::before {
@@ -669,8 +669,8 @@ h2::after {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.25);
+    background: #1280e6;
 }
 
 /* 準備中バッジ */
@@ -719,7 +719,7 @@ h2::after {
 .step-number {
     width: 56px;
     height: 56px;
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -728,7 +728,7 @@ h2::after {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0 auto 20px;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.25);
 }
 
 .step h3 {
@@ -888,21 +888,21 @@ h2::after {
     display: block;
     margin: 20px auto 0;
     padding: 12px 32px;
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     border: none;
-    border-radius: 25px;
+    border-radius: 4px;
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    transition: all 0.2s ease;
+    box-shadow: none;
 }
 
 .show-more-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.25);
+    background: #1280e6;
 }
 
 .restaurant-card {
@@ -981,10 +981,10 @@ h2::after {
 .map-link {
     display: inline-block;
     padding: 6px 14px;
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 0.8em;
     font-weight: 600;
     transition: all 0.2s ease;
@@ -992,7 +992,8 @@ h2::after {
 
 .map-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: #1280e6;
+    box-shadow: 0 4px 12px rgba(6, 90, 168, 0.25);
 }
 
 /* 説明セクション */
@@ -1018,7 +1019,7 @@ section.about {
 
 /* フッター */
 footer {
-    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    background: #065aa8;
     color: white;
     text-align: center;
     padding: 20px;
