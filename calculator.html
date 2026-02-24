@@ -208,6 +208,65 @@
             margin-left: 2px;
         }
 
+        /* University search */
+        .uni-search-wrap {
+            margin-top: 8px;
+            position: relative;
+        }
+        .uni-search-wrap input[type="text"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s;
+        }
+        .uni-search-wrap input[type="text"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .uni-results {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-top: 4px;
+            background: white;
+            display: none;
+        }
+        .uni-results.show { display: block; }
+        .uni-result-item {
+            padding: 6px 12px;
+            font-size: 0.85em;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .uni-result-item:hover { background: #eff6ff; }
+        .uni-result-item:last-child { border-bottom: none; }
+        .uni-result-country {
+            font-size: 0.75em;
+            color: #64748b;
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        .uni-match-yes {
+            color: #16a34a;
+            font-weight: 600;
+            font-size: 0.85em;
+            margin-top: 6px;
+        }
+        .uni-match-no {
+            color: #dc2626;
+            font-size: 0.85em;
+            margin-top: 6px;
+        }
+
         /* Buttons */
         .btn-area {
             text-align: center;
@@ -476,6 +535,17 @@
                             <span data-lang="ja">世界大学ランキング300位以内卒業（+10点）</span>
                             <span data-lang="zh">世界大学排名前300毕业（+10分）</span>
                         </label>
+                    </div>
+                    <div class="uni-search-wrap">
+                        <label style="display:block;font-weight:600;font-size:0.85em;color:#334155;margin-bottom:4px;">
+                            <span data-lang="ja">大学名を検索（加点対象か確認）</span>
+                            <span data-lang="zh">搜索大学名（确认是否加分对象）</span>
+                        </label>
+                        <input type="text" id="uni-search" placeholder="例: 北京理工大学 / Beijing Institute of Technology" oninput="searchUniversity()" onfocus="searchUniversity()">
+                        <div class="uni-results" id="uni-results"></div>
+                        <div id="uni-match-msg"></div>
+                    </div>
+                    <div class="checkbox-group" style="margin-top:10px;">
                         <label>
                             <input type="checkbox" id="innovation" onchange="calculate()">
                             <span data-lang="ja">イノベーション促進支援措置対象機関（+10点）</span>
@@ -712,8 +782,78 @@
         function resetForm() {
             document.querySelectorAll('select').forEach(sel => sel.selectedIndex = 0);
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.getElementById('uni-search').value = '';
+            document.getElementById('uni-results').classList.remove('show');
+            document.getElementById('uni-match-msg').innerHTML = '';
             calculate();
         }
+
+        // University search data (from official MOJ list, January 2026)
+        // Format: [English name, Japanese name, Country]
+        const uniData = [["Trinity College Dublin,T he University of Dublin","ダブリン大学 トリニティ・カレッジ","アイルランド"],["Universiti Teknologi PETRONAS (UTP)","ペトロナス工科大学","アイルランド"],["Khalifa University","ハリーファ大学","アラブ首長国連邦"],["United Arab Emir ates University","アラブ首長国連邦大学","アラブ首長国連邦"],["University of Buenos Aires (Universidad de Buenos Aires (UBA))","ブエノスアイレス大学","アルゼンチン"],["Cardiff Univ ersity","カーディフ大学","イギリス"],["Durham University","ダラム大学","イギリス"],["Imperial College London","インペリアル・カレッジ・ロンドン","イギリス"],["King's College London","キングス・カレッジ・ロンドン","イギリス"],["Lancaster University","ランカスター大学","イギリス"],["London School of Economics and Political Science","ロンドン・スクール・オブ・エコノ ミクス・アンド・ポリティカル・サイエンス","イギリス"],["Newcastle University","ニューカッスル大学","イギリス"],["Queen Mary University of London","ロンドン大学クイーンメアリー","イギリス"],["Queen's University Belfast","クイーンズ大学ベルファスト","イギリス"],["The University of Edinburgh","エディンバラ大学","イギリス"],["The University of Glasgow","グラスゴー大学","イギリス"],["The University of Manchester","マンチェスター大学","イギリス"],["The University of Sheffield","シェフィールド大学","イギリス"],["The University of Warwick","ウォーリック大学","イギリス"],["University College London(UCL)","ユニバーシティ・カレッジ・ロンド ン（UCL)","イギリス"],["University of Aberdeen","アバディーン大学","イギリス"],["University of Bath","バース大学","イギリス"],["University of Birmingham","バーミンガム大学","イギリス"],["University of Bristol","ブリストル大学","イギリス"],["University of Cambridge","ケンブリッジ大学","イギリス"],["University of Exeter","エクセター大学","イギリス"],["University of Leeds","リーズ大学","イギリス"],["University of Liverpool","リバプール大学","イギリス"],["University of Nottingham","ノッティンガム大学","イギリス"],["University of Oxford","オックスフォード大学","イギリス"],["University of Reading","レディング大学","イギリス"],["University of Southampton","サウサンプトン大学","イギリス"],["University of St. Andrews","セント・アンドルーズ大学","イギリス"],["University of Surrey","サリー大学","イギリス"],["University of Sussex","サセックス大学","イギリス"],["University of York","ヨーク大学","イギリス"],["Tel Aviv University","テルアビブ大学","イスラエル"],["The Hebrew University of Jerusalem","エルサレム・ヘブライ大学","イスラエル"],["Polytechnic University of Milan (Politecnico di Milano )","ミラノ工科大学","イタリア"],["Sapienza University of Rome","ローマ・ラ・サピエンツァ大学","イタリア"],["University of Bologna (Alma Mater Stud iorum - Universi t","ボローニャ大学","イタリア"],["University of Milan","ミラノ大学","イタリア"],["University of Padua","パドヴァ大学","イタリア"],["Indian Institute of Science","インド理科大学院大学","インド"],["Delft University of Technology","デルフト工科大学","オランダ"],["Eindhoven University of Technology","アイントホーフェン工科大学","オランダ"],["Erasmus University Rotterdam","エラスムス大学","オランダ"],["Leiden University","ライデン大学","オランダ"],["Maastricht University","マーストリヒト大学","オランダ"],["Radboud University Nijmegen","ラドバウド大学","オランダ"],["University of Amsterdam","アムステルダム大学","オランダ"],["University of Groningen","フローニンゲン大学","オランダ"],["University of Twente","トゥウェンテ大学","オランダ"],["Utrecht University","ユトレヒト大学","オランダ"],["Vrije Universi teit Amsterdam","アムステルダム自由大学","オランダ"],["Wageningen University & Research","ワーゲニンゲン大学","オランダ"],["Curtin University","カーティン大学","オーストラリア"],["Deakin University","ディーキン大学","オーストラリア"],["Griffith University","グリフィス大学","オーストラリア"],["La Trobe University","ラ・トローブ大学","オーストラリア"],["Macquarie University","マッコーリー大学","オーストラリア"],["Monash University","モナシュ大学","オーストラリア"],["Queensland University of Technology (QUT)","クイーンズランド工科大学","オーストラリア"],["RMIT University","ロイヤルメルボルン工科大学","オーストラリア"],["Swinburne University of Technology","スインバン大学","オーストラリア"],["The Australian National University","オーストラリア国立大学","オーストラリア"],["The University of Adelaide","アデレード大学","オーストラリア"],["The University of Melbourne","メルボルン大学","オーストラリア"],["The University of New South Wales","ニューサウスウェールズ大学","オーストラリア"],["The University of Newcastle, Australia (UoN)","ニューカッスル大学 (オーストラリア)","オーストラリア"],["The University of Queensland","クイーンズランド大学","オーストラリア"],["The University of Sydney","シドニー大学","オーストラリア"],["The University of Western Australia","西オーストラリア大学","オーストラリア"],["University of Technology Sydney","シドニー工科大学","オーストラリア"],["University of Wollongong","ウーロンゴン大学","オーストラリア"],["Medical University of Vienna","ウィーン医科大学","オーストリア"],["University of Vienna","ウィーン大学","オーストリア"],["Vienna University of Technology (Technische Universit","ドレスデン工科大学","オーストリア"],["Qatar University","カタール大学","カタール"],["McGill University","マギル大学","カナダ"],["McMaster University","マックマスター大学","カナダ"],["Queen's University","クイーンズ大学","カナダ"],["University of Alberta","アルバータ大学","カナダ"],["University of British Columbia","ブリティッシュコロンビア大学","カナダ"],["University of Calgary","カルガリー大学","カナダ"],["University of Montreal","（Université de Montréal） モントリオール大学","カナダ"],["University of Ottawa","オタワ大学","カナダ"],["University of Toronto","トロント大学","カナダ"],["University of Waterloo","ウォータール－大学","カナダ"],["Western University (The University of Western Ontario)","ウェスタンオンタリオ大学","カナダ"],["King Fahd University of Petroleum & Minerals(KFUPM)","ファハド国王石油鉱物大学","サウジアラビア"],["King Saud University","キングサウード大学","サウジアラビア"],["Nanyang Technological University","南洋理工大学","シンガポール"],["National University of Singapore","シンガポール国立大学","シンガポール"],["Swiss Federal Inst itute of Technology Lausanne(EPFL)(EPFL","スイス連邦工科大学ローザンヌ校","スイス"],["Swiss Federal Institute of Technology Zurich(ETH Zurich)","スイス連邦工科大学 チューリッヒ校","スイス"],["University of Basel","バーゼル大学","スイス"],["University of Bern","ベルン大学","スイス"],["University of Geneva","ジュネーブ大学","スイス"],["University of Lausanne","ローザンヌ大学","スイス"],["University of Zurich","チューリッヒ大学","スイス"],["Chalmers University of Technology","チャルマース工科大学","スウェーデン"],["KTH Royal Institute of Technology","スウェーデン王立工科大学","スウェーデン"],["Karolinska Institute","カロリンスカ研究所","スウェーデン"],["Lund University","ルンド大学","スウェーデン"],["Stockholm University","ストックフォルム大学","スウェーデン"],["University of Gothenburg","ヨーテボリ大学","スウェーデン"],["Uppsala University","ウプサラ大学","スウェーデン"],["Autonomous University of Barcelona (Universitat Aut","バルセロナ自治大学","スペイン"],["Pompeu Fabra University","ポンペウ・ファブラ大学","スペイン"],["University of Barcelona","バルセロナ大学","スペイン"],["University of Navarra","ナバーラ大学","スペイン"],["Aarhus University","オーフス大学","デンマーク"],["University of Copenhagen","コペンハーゲン大学","デンマーク"],["Free University of Berlin (Freie Universitaet Berlin)","ベルリン自由大学","ドイツ"],["Goethe University Frankfurt","ヨハン・ヴォルフガング・ゲーテ 大学フランクフルト・アム・マイン","ドイツ"],["Heidelberg University ( Universit","ハイデルベルグ大学","ドイツ"],["Heinrich Heine Universit","ハインリッヒ・ハイネ大学","ドイツ"],["Humboldt University of Berlin (Humboldt-Universit","フンボルト大学ベルリン","ドイツ"],["Karlsruhe Institute of Technology(KIT)","カールスルーエ工科大学","ドイツ"],["LMU Munich","ミュンヘン大学","ドイツ"],["RWTH Aachen University","アーヘン工科大学","ドイツ"],["Ruhr University Bochum","ルール大学ボーフム","ドイツ"],["Technical University of Berlin","ベルリン工科大学","ドイツ"],["Technical University of Darmstadt","ダルムシュタット工科大学","ドイツ"],["Technical University of Denmark","デンマーク工科大学","ドイツ"],["Technische Universit","ドレスデン工科大学","ドイツ"],["University of Bonn (Rheinische Frie drich-Wilhelms-U niversit","ボン大学","ドイツ"],["University of Cologne","ケルン大学","ドイツ"],["University of Erlangen-Nuremberg (Friedrich-Alexander-Universit","エアランゲン・ニュルンベルグ大学","ドイツ"],["University of Freiburg","フライブルク大学","ドイツ"],["University of Goettingen","ゲッティンゲン大学","ドイツ"],["University of Hamburg","ハンブルグ大学","ドイツ"],["University of Munster","ミュンスター大学","ドイツ"],["University of Tuebingen (Eberhard Karls Universit","テュービンゲン大学","ドイツ"],["University of Wuerzburg","ヴュルツブルク大学","ドイツ"],["The University of Auckland","オークランド大学","ニュージーランド"],["Norwegian University of Science and Technology","ノルウェー科学技術大学","ノルウェー"],["University of Bergen","ベルゲン大学","ノルウェー"],["University of Oslo","オスロ大学","ノルウェー"],["Aalto University","アールト大学","フィンランド"],["University of Helsinki","ヘルシンキ大学","フィンランド"],["Institut Polytechnique de Paris","パリ工科大学","フランス"],["PSL Research University Paris (PSL) PSL","PSL研究大学","フランス"],["Paris-Saclay University (Universit","パリ＝サクレー大学","フランス"],["Sorbonne University","ソルボンヌ大学","フランス"],["University of Paris Cite","パリ・シテ大学","フランス"],["University of Sao Paulo","サンパウロ大学","ブラジル"],["Catholic University of Louvain (Universit","ルーヴァン・カトリック大学","ベルギー"],["Ghent University","ゲント大学","ベルギー"],["KU Leuven","ルーベン・カトリック大学","ベルギー"],["Universit","é libre d e Bruxelles (ULB) ブリュッセル自由大学 (ULB)","ベルギー"],["University of Antwerp","アントワープ大学","ベルギー"],["Vrije Universite it Brussel (VUB)","ブリュッセル自由大学 (VUB)","ベルギー"],["University of Lisbon","リスボン大学","ポルトガル"],["University of Porto","ポルト大学","ポルトガル"],["University of Macau","マカオ大学","マカオ"],["University of Malaya","マラヤ大学","マレーシア"],["National Autonomous University of Mexico (Universidad Nacional Aut","メキシコ国立自治大学","メキシコ"],["Lomonosov Moscow State University","モスクワ大学","ロシア"],["Beihang University","北京航空航天大学","中国"],["Beijing Institute of Technology","北京理工大学","中国"],["Beijing Normal University","北京師範大学","中国"],["Central South University","中南大学","中国"],["East China Normal University","華東師範大学","中国"],["Fudan University","復旦大学","中国"],["Harbin Institute of Technology","ハルビン工業大学","中国"],["Huazhong University of Science and Technology","華中科技大学","中国"],["Hunan University","湖南大学","中国"],["Nanjing University","南京大学","中国"],["Nankai University","南開大学","中国"],["Northeastern University (Shenyang)","東北大学","中国"],["Northwestern Polytechnical University","西北工業大学","中国"],["Peking University","北京大学","中国"],["Shandong University","山東大学","中国"],["Shanghai Jiao Tong University","上海交通大学","中国"],["Sichuan University","四川大学","中国"],["South China University of Technology","華南理工大学","中国"],["Southeast University","東南大学","中国"],["Southern Medical University","南方医科大学","中国"],["Southern University of Science and Technology (SUSTech)","南方科技大学","中国"],["Sun Yat-sen University","中山大学","中国"],["Tianjin University","天津大学","中国"],["Tongji University","同済大学","中国"],["Tsinghua University","清華大学（中国）","中国"],["University of Science an d Technology of China","中国科学技術大学","中国"],["Wuhan University","武漢大学","中国"],["Xi'an Jiaotong University","西安交通大学","中国"],["Xiamen University","厦門大学","中国"],["Zhejiang University","浙江大学","中国"],["University of Cape Town","ケープタウン大学","南アフリカ共和国"],["National Taiwan University","国立台湾大学","台湾"],["Aichi Medical University","愛知医科大学","日本"],["Akita University","秋田大学","日本"],["Aoyama Gakuin University","青山学院大学","日本"],["Chiba Institute of Technology","千葉工業大学","日本"],["Chiba University","千葉大学","日本"],["Chubu University","中部大学","日本"],["Chuo University","中央大学","日本"],["Dokkyo Medical University","獨協医科大学","日本"],["Doshisha University","同志社大学","日本"],["Ehime University","愛媛大学","日本"],["Fujita Health University","藤田医科大学","日本"],["Gifu University","岐阜大学","日本"],["Gunma University","群馬大学","日本"],["Hamamatsu University School of Medicine","浜松医科大学","日本"],["Hirosaki University","弘前大学","日本"],["Hiroshima University","広島大学","日本"],["Hitotsubashi University","一橋大学","日本"],["Hokkaido University","北海道大学","日本"],["Hosei University","法政大学","日本"],["Hyogo Medical University","兵庫医科大学","日本"],["Ibaraki University","茨城大学","日本"],["Institute of Science Tokyo (Previously:Tokyo Medical and Dental University","東京科学大学","日本"],["International Christian University","国際基督教大学","日本"],["Jikei University School of Medicine","東京慈恵会医科大学","日本"],["Juntendo University","順天堂大学","日本"],["Kagawa University","香川大学","日本"],["Kagoshima University","鹿児島大学","日本"],["Kanagawa University","神奈川大学","日本"],["Kanazawa University","金沢大学","日本"],["Kansai Medical University","関西医科大学","日本"],["Kansai University","関西大学","日本"],["Keio University","慶應義塾大学","日本"],["Kindai University","（Kinki University） 近畿大学","日本"],["Kitasato University","北里大学","日本"],["Kobe University","神戸大学","日本"],["Kochi University","高知大学","日本"],["Kochi University of Technology","高知工科大学","日本"],["Kogakuin University","工学院大学","日本"],["Kumamoto University","熊本大学","日本"],["Kurume University","久留米大学","日本"],["Kwansei Gakuin University","関西学院大学","日本"],["Kyoto Institute of Technology","京都工芸繊維大学","日本"],["Kyoto Prefectural University of Medicine","京都府立医科大学","日本"],["Kyoto University","京都大学","日本"],["Kyushu Institute of Technology","九州工業大学","日本"],["Kyushu University","九州大学","日本"],["Meiji University","明治大学","日本"],["Meijo University","名城大学","日本"],["Mie University","三重大学","日本"],["Muroran Institute of Technology","室蘭工業大学","日本"],["Nagaoka University of Technology","長岡技術科学大学","日本"],["Nagasaki University","長崎大学","日本"],["Nagoya City University","名古屋市立大学","日本"],["Nagoya Institute of Technology (NIT)","名古屋工業大学","日本"],["Nagoya University","名古屋大学","日本"],["Nihon University","日本大学","日本"],["Niigata University","新潟大学","日本"],["Nippon Medical School","日本医科大学","日本"],["Ochanomizu University","お茶の水女子大学","日本"],["Oita University","大分大学","日本"],["Okayama University","岡山大学","日本"],["Okayama University of Science","岡山理科大学","日本"],["Okinawa Institute of Science and Technology Graduate University","沖縄科学技術大学院大学","日本"],["Osaka Institute of Technology","大阪工業大学","日本"],["Osaka Medical and Pharmaceutical University","大阪医科薬科大学","日本"],["Osaka Metropolitan University","大阪公立大学","日本"],["Rikkyo University","立教大学","日本"],["Ritsumeikan Asia Pacific University","立命館アジア太平洋大学","日本"],["Ritsumeikan University","立命館大学","日本"],["Ryukoku University","龍谷大学","日本"],["Saga University","佐賀大学","日本"],["Saitama Medical University","埼玉医科大学","日本"],["Saitama University","埼玉大学","日本"],["Sapporo Medical University","札幌医科大学","日本"],["Shibaura Institute of Technology","芝浦工業大学","日本"],["Shiga University of Medical Science","滋賀医科大学","日本"],["Shimane University","島根大学","日本"],["Shinshu University","信州大学","日本"],["Shizuoka University","静岡大学","日本"],["Soka University","創価大学","日本"],["Sophia University","上智大学","日本"],["Teikyo University","帝京大学","日本"],["The Graduate University for Advanced Studies, SOKENDAI","総合研究大学院大学","日本"],["The University of Electro-Communications","電気通信大学","日本"],["The University of Osaka","大阪大学","日本"],["The University of Tokyo","東京大学","日本"],["Toho University","東邦大学","日本"],["Tohoku University","東北大学","日本"],["Tokai University","東海大学","日本"],["Tokushima University","徳島大学","日本"],["Tokyo City University","東京都市大学","日本"],["Tokyo Denki University","東京電機大学","日本"],["Tokyo Medical University","東京医科大学","日本"],["Tokyo Medical and Dental University (TMDU)","東京医科歯科大学","日本"],["Tokyo Metropolitan University","東京都立大学","日本"],["Tokyo University of Agriculture","東京農業大学","日本"],["Tokyo University of Agriculture and Technology","東京農工大学","日本"],["Tokyo University of Marine Science and Technology","東京海洋大学","日本"],["Tokyo University of Science","東京理科大学","日本"],["Tokyo University of Technology","東京工科大学","日本"],["Tottori University","鳥取大学","日本"],["Toyama Prefectural University","富山県立大学","日本"],["Toyo University","東洋大学","日本"],["Toyohashi University of Technology (TUT)","豊橋技術科学大学","日本"],["University of Aizu","会津大学","日本"],["University of Fukui","福井大学","日本"],["University of Hyogo","兵庫県立大学","日本"],["University of Miyazaki","宮崎大学","日本"],["University of Occupational and Environmental Health , Japan","産業医科大学","日本"],["University of Shizuoka","静岡県立大学","日本"],["University of Toyama","富山大学","日本"],["University of Tsukuba","筑波大学","日本"],["University of Yamanashi","山梨大学","日本"],["University of the Ryukyus","琉球大学","日本"],["Utsunomiya University","宇都宮大学","日本"],["Wakayama Medical University","和歌山県立医科大学","日本"],["Waseda University","早稲田大学","日本"],["Yamagata University","山形大学","日本"],["Yamaguchi University","山口大学","日本"],["Yokohama City University","横浜市立大学","日本"],["Yokohama National University","横浜国立大学","日本"],["Arizona State University","アリゾナ州立大学","米国"],["Boston University","ボストン大学","米国"],["Brown University","ブラウン大学","米国"],["California Institute of Technology","カリフォルニア工科大学","米国"],["Carnegie Mellon University","カーネギーメロン大学","米国"],["Case Western Reserve University","ケース・ウェスターン・リザーブ 大学","米国"],["Columbia University","コロンビア大学","米国"],["Cornell University","コーネル大学","米国"],["Dartmouth College","ダートマス大学","米国"],["Duke University","デューク大学","米国"],["Emory University","エモリー大学","米国"],["Georgetown University","ジョージタウン大学","米国"],["Georgia Institute of Technology","ジョージア工科大学","米国"],["Harvard University","ハーバード大学","米国"],["Indiana University Bloomington","インディアナ大学 ブルーミントン校","米国"],["Johns Hopkins University","ジョンズ・ホプキンス大学","米国"],["Massachusetts Institute of Technology (MIT)","マサチューセッツ工科大学","米国"],["Michigan State University","ミシガン州立大学","米国"],["New York University","ニューヨーク大学","米国"],["North Carolina State University","ノースカロライナ州立大学","米国"],["Northeastern University,US","ノースイースタン大学（アメリカ）","米国"],["Northwestern University","ノースウェスタン大学","米国"],["Pennsylvania State University","ペンシルベニア州立大学","米国"],["Princeton University","プリンストン大学","米国"],["Purdue University - West Lafayette","パデュー大学","米国"],["Rice University","ライス大学","米国"],["Stanford University","スタンフォード大学","米国"],["Texas A&M University","テキサスA＆M大学","米国"],["The Ohio State University","オハイオ州立大学","米国"],["The University of Arizona","アリゾナ大学","米国"],["The University of Texas at Austin","テキサス大学オースティン校","米国"],["Tufts University","タフツ大学","米国"],["University of California, Berkeley","カリフォルニア大学 バークレー校","米国"],["University of California, Davis","カリフォルニア大学 デービス校","米国"],["University of California, Irvine","カリフォルニア大学 アーバイン校","米国"],["University of California, Los Angeles","カリフォルニア大学 ロサンゼルス校","米国"],["University of California, San Diego","カリフォルニア大学 サンディエゴ校","米国"],["University of California, Santa Barbara","カリフォルニア大学 サンタバーバラ校","米国"],["University of California, Santa Cruz","カリフォルニア大学 サンタクルーズ校","米国"],["University of Chicago","シカゴ大学","米国"],["University of Colorado at Boulder","コロラド大学ボルダー校","米国"],["University of Colorado at Denver","コロラド大学デンバー校","米国"],["University of Florida","フロリダ大学","米国"],["University of Illinois at Urbana-Champaign","イリノイ大学 アーバナ・シャンペーン校","米国"],["University of Maryland, College Park","メリーランド大学 カレッジパーク校","米国"],["University of Massachusetts Amherst","マサチューセッツ大学 アマースト校","米国"],["University of Michigan-Ann Arbor","ミシガン大学","米国"],["University of Minnesota, Twin Cities","ミネソタ大学ツインシティ校","米国"],["University of North Carolina at Chapel Hill","ノースカロライナ大学 チャペルヒル校","米国"],["University of Notre Dame","ノートルダム大学","米国"],["University of Pennsylvania","ペンシルベニア大学","米国"],["University of Pittsburgh","ピッツバーグ大学","米国"],["University of Rochester","ロチェスター大学","米国"],["University of Southern California","南カリフォルニア大学","米国"],["University of Utah","ユタ大学","米国"],["University of Virginia","バージニア大学","米国"],["University of Washington","ワシントン大学（州立）","米国"],["University of Wisconsin - Madison","ウィスコンシン大学マディソン校","米国"],["Vanderbilt University","ヴァンダービルト大学","米国"],["Virginia Polytechnic Institute and State University","バージニア工科大学","米国"],["Washington University in St. Louis","セントルイス・ワシントン大学","米国"],["Yale University","イェール大学","米国"],["Hanyang University","漢陽大学校","韓国"],["Korea Advanced Institute of Science and Technology(KAIST)","韓国科学技術院（KAIST）","韓国"],["Korea University","高麗大学校","韓国"],["Pohang University of Science and Technology","浦項工科大学校","韓国"],["Seoul National University","ソウル大学校","韓国"],["Sungkyunkwan University (SKKU)","成均館大学校","韓国"],["Yonsei University (Seoul Campus)","延世大学校","韓国"],["City University of Hong Kong","香港城市大学","香港"],["Hong Kong Baptist University","香港浸会大学","香港"],["The Chinese University of Hong Kong","香港中文大学","香港"],["The Hong Kong Polytechnic University","香港理工大学","香港"],["The Hong Kong University of Science and Technology","香港科技大学","香港"],["The University of Hong Kong","香港大学","香港"]];
+
+        function searchUniversity() {
+            const query = document.getElementById('uni-search').value.trim().toLowerCase();
+            const resultsEl = document.getElementById('uni-results');
+            const msgEl = document.getElementById('uni-match-msg');
+
+            if (query.length < 2) {
+                resultsEl.classList.remove('show');
+                msgEl.innerHTML = '';
+                return;
+            }
+
+            const matches = uniData.filter(u =>
+                u[0].toLowerCase().includes(query) ||
+                u[1].toLowerCase().includes(query) ||
+                u[1].includes(query)
+            ).slice(0, 10);
+
+            if (matches.length === 0) {
+                resultsEl.classList.remove('show');
+                if (currentLang === 'zh') {
+                    msgEl.innerHTML = '<div class="uni-match-no">未找到匹配的大学。该大学可能不在加分名单中。</div>';
+                } else {
+                    msgEl.innerHTML = '<div class="uni-match-no">該当する大学が見つかりません。加点対象外の可能性があります。</div>';
+                }
+                return;
+            }
+
+            msgEl.innerHTML = '';
+            resultsEl.innerHTML = matches.map(u =>
+                `<div class="uni-result-item" onclick="selectUniversity('${u[0].replace(/'/g, "\\'")}', '${u[1].replace(/'/g, "\\'")}', '${u[2]}')">
+                    <span>${u[0]}<br><small>${u[1]}</small></span>
+                    <span class="uni-result-country">${u[2]}</span>
+                </div>`
+            ).join('');
+            resultsEl.classList.add('show');
+        }
+
+        function selectUniversity(en, ja, country) {
+            const searchEl = document.getElementById('uni-search');
+            const resultsEl = document.getElementById('uni-results');
+            const msgEl = document.getElementById('uni-match-msg');
+
+            searchEl.value = en;
+            resultsEl.classList.remove('show');
+
+            if (currentLang === 'zh') {
+                msgEl.innerHTML = `<div class="uni-match-yes">✓ ${ja}（${country}）是加分对象大学！</div>`;
+            } else {
+                msgEl.innerHTML = `<div class="uni-match-yes">✓ ${ja}（${country}）は加点対象大学です！</div>`;
+            }
+
+            // Auto-check the top-university checkbox
+            document.getElementById('top-university').checked = true;
+            calculate();
+        }
+
+        // Close results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.uni-search-wrap')) {
+                document.getElementById('uni-results').classList.remove('show');
+            }
+        });
 
         // Initialize
         switchCategory('academic');
