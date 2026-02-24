@@ -458,11 +458,11 @@
                 </div>
             </div>
 
-            <!-- Bonus points -->
+            <!-- Bonus: common to all categories -->
             <div class="form-section">
                 <div class="form-section-title">
-                    <span data-lang="ja">ボーナス加点</span>
-                    <span data-lang="zh">加分项目</span>
+                    <span data-lang="ja">特別加算（共通）</span>
+                    <span data-lang="zh">特别加分（共通）</span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
@@ -477,19 +477,80 @@
                             <span data-lang="zh">世界大学排名前300毕业（+10分）</span>
                         </label>
                         <label>
-                            <input type="checkbox" id="jica" onchange="calculate()">
-                            <span data-lang="ja">JICAの研修を受けた（+5点）</span>
-                            <span data-lang="zh">接受过JICA培训（+5分）</span>
+                            <input type="checkbox" id="innovation" onchange="calculate()">
+                            <span data-lang="ja">イノベーション促進支援措置対象機関（+10点）</span>
+                            <span data-lang="zh">创新促进支援措施对象机构（+10分）</span>
                         </label>
                         <label>
-                            <input type="checkbox" id="invest" onchange="calculate()">
-                            <span data-lang="ja">本邦の中小企業への投資（+5点）</span>
-                            <span data-lang="zh">投资日本中小企业（+5分）</span>
+                            <input type="checkbox" id="innovation-sme" onchange="calculate()">
+                            <span data-lang="ja">上記かつ中小企業（追加+10点）</span>
+                            <span data-lang="zh">上述且为中小企业（追加+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="rd-expense" onchange="calculate()">
+                            <span data-lang="ja">試験研究費が売上高3%超の中小企業（+5点）</span>
+                            <span data-lang="zh">研发费用超过销售额3%的中小企业（+5分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="foreign-qual" onchange="calculate()">
+                            <span data-lang="ja">法務大臣認定の外国資格（+5点）</span>
+                            <span data-lang="zh">法务大臣认定的外国资格（+5分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="growth-field" onchange="calculate()">
+                            <span data-lang="ja">成長分野の先端的事業に従事（+10点）</span>
+                            <span data-lang="zh">从事增长领域尖端事业（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="special-zone" onchange="calculate()">
                             <span data-lang="ja">国家戦略特区プロジェクト（+10点）</span>
                             <span data-lang="zh">国家战略特区项目（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="jica" onchange="calculate()">
+                            <span data-lang="ja">JICA研修修了（+5点）</span>
+                            <span data-lang="zh">JICA培训结业（+5分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bonus: technical only -->
+            <div class="form-section category-section" id="bonus-technical-section" data-categories="technical">
+                <div class="form-section-title">
+                    <span data-lang="ja">特別加算（専門技術のみ）</span>
+                    <span data-lang="zh">特别加分（仅限专门技术）</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="national-qual" onchange="calculate()">
+                            <span data-lang="ja">日本の国家資格（1つ: +5点 / 2つ以上: +10点）</span>
+                            <span data-lang="zh">日本国家资格（1个: +5分 / 2个以上: +10分）</span>
+                        </label>
+                    </div>
+                    <div class="form-group" style="margin-top:8px;">
+                        <select id="national-qual-count" onchange="calculate()">
+                            <option value="0" data-ja="なし" data-zh="无">なし</option>
+                            <option value="5" data-ja="1つ（5点）" data-zh="1个（5分）">1つ（5点）</option>
+                            <option value="10" data-ja="2つ以上（10点）" data-zh="2个以上（10分）">2つ以上（10点）</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bonus: business only -->
+            <div class="form-section category-section" id="bonus-business-section" data-categories="business">
+                <div class="form-section-title">
+                    <span data-lang="ja">特別加算（経営・管理のみ）</span>
+                    <span data-lang="zh">特别加分（仅限经营管理）</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="invest-mgmt" onchange="calculate()">
+                            <span data-lang="ja">投資運用業等に従事（+10点）</span>
+                            <span data-lang="zh">从事投资运用业务（+10分）</span>
                         </label>
                     </div>
                 </div>
@@ -586,12 +647,26 @@
             // Japanese
             total += getSelectPoints('japanese');
 
-            // Bonus
+            // Bonus: common
             total += getCheckboxPoints('jp-university', 10);
             total += getCheckboxPoints('top-university', 10);
-            total += getCheckboxPoints('jica', 5);
-            total += getCheckboxPoints('invest', 5);
+            total += getCheckboxPoints('innovation', 10);
+            total += getCheckboxPoints('innovation-sme', 10);
+            total += getCheckboxPoints('rd-expense', 5);
+            total += getCheckboxPoints('foreign-qual', 5);
+            total += getCheckboxPoints('growth-field', 10);
             total += getCheckboxPoints('special-zone', 10);
+            total += getCheckboxPoints('jica', 5);
+
+            // Bonus: technical only
+            if (currentCategory === 'technical') {
+                total += getSelectPoints('national-qual-count');
+            }
+
+            // Bonus: business only
+            if (currentCategory === 'business') {
+                total += getCheckboxPoints('invest-mgmt', 10);
+            }
 
             updateScoreDisplay(total);
         }
