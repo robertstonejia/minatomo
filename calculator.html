@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高度人材ポイント計算 | みんなの日中交流会</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+            line-height: 1.6;
+            color: #000;
+            background: linear-gradient(135deg, #fef8f0 0%, #fff9f3 50%, #fdf5eb 100%);
+            min-height: 100vh;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            font-weight: 500;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
+            overflow: hidden;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #065aa8;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .top-bar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        .top-bar a:hover { opacity: 1; }
+        .top-bar-title {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.25); }
+        .lang-btn.active {
+            background: white;
+            color: #065aa8;
+            border-color: white;
+        }
+
+        /* Score display */
+        .score-display {
+            text-align: center;
+            padding: 24px 20px;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-bottom: 2px solid #bfdbfe;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .score-number {
+            font-size: 3em;
+            font-weight: 800;
+            color: #065aa8;
+            line-height: 1;
+        }
+        .score-label {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        .score-status {
+            margin-top: 8px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        .status-default { background: #f1f5f9; color: #64748b; }
+        .status-insufficient { background: #fee2e2; color: #dc2626; }
+        .status-pass70 { background: #dcfce7; color: #16a34a; }
+        .status-pass80 { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #b45309; }
+
+        /* Tabs */
+        .category-tabs {
+            display: flex;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px 8px;
+            background: #f8fafc;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9em;
+            color: #64748b;
+            transition: all 0.2s;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab-btn:hover { background: #eff6ff; color: #065aa8; }
+        .tab-btn.active {
+            background: white;
+            color: #065aa8;
+            border-bottom-color: #065aa8;
+        }
+
+        /* Form */
+        .form-area { padding: 24px; }
+        .form-section {
+            margin-bottom: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px;
+            border: 1px solid #e2e8f0;
+        }
+        .form-section-title {
+            font-weight: 700;
+            color: #1e40af;
+            font-size: 1em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #dbeafe;
+        }
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-group:last-child { margin-bottom: 0; }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #334155;
+            margin-bottom: 4px;
+        }
+        .form-group select,
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s;
+        }
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            font-size: 0.85em;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            transition: all 0.2s;
+        }
+        .checkbox-group label:hover {
+            border-color: #93c5fd;
+            background: #eff6ff;
+        }
+        .checkbox-group input[type="checkbox"] {
+            accent-color: #065aa8;
+        }
+        .point-badge {
+            font-size: 0.75em;
+            color: #065aa8;
+            font-weight: 700;
+            margin-left: 2px;
+        }
+
+        /* Buttons */
+        .btn-area {
+            text-align: center;
+            padding: 0 24px 24px;
+        }
+        .reset-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 32px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .reset-btn:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+        }
+
+        /* Footer */
+        .calc-footer {
+            background: #065aa8;
+            color: white;
+            text-align: center;
+            padding: 16px;
+            font-size: 0.85em;
+        }
+        .calc-footer a { color: #93c5fd; }
+
+        /* Bilingual toggle */
+        [data-lang="zh"] { display: none; }
+        body.lang-zh [data-lang="ja"] { display: none; }
+        body.lang-zh [data-lang="zh"] { display: initial; }
+        body.lang-zh .form-section [data-lang="zh"],
+        body.lang-zh .checkbox-group [data-lang="zh"],
+        body.lang-zh .score-display [data-lang="zh"] { display: initial; }
+        body.lang-zh .form-section [data-lang="ja"],
+        body.lang-zh .checkbox-group [data-lang="ja"],
+        body.lang-zh .score-display [data-lang="ja"] { display: none; }
+        /* Block-level bilingual elements */
+        .bilingual-block [data-lang="zh"] { display: none; }
+        .bilingual-block [data-lang="ja"] { display: block; }
+        body.lang-zh .bilingual-block [data-lang="zh"] { display: block; }
+        body.lang-zh .bilingual-block [data-lang="ja"] { display: none; }
+
+        /* Hidden sections for category */
+        .category-section { display: none; }
+        .category-section.active { display: block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .form-area { padding: 16px; }
+            .form-section { padding: 14px; }
+            .score-number { font-size: 2.5em; }
+            .tab-btn { font-size: 0.8em; padding: 10px 4px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 8px; }
+            .top-bar { padding: 10px 16px; font-size: 0.85em; }
+            .form-area { padding: 12px; }
+            .form-section { padding: 12px; }
+            .score-number { font-size: 2em; }
+            .tab-btn { font-size: 0.75em; padding: 8px 2px; }
+            .checkbox-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top bar -->
+        <div class="top-bar">
+            <a href="index.html">&larr; <span data-lang="ja">トップページへ</span><span data-lang="zh">返回首页</span></a>
+            <span class="top-bar-title">
+                <span data-lang="ja">高度人材ポイント計算</span>
+                <span data-lang="zh">高级人才积分计算</span>
+            </span>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('ja')">日本語</button>
+                <button class="lang-btn" onclick="setLang('zh')">中文</button>
+            </div>
+        </div>
+
+        <!-- Score display -->
+        <div class="score-display">
+            <div class="score-label">
+                <span data-lang="ja">現在のポイント</span>
+                <span data-lang="zh">当前积分</span>
+            </div>
+            <div class="score-number" id="score-number">0</div>
+            <div>
+                <span class="score-status status-default" id="score-status">
+                    <span data-lang="ja">情報を入力してください</span>
+                    <span data-lang="zh">请输入信息计算积分</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- Category tabs -->
+        <div class="category-tabs">
+            <button class="tab-btn active" data-cat="academic" onclick="switchCategory('academic')">
+                <span data-lang="ja">学術研究</span>
+                <span data-lang="zh">学术研究</span>
+            </button>
+            <button class="tab-btn" data-cat="technical" onclick="switchCategory('technical')">
+                <span data-lang="ja">専門技術</span>
+                <span data-lang="zh">专门技术</span>
+            </button>
+            <button class="tab-btn" data-cat="business" onclick="switchCategory('business')">
+                <span data-lang="ja">経営・管理</span>
+                <span data-lang="zh">经营管理</span>
+            </button>
+        </div>
+
+        <!-- Form -->
+        <div class="form-area">
+
+            <!-- Education -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span data-lang="ja">学歴</span>
+                    <span data-lang="zh">学历</span>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span data-lang="ja">最終学歴</span>
+                        <span data-lang="zh">最终学历</span>
+                    </label>
+                    <select id="education" onchange="calculate()">
+                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="30" data-ja="博士（30点）" data-zh="博士（30分）">博士（30点）</option>
+                        <option value="25" data-ja="修士（MBA/MOT含む）（25点）" data-zh="硕士（含MBA/MOT）（25分）">修士（MBA/MOT含む）（25点）</option>
+                        <option value="20" data-ja="修士（20点）" data-zh="硕士（20分）">修士（20点）</option>
+                        <option value="10" data-ja="学士（10点）" data-zh="学士（10分）">学士（10点）</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="dual-degree" onchange="calculate()">
+                            <span data-lang="ja">複数の学位（+5点）</span>
+                            <span data-lang="zh">多个学位（+5分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work experience -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span data-lang="ja">職歴（実務経験年数）</span>
+                    <span data-lang="zh">工作经历（实际工作年数）</span>
+                </div>
+                <div class="form-group">
+                    <select id="experience" onchange="calculate()">
+                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="0_under3" data-ja="3年未満（0点）" data-zh="不满3年（0分）">3年未満（0点）</option>
+                        <option value="5" data-ja="3年以上〜5年未満（5点）" data-zh="3年以上〜不满5年（5分）">3年以上〜5年未満（5点）</option>
+                        <option value="10" data-ja="5年以上〜7年未満（10点）" data-zh="5年以上〜不满7年（10分）">5年以上〜7年未満（10点）</option>
+                        <option value="15" data-ja="7年以上〜10年未満（15点）" data-zh="7年以上〜不满10年（15分）">7年以上〜10年未満（15点）</option>
+                        <option value="20" data-ja="10年以上（20点）" data-zh="10年以上（20分）">10年以上（20点）</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Age (only for technical/business) -->
+            <div class="form-section category-section" id="age-section" data-categories="technical,business">
+                <div class="form-section-title">
+                    <span data-lang="ja">年齢</span>
+                    <span data-lang="zh">年龄</span>
+                </div>
+                <div class="form-group">
+                    <select id="age" onchange="calculate()">
+                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="15" data-ja="29歳以下（15点）" data-zh="29岁以下（15分）">29歳以下（15点）</option>
+                        <option value="10" data-ja="30〜34歳（10点）" data-zh="30〜34岁（10分）">30〜34歳（10点）</option>
+                        <option value="5" data-ja="35〜39歳（5点）" data-zh="35〜39岁（5分）">35〜39歳（5点）</option>
+                        <option value="0_40plus" data-ja="40歳以上（0点）" data-zh="40岁以上（0分）">40歳以上（0点）</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Annual salary -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span data-lang="ja">年収</span>
+                    <span data-lang="zh">年收入</span>
+                </div>
+                <div class="form-group bilingual-block">
+                    <label data-lang="ja">年収額（万円）</label>
+                    <label data-lang="zh">年收入（万日元）</label>
+                    <select id="salary" onchange="calculate()">
+                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="0_low" data-ja="400万円未満（0点）" data-zh="不满400万（0分）">400万円未満（0点）</option>
+                        <option value="10_400" data-ja="400万〜500万円未満（10点）" data-zh="400万〜不满500万（10分）">400万〜500万円未満（10点）</option>
+                        <option value="15_500" data-ja="500万〜600万円未満（15点）" data-zh="500万〜不满600万（15分）">500万〜600万円未満（15点）</option>
+                        <option value="20_600" data-ja="600万〜700万円未満（20点）" data-zh="600万〜不满700万（20分）">600万〜700万円未満（20点）</option>
+                        <option value="25_700" data-ja="700万〜800万円未満（25点）" data-zh="700万〜不满800万（25分）">700万〜800万円未満（25点）</option>
+                        <option value="30_800" data-ja="800万〜900万円未満（30点）" data-zh="800万〜不满900万（30分）">800万〜900万円未満（30点）</option>
+                        <option value="35_900" data-ja="900万〜1000万円未満（35点）" data-zh="900万〜不满1000万（35分）">900万〜1000万円未満（35点）</option>
+                        <option value="40_1000" data-ja="1000万円以上（40点）" data-zh="1000万以上（40分）">1000万円以上（40点）</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Research achievements (academic only) -->
+            <div class="form-section category-section" id="research-section" data-categories="academic">
+                <div class="form-section-title">
+                    <span data-lang="ja">研究実績</span>
+                    <span data-lang="zh">研究成果</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="patent" onchange="calculate()">
+                            <span data-lang="ja">発明者として特許を取得（+15点）</span>
+                            <span data-lang="zh">作为发明者取得专利（+15分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="grant" onchange="calculate()">
+                            <span data-lang="ja">公的研究費の補助金を受けた（+10点）</span>
+                            <span data-lang="zh">获得过公共研究补助金（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="papers" onchange="calculate()">
+                            <span data-lang="ja">学術論文3本以上（+10点）</span>
+                            <span data-lang="zh">学术论文3篇以上（+10分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Japanese language -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span data-lang="ja">日本語能力</span>
+                    <span data-lang="zh">日语能力</span>
+                </div>
+                <div class="form-group">
+                    <select id="japanese" onchange="calculate()">
+                        <option value="0" data-ja="なし / 未取得" data-zh="无 / 未取得">なし / 未取得</option>
+                        <option value="15" data-ja="N1 または BJTスコア480以上（15点）" data-zh="N1 或 BJT 480分以上（15分）">N1 または BJTスコア480以上（15点）</option>
+                        <option value="10" data-ja="N2 または BJTスコア400以上（10点）" data-zh="N2 或 BJT 400分以上（10分）">N2 または BJTスコア400以上（10点）</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Bonus points -->
+            <div class="form-section">
+                <div class="form-section-title">
+                    <span data-lang="ja">ボーナス加点</span>
+                    <span data-lang="zh">加分项目</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="jp-university" onchange="calculate()">
+                            <span data-lang="ja">日本の大学を卒業（+10点）</span>
+                            <span data-lang="zh">日本大学毕业（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="top-university" onchange="calculate()">
+                            <span data-lang="ja">世界大学ランキング300位以内卒業（+10点）</span>
+                            <span data-lang="zh">世界大学排名前300毕业（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="jica" onchange="calculate()">
+                            <span data-lang="ja">JICAの研修を受けた（+5点）</span>
+                            <span data-lang="zh">接受过JICA培训（+5分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="invest" onchange="calculate()">
+                            <span data-lang="ja">本邦の中小企業への投資（+5点）</span>
+                            <span data-lang="zh">投资日本中小企业（+5分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="special-zone" onchange="calculate()">
+                            <span data-lang="ja">国家戦略特区プロジェクト（+10点）</span>
+                            <span data-lang="zh">国家战略特区项目（+10分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-area">
+            <button class="reset-btn" onclick="resetForm()">
+                <span data-lang="ja">リセット</span>
+                <span data-lang="zh">重置</span>
+            </button>
+        </div>
+
+        <div class="calc-footer">
+            <span data-lang="ja">※ この計算結果は参考値です。正式な審査結果とは異なる場合があります。</span>
+            <span data-lang="zh">※ 本计算结果仅供参考，可能与正式审查结果不同。</span>
+            <br>
+            <a href="https://www.moj.go.jp/isa/publications/materials/newimmiact_3_evaluate_index.html" target="_blank">
+                <span data-lang="ja">出入国在留管理庁公式ページ</span>
+                <span data-lang="zh">出入国在留管理厅官方页面</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let currentCategory = 'academic';
+        let currentLang = 'ja';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.body.classList.toggle('lang-zh', lang === 'zh');
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+            // Update select option texts
+            document.querySelectorAll('select').forEach(sel => {
+                sel.querySelectorAll('option').forEach(opt => {
+                    const text = opt.getAttribute('data-' + lang);
+                    if (text) opt.textContent = text;
+                });
+            });
+        }
+
+        function switchCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.cat === cat);
+            });
+
+            // Show/hide category-specific sections
+            document.querySelectorAll('.category-section').forEach(section => {
+                const cats = section.dataset.categories.split(',');
+                section.classList.toggle('active', cats.includes(cat));
+            });
+
+            calculate();
+        }
+
+        function getSelectPoints(id) {
+            const val = document.getElementById(id).value;
+            const num = parseInt(val);
+            return isNaN(num) ? 0 : num;
+        }
+
+        function getCheckboxPoints(id, points) {
+            return document.getElementById(id).checked ? points : 0;
+        }
+
+        function calculate() {
+            let total = 0;
+
+            // Education
+            total += getSelectPoints('education');
+            total += getCheckboxPoints('dual-degree', 5);
+
+            // Experience
+            total += getSelectPoints('experience');
+
+            // Age (only for technical and business)
+            if (currentCategory === 'technical' || currentCategory === 'business') {
+                total += getSelectPoints('age');
+            }
+
+            // Salary
+            total += getSelectPoints('salary');
+
+            // Research (academic only)
+            if (currentCategory === 'academic') {
+                total += getCheckboxPoints('patent', 15);
+                total += getCheckboxPoints('grant', 10);
+                total += getCheckboxPoints('papers', 10);
+            }
+
+            // Japanese
+            total += getSelectPoints('japanese');
+
+            // Bonus
+            total += getCheckboxPoints('jp-university', 10);
+            total += getCheckboxPoints('top-university', 10);
+            total += getCheckboxPoints('jica', 5);
+            total += getCheckboxPoints('invest', 5);
+            total += getCheckboxPoints('special-zone', 10);
+
+            updateScoreDisplay(total);
+        }
+
+        function updateScoreDisplay(total) {
+            const scoreEl = document.getElementById('score-number');
+            const statusEl = document.getElementById('score-status');
+
+            scoreEl.textContent = total;
+
+            if (total === 0) {
+                statusEl.className = 'score-status status-default';
+                if (currentLang === 'zh') {
+                    statusEl.innerHTML = '请输入信息计算积分';
+                } else {
+                    statusEl.innerHTML = '情報を入力してください';
+                }
+            } else if (total < 70) {
+                const need = 70 - total;
+                statusEl.className = 'score-status status-insufficient';
+                if (currentLang === 'zh') {
+                    statusEl.innerHTML = `不足70分（还需${need}分）`;
+                } else {
+                    statusEl.innerHTML = `70点未満（あと${need}点必要）`;
+                }
+            } else if (total < 80) {
+                statusEl.className = 'score-status status-pass70';
+                if (currentLang === 'zh') {
+                    statusEl.innerHTML = '可取得高度专门职1号签证（3年后可申请永住）';
+                } else {
+                    statusEl.innerHTML = '高度専門職1号取得可能（3年後に永住申請可）';
+                }
+            } else {
+                statusEl.className = 'score-status status-pass80';
+                if (currentLang === 'zh') {
+                    statusEl.innerHTML = '80分以上！1年后可申请永住';
+                } else {
+                    statusEl.innerHTML = '80点以上！1年後に永住申請可能';
+                }
+            }
+        }
+
+        function resetForm() {
+            document.querySelectorAll('select').forEach(sel => sel.selectedIndex = 0);
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            calculate();
+        }
+
+        // Initialize
+        switchCategory('academic');
+    </script>
+</body>
+</html>
