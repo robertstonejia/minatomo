@@ -392,8 +392,8 @@
             <!-- Education -->
             <div class="form-section">
                 <div class="form-section-title">
-                    <span data-lang="ja">学歴</span>
-                    <span data-lang="zh">学历</span>
+                    <span data-lang="ja">① 学歴</span>
+                    <span data-lang="zh">① 学历</span>
                 </div>
                 <div class="form-group">
                     <select id="education" onchange="calculate()">
@@ -414,8 +414,8 @@
             <!-- Work experience -->
             <div class="form-section">
                 <div class="form-section-title">
-                    <span data-lang="ja">職歴（実務経験年数）</span>
-                    <span data-lang="zh">工作经历（实际工作年数）</span>
+                    <span data-lang="ja">② 職歴（実務経験年数）</span>
+                    <span data-lang="zh">② 工作经历（实际工作年数）</span>
                 </div>
                 <div class="form-group">
                     <select id="experience" onchange="calculate()">
@@ -427,8 +427,8 @@
             <!-- Age (イ/ロ only) -->
             <div class="form-section category-section" id="age-section" data-categories="academic,technical">
                 <div class="form-section-title">
-                    <span data-lang="ja">年齢</span>
-                    <span data-lang="zh">年龄</span>
+                    <span data-lang="ja">年齢（年収計算用）</span>
+                    <span data-lang="zh">年龄（年收入计算用）</span>
                 </div>
                 <div class="form-group">
                     <select id="age" onchange="updateSalaryNote(); calculate()">
@@ -444,8 +444,8 @@
             <!-- Annual salary (イ/ロ: age-dependent) -->
             <div class="form-section category-section" id="salary-at-section" data-categories="academic,technical">
                 <div class="form-section-title">
-                    <span data-lang="ja">年収</span>
-                    <span data-lang="zh">年收入</span>
+                    <span data-lang="ja">③ 年収</span>
+                    <span data-lang="zh">③ 年收入</span>
                 </div>
                 <div class="salary-note" id="salary-note" style="display:none;"></div>
                 <div class="form-group">
@@ -469,8 +469,8 @@
             <!-- Annual salary (ハ: different scale, no age dependency) -->
             <div class="form-section category-section" id="salary-biz-section" data-categories="business">
                 <div class="form-section-title">
-                    <span data-lang="ja">年収</span>
-                    <span data-lang="zh">年收入</span>
+                    <span data-lang="ja">③ 年収</span>
+                    <span data-lang="zh">③ 年收入</span>
                 </div>
                 <div class="form-group">
                     <select id="salary-biz" onchange="calculate()">
@@ -491,8 +491,8 @@
             <!-- 地位 Position (ハ only) -->
             <div class="form-section category-section" id="position-section" data-categories="business">
                 <div class="form-section-title">
-                    <span data-lang="ja">地位</span>
-                    <span data-lang="zh">职位</span>
+                    <span data-lang="ja">⑳ 地位</span>
+                    <span data-lang="zh">⑳ 职位</span>
                 </div>
                 <div class="form-group">
                     <select id="position" onchange="calculate()">
@@ -506,15 +506,15 @@
             <!-- Research achievements (イ: Academic) -->
             <div class="form-section category-section" id="research-academic-section" data-categories="academic">
                 <div class="form-section-title">
-                    <span data-lang="ja">研究実績</span>
-                    <span data-lang="zh">研究成果</span>
+                    <span data-lang="ja">④〜⑦ 研究実績</span>
+                    <span data-lang="zh">④〜⑦ 研究成果</span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-a" onchange="calculate()">
-                            <span data-lang="ja">発明者として特許を取得（20点）</span>
-                            <span data-lang="zh">作为发明者取得专利（20分）</span>
+                            <span data-lang="ja">④ 発明者として特許を取得（20点）</span>
+                            <span data-lang="zh">④ 作为发明者取得专利（20分）</span>
                         </label>
                     </div>
                 </div>
@@ -526,18 +526,18 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="grant-a" onchange="calculate()">
-                            <span data-lang="ja">外国政府等から補助金等を受けた研究に3回以上従事</span>
-                            <span data-lang="zh">3次以上参与获得外国政府等补助金的研究</span>
+                            <span data-lang="ja">⑤ 外国政府等から補助金等を受けた研究に3回以上従事</span>
+                            <span data-lang="zh">⑤ 3次以上参与获得外国政府等补助金的研究</span>
                         </label>
                         <label>
                             <input type="checkbox" id="papers-a" onchange="calculate()">
-                            <span data-lang="ja">学術論文データベース掲載の論文が3本以上</span>
-                            <span data-lang="zh">学术论文数据库收录论文3篇以上</span>
+                            <span data-lang="ja">⑥ 学術論文データベース掲載の論文が3本以上</span>
+                            <span data-lang="zh">⑥ 学术论文数据库收录论文3篇以上</span>
                         </label>
                         <label>
                             <input type="checkbox" id="other-research-a" onchange="calculate()">
-                            <span data-lang="ja">その他法務大臣が認める研究実績</span>
-                            <span data-lang="zh">其他法务大臣认定的研究成果</span>
+                            <span data-lang="ja">⑦ その他法務大臣が認める研究実績</span>
+                            <span data-lang="zh">⑦ 其他法务大臣认定的研究成果</span>
                         </label>
                     </div>
                 </div>
@@ -546,30 +546,30 @@
             <!-- Research achievements (ロ: Technical) -->
             <div class="form-section category-section" id="research-technical-section" data-categories="technical">
                 <div class="form-section-title">
-                    <span data-lang="ja">研究実績</span>
-                    <span data-lang="zh">研究成果</span>
+                    <span data-lang="ja">④〜⑦ 研究実績</span>
+                    <span data-lang="zh">④〜⑦ 研究成果</span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-t" onchange="calculate()">
-                            <span data-lang="ja">発明者として特許を取得（15点）</span>
-                            <span data-lang="zh">作为发明者取得专利（15分）</span>
+                            <span data-lang="ja">④ 発明者として特許を取得（15点）</span>
+                            <span data-lang="zh">④ 作为发明者取得专利（15分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="grant-t" onchange="calculate()">
-                            <span data-lang="ja">外国政府等から補助金等を受けた研究に3回以上従事（15点）</span>
-                            <span data-lang="zh">3次以上参与获得外国政府等补助金的研究（15分）</span>
+                            <span data-lang="ja">⑤ 外国政府等から補助金等を受けた研究に3回以上従事（15点）</span>
+                            <span data-lang="zh">⑤ 3次以上参与获得外国政府等补助金的研究（15分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="papers-t" onchange="calculate()">
-                            <span data-lang="ja">学術論文データベース掲載の論文が3本以上（15点）</span>
-                            <span data-lang="zh">学术论文数据库收录论文3篇以上（15分）</span>
+                            <span data-lang="ja">⑥ 学術論文データベース掲載の論文が3本以上（15点）</span>
+                            <span data-lang="zh">⑥ 学术论文数据库收录论文3篇以上（15分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="other-research-t" onchange="calculate()">
-                            <span data-lang="ja">その他法務大臣が認める研究実績（15点）</span>
-                            <span data-lang="zh">其他法务大臣认定的研究成果（15分）</span>
+                            <span data-lang="ja">⑦ その他法務大臣が認める研究実績（15点）</span>
+                            <span data-lang="zh">⑦ 其他法务大臣认定的研究成果（15分）</span>
                         </label>
                     </div>
                 </div>
@@ -578,8 +578,8 @@
             <!-- 資格 Qualifications (ロ only) -->
             <div class="form-section category-section" id="qualification-section" data-categories="technical">
                 <div class="form-section-title">
-                    <span data-lang="ja">資格</span>
-                    <span data-lang="zh">资格</span>
+                    <span data-lang="ja">⑧ 資格</span>
+                    <span data-lang="zh">⑧ 资格</span>
                 </div>
                 <div class="form-group">
                     <label>
@@ -597,8 +597,8 @@
             <!-- Japanese language -->
             <div class="form-section">
                 <div class="form-section-title">
-                    <span data-lang="ja">日本語能力</span>
-                    <span data-lang="zh">日语能力</span>
+                    <span data-lang="ja">⑮ 日本語能力</span>
+                    <span data-lang="zh">⑮ 日语能力</span>
                 </div>
                 <div class="form-group">
                     <select id="japanese" onchange="calculate()">
@@ -623,23 +623,23 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="innovation" onchange="calculate()">
-                            <span data-lang="ja">Ⅰ イノベーション促進支援措置を受けている（+10点）</span>
-                            <span data-lang="zh">Ⅰ 接受创新促进支援措施（+10分）</span>
+                            <span data-lang="ja">⑨ Ⅰ イノベーション促進支援措置を受けている（+10点）</span>
+                            <span data-lang="zh">⑨ Ⅰ 接受创新促进支援措施（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="innovation-sme" onchange="calculate()">
-                            <span data-lang="ja">Ⅱ 上記Ⅰかつ中小企業者（追加+10点）</span>
-                            <span data-lang="zh">Ⅱ 上述Ⅰ且为中小企业（追加+10分）</span>
+                            <span data-lang="ja">⑩ Ⅱ 上記Ⅰかつ中小企業者（追加+10点）</span>
+                            <span data-lang="zh">⑩ Ⅱ 上述Ⅰ且为中小企业（追加+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="local-gov" onchange="calculate()">
-                            <span data-lang="ja">Ⅲ 地方公共団体の高度人材受入れ促進支援（+10点）</span>
-                            <span data-lang="zh">Ⅲ 地方政府高级人才接收促进支援（+10分）</span>
+                            <span data-lang="ja">⑪ Ⅲ 地方公共団体の高度人材受入れ促進支援（+10点）</span>
+                            <span data-lang="zh">⑪ Ⅲ 地方政府高级人才接收促进支援（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="rd-expense" onchange="calculate()">
-                            <span data-lang="ja">試験研究費等が売上高の3%超の中小企業（+5点）</span>
-                            <span data-lang="zh">研发费用超过销售额3%的中小企业（+5分）</span>
+                            <span data-lang="ja">⑫ 試験研究費等が売上高の3%超の中小企業（+5点）</span>
+                            <span data-lang="zh">⑫ 研发费用超过销售额3%的中小企业（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -647,25 +647,25 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="foreign-qual" onchange="calculate()">
-                            <span data-lang="ja">外国の資格・表彰等で法務大臣が認めるもの（+5点）</span>
-                            <span data-lang="zh">法务大臣认定的外国资格/表彰等（+5分）</span>
+                            <span data-lang="ja">⑬ 外国の資格・表彰等で法務大臣が認めるもの（+5点）</span>
+                            <span data-lang="zh">⑬ 法务大臣认定的外国资格/表彰等（+5分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="jp-university" onchange="calculate()">
-                            <span data-lang="ja">日本の大学を卒業又は大学院の課程を修了（+10点）</span>
-                            <span data-lang="zh">日本大学毕业或完成研究生课程（+10分）</span>
+                            <span data-lang="ja">⑭ 日本の大学を卒業又は大学院の課程を修了（+10点）</span>
+                            <span data-lang="zh">⑭ 日本大学毕业或完成研究生课程（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="growth-field" onchange="calculate()">
-                            <span data-lang="ja">成長分野の先端プロジェクトに従事（+10点）</span>
-                            <span data-lang="zh">从事增长领域尖端项目（+10分）</span>
+                            <span data-lang="ja">⑯ 成長分野の先端プロジェクトに従事（+10点）</span>
+                            <span data-lang="zh">⑯ 从事增长领域尖端项目（+10分）</span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
-                        <span data-lang="ja">以下のいずれかの大学を卒業（+10点）</span>
-                        <span data-lang="zh">毕业于以下任一大学（+10分）</span>
+                        <span data-lang="ja">⑰ 以下のいずれかの大学を卒業（+10点）</span>
+                        <span data-lang="zh">⑰ 毕业于以下任一大学（+10分）</span>
                     </div>
                     <div class="checkbox-group">
                         <label>
@@ -692,8 +692,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="jica" onchange="calculate()">
-                            <span data-lang="ja">JICA研修修了（イノベーティブ・アジア事業、1年以上）（+5点）</span>
-                            <span data-lang="zh">JICA培训结业（创新亚洲事业、1年以上）（+5分）</span>
+                            <span data-lang="ja">⑱ JICA研修修了（イノベーティブ・アジア事業、1年以上）（+5点）</span>
+                            <span data-lang="zh">⑱ JICA培训结业（创新亚洲事业、1年以上）（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -709,8 +709,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="invest-mgmt" onchange="calculate()">
-                            <span data-lang="ja">投資運用業等に係る業務に従事（+10点）</span>
-                            <span data-lang="zh">从事投资运用业务（+10分）</span>
+                            <span data-lang="ja">㉑ 投資運用業等に係る業務に従事（+10点）</span>
+                            <span data-lang="zh">㉑ 从事投资运用业务（+10分）</span>
                         </label>
                     </div>
                 </div>
@@ -726,8 +726,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="invest-100m" onchange="calculate()">
-                            <span data-lang="ja">本邦の事業に1億円以上を投資（+5点）</span>
-                            <span data-lang="zh">向日本事业投资1亿日元以上（+5分）</span>
+                            <span data-lang="ja">⑲ 本邦の事業に1億円以上を投資（+5点）</span>
+                            <span data-lang="zh">⑲ 向日本事业投资1亿日元以上（+5分）</span>
                         </label>
                     </div>
                 </div>
