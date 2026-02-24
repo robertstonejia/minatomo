@@ -497,8 +497,8 @@
                 <div class="form-group">
                     <select id="position" onchange="calculate()">
                         <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
-                        <option value="10" data-ja="代表取締役・代表執行役（10点）" data-zh="代表董事/代表执行役（10分）">代表取締役・代表執行役（10点）</option>
-                        <option value="5" data-ja="取締役・執行役（5点）" data-zh="董事/执行役（5分）">取締役・執行役（5点）</option>
+                        <option value="10" data-ja="代表取締役，代表執行役又は代表権のある業務執行社員（10点）" data-zh="代表董事、代表执行役或有代表权的业务执行社员（10分）">代表取締役，代表執行役又は代表権のある業務執行社員（10点）</option>
+                        <option value="5" data-ja="取締役，執行役又は業務執行社員（5点）" data-zh="董事、执行役或业务执行社员（5分）">取締役，執行役又は業務執行社員（5点）</option>
                     </select>
                 </div>
             </div>
@@ -513,8 +513,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-a" onchange="calculate()">
-                            <span data-lang="ja">④ 発明者として特許を取得（20点）</span>
-                            <span data-lang="zh">④ 作为发明者取得专利（20分）</span>
+                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上（20点）</span>
+                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上（20分）</span>
                         </label>
                     </div>
                 </div>
@@ -526,13 +526,13 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="grant-a" onchange="calculate()">
-                            <span data-lang="ja">⑤ 外国政府等から補助金等を受けた研究に3回以上従事</span>
-                            <span data-lang="zh">⑤ 3次以上参与获得外国政府等补助金的研究</span>
+                            <span data-lang="ja">⑤ 外国政府から補助金，競争的資金等を受けた研究に３回以上従事</span>
+                            <span data-lang="zh">⑤ 3次以上参与获得外国政府补助金、竞争性资金等的研究</span>
                         </label>
                         <label>
                             <input type="checkbox" id="papers-a" onchange="calculate()">
-                            <span data-lang="ja">⑥ 学術論文データベース掲載の論文が3本以上</span>
-                            <span data-lang="zh">⑥ 学术论文数据库收录论文3篇以上</span>
+                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（※責任著者に限る）</span>
+                            <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（※限责任作者）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="other-research-a" onchange="calculate()">
@@ -553,18 +553,18 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-t" onchange="calculate()">
-                            <span data-lang="ja">④ 発明者として特許を取得（15点）</span>
-                            <span data-lang="zh">④ 作为发明者取得专利（15分）</span>
+                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上（15点）</span>
+                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上（15分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="grant-t" onchange="calculate()">
-                            <span data-lang="ja">⑤ 外国政府等から補助金等を受けた研究に3回以上従事（15点）</span>
-                            <span data-lang="zh">⑤ 3次以上参与获得外国政府等补助金的研究（15分）</span>
+                            <span data-lang="ja">⑤ 外国政府から補助金，競争的資金等を受けた研究に３回以上従事（15点）</span>
+                            <span data-lang="zh">⑤ 3次以上参与获得外国政府补助金、竞争性资金等的研究（15分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="papers-t" onchange="calculate()">
-                            <span data-lang="ja">⑥ 学術論文データベース掲載の論文が3本以上（15点）</span>
-                            <span data-lang="zh">⑥ 学术论文数据库收录论文3篇以上（15分）</span>
+                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（15点）（※責任著者に限る）</span>
+                            <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（15分）（※限责任作者）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="other-research-t" onchange="calculate()">
@@ -583,8 +583,8 @@
                 </div>
                 <div class="form-group">
                     <label>
-                        <span data-lang="ja">日本の国家資格（業務独占/名称独占資格）又はIT告示に定める試験合格</span>
-                        <span data-lang="zh">日本国家资格（业务独占/名称独占资格）或IT告示规定的考试合格</span>
+                        <span data-lang="ja">従事しようとする業務に関連する日本の国家資格（業務独占資格又は名称独占資格）を保有，又はIT告示に定める試験に合格し若しくは資格を保有</span>
+                        <span data-lang="zh">持有与拟从事业务相关的日本国家资格（业务独占资格或名称独占资格），或通过IT告示规定的考试或持有相关资格</span>
                     </label>
                     <select id="national-qual" onchange="calculate()">
                         <option value="0" data-ja="なし" data-zh="无">なし</option>
@@ -603,8 +603,8 @@
                 <div class="form-group">
                     <select id="japanese" onchange="calculate()">
                         <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
-                        <option value="15" data-ja="日本語専攻で外国の大学を卒業 又は N1合格相当（15点）" data-zh="日语专业外国大学毕业 或 N1合格同等（15分）">日本語専攻で外国の大学を卒業 又は N1合格相当（15点）</option>
-                        <option value="10" data-ja="N2合格相当（10点）※日本の大学卒業者・N1該当者を除く" data-zh="N2合格同等（10分）※日本大学毕业者/N1符合者除外">N2合格相当（10点）※日本の大学卒業者・N1該当者を除く</option>
+                        <option value="15" data-ja="Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）" data-zh="Ⅰ 日语专业外国大学毕业或日语能力考试N1合格同等（15分）">Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）</option>
+                        <option value="10" data-ja="Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く" data-zh="Ⅱ 日语能力考试N2合格同等（10分）※⑭及Ⅰ符合者除外">Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く</option>
                     </select>
                 </div>
             </div>
@@ -628,18 +628,18 @@
                         </label>
                         <label>
                             <input type="checkbox" id="innovation-sme" onchange="calculate()">
-                            <span data-lang="ja">⑩ Ⅱ 上記Ⅰかつ中小企業者（追加+10点）</span>
-                            <span data-lang="zh">⑩ Ⅱ 上述Ⅰ且为中小企业（追加+10分）</span>
+                            <span data-lang="ja">⑩ Ⅱ Ⅰに該当する企業であって，中小企業基本法に規定する中小企業者（+10点）</span>
+                            <span data-lang="zh">⑩ Ⅱ 符合Ⅰ的企业，且为中小企业基本法规定的中小企业（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="local-gov" onchange="calculate()">
-                            <span data-lang="ja">⑪ Ⅲ 地方公共団体の高度人材受入れ促進支援（+10点）</span>
-                            <span data-lang="zh">⑪ Ⅲ 地方政府高级人才接收促进支援（+10分）</span>
+                            <span data-lang="ja">⑪ Ⅲ 地方公共団体における高度人材外国人の受入れを促進するための支援として法務大臣が認めるものを受けている（+10点）</span>
+                            <span data-lang="zh">⑪ Ⅲ 接受法务大臣认定的地方政府促进接收高级人才外国人的支援（+10分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="rd-expense" onchange="calculate()">
-                            <span data-lang="ja">⑫ 試験研究費等が売上高の3%超の中小企業（+5点）</span>
-                            <span data-lang="zh">⑫ 研发费用超过销售额3%的中小企业（+5分）</span>
+                            <span data-lang="ja">⑫ 契約機関が中小企業者で，試験研究費及び開発費の合計金額が売上高の３％超（+5点）</span>
+                            <span data-lang="zh">⑫ 签约机构为中小企业，试验研究费及开发费合计金额超过销售额3%（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -647,8 +647,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="foreign-qual" onchange="calculate()">
-                            <span data-lang="ja">⑬ 外国の資格・表彰等で法務大臣が認めるもの（+5点）</span>
-                            <span data-lang="zh">⑬ 法务大臣认定的外国资格/表彰等（+5分）</span>
+                            <span data-lang="ja">⑬ 従事しようとする業務に関連する外国の資格，表彰等で法務大臣が認めるものを保有（+5点）</span>
+                            <span data-lang="zh">⑬ 持有与拟从事业务相关的、法务大臣认定的外国资格/表彰等（+5分）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="jp-university" onchange="calculate()">
@@ -657,8 +657,8 @@
                         </label>
                         <label>
                             <input type="checkbox" id="growth-field" onchange="calculate()">
-                            <span data-lang="ja">⑯ 成長分野の先端プロジェクトに従事（+10点）</span>
-                            <span data-lang="zh">⑯ 从事增长领域尖端项目（+10分）</span>
+                            <span data-lang="ja">⑯ 各省が関与する成長分野の先端プロジェクトに従事（+10点）</span>
+                            <span data-lang="zh">⑯ 从事各省参与的增长领域尖端项目（+10分）</span>
                         </label>
                     </div>
                 </div>
@@ -670,8 +670,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="top-university" onchange="calculate()">
-                            <span data-lang="ja">大学ランキング300位以内 / スーパーグローバル大学 / イノベーティブ・アジア事業パートナー校</span>
-                            <span data-lang="zh">大学排名前300 / 超级全球化大学 / 创新亚洲事业合作校</span>
+                            <span data-lang="ja">Ⅰ ランキング２つ以上において３００位以内の外国の大学又はいずれかにランクづけされている本邦の大学 / Ⅱ スーパーグローバル大学創成支援事業の補助金交付大学 / Ⅲ イノベーティブ・アジア事業パートナー校</span>
+                            <span data-lang="zh">Ⅰ 2个以上排名中位列300名以内的外国大学或任一排名中的日本大学 / Ⅱ 超级全球化大学创成支援事业补助金交付大学 / Ⅲ 创新亚洲事业合作校</span>
                         </label>
                     </div>
                     <div class="uni-search-wrap">
@@ -692,8 +692,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="jica" onchange="calculate()">
-                            <span data-lang="ja">⑱ JICA研修修了（イノベーティブ・アジア事業、1年以上）（+5点）</span>
-                            <span data-lang="zh">⑱ JICA培训结业（创新亚洲事业、1年以上）（+5分）</span>
+                            <span data-lang="ja">⑱ 外務省が実施するイノベーティブ・アジア事業の一環としてＪＩＣＡが実施する研修を修了したこと（+5点）</span>
+                            <span data-lang="zh">⑱ 完成外务省实施的创新亚洲事业中JICA实施的培训（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -726,8 +726,8 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="invest-100m" onchange="calculate()">
-                            <span data-lang="ja">⑲ 本邦の事業に1億円以上を投資（+5点）</span>
-                            <span data-lang="zh">⑲ 向日本事业投资1亿日元以上（+5分）</span>
+                            <span data-lang="ja">⑲ 本邦の公私の機関において行う貿易その他の事業に１億円以上を投資（+5点）</span>
+                            <span data-lang="zh">⑲ 向日本公私机构从事的贸易及其他事业投资1亿日元以上（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -760,22 +760,22 @@
         const eduOptions = {
             academic: [
                 { val: '0', ja: '選択してください', zh: '请选择' },
-                { val: '30', ja: '博士（専門職学位を除く）（30点）', zh: '博士（不含专门职学位）（30分）' },
+                { val: '30', ja: '博士学位（専門職学位を除く）（30点）', zh: '博士学位（不含专门职学位）（30分）' },
                 { val: '20', ja: '修士又は専門職学位（20点）', zh: '硕士或专门职学位（20分）' },
-                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+                { val: '10', ja: '大卒又はこれと同等以上の教育（10点）', zh: '大学本科或同等以上教育（10分）' }
             ],
             technical: [
                 { val: '0', ja: '選択してください', zh: '请选择' },
-                { val: '30', ja: '博士（専門職学位を除く）（30点）', zh: '博士（不含专门职学位）（30分）' },
-                { val: '25', ja: '経営管理に関する専門職学位（MBA/MOT）（25点）', zh: '经营管理专门职学位（MBA/MOT）（25分）' },
+                { val: '30', ja: '博士学位（専門職学位を除く）（30点）', zh: '博士学位（不含专门职学位）（30分）' },
+                { val: '25', ja: '経営管理に関する専門職学位（MBA，MOT）を保有（25点）', zh: '持有经营管理专门职学位（MBA/MOT）（25分）' },
                 { val: '20', ja: '修士又は専門職学位（20点）', zh: '硕士或专门职学位（20分）' },
-                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+                { val: '10', ja: '大卒又はこれと同等以上の教育（10点）', zh: '大学本科或同等以上教育（10分）' }
             ],
             business: [
                 { val: '0', ja: '選択してください', zh: '请选择' },
-                { val: '25', ja: '経営管理に関する専門職学位（MBA/MOT）（25点）', zh: '经营管理专门职学位（MBA/MOT）（25分）' },
-                { val: '20', ja: '博士・修士又は専門職学位（20点）', zh: '博士/硕士或专门职学位（20分）' },
-                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+                { val: '25', ja: '経営管理に関する専門職学位（MBA，MOT）を保有（25点）', zh: '持有经营管理专门职学位（MBA/MOT）（25分）' },
+                { val: '20', ja: '博士若しくは修士の学位又は専門職学位（20点）', zh: '博士/硕士学位或专门职学位（20分）' },
+                { val: '10', ja: '大卒又はこれと同等以上の教育（10点）', zh: '大学本科或同等以上教育（10分）' }
             ]
         };
 
