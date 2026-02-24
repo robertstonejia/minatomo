@@ -561,6 +561,10 @@ h2::after {
     background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%);
 }
 
+.love-card .card-image {
+    object-position: 30% center;
+}
+
 .love-card:hover {
     border-color: #f472b6;
     box-shadow: 0 12px 24px rgba(244, 114, 182, 0.2);
