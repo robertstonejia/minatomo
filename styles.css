@@ -562,7 +562,7 @@ h2::after {
 }
 
 .love-card .card-image {
-    object-position: 30% center;
+    object-position: center center;
 }
 
 .love-card:hover {
