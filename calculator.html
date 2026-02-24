@@ -201,11 +201,14 @@
         .checkbox-group input[type="checkbox"] {
             accent-color: #065aa8;
         }
-        .point-badge {
-            font-size: 0.75em;
-            color: #065aa8;
-            font-weight: 700;
-            margin-left: 2px;
+        .salary-note {
+            font-size: 0.8em;
+            color: #b45309;
+            background: #fffbeb;
+            padding: 6px 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #fde68a;
         }
 
         /* University search */
@@ -309,7 +312,6 @@
         body.lang-zh .form-section [data-lang="ja"],
         body.lang-zh .checkbox-group [data-lang="ja"],
         body.lang-zh .score-display [data-lang="ja"] { display: none; }
-        /* Block-level bilingual elements */
         .bilingual-block [data-lang="zh"] { display: none; }
         .bilingual-block [data-lang="ja"] { display: block; }
         body.lang-zh .bilingual-block [data-lang="zh"] { display: block; }
@@ -371,16 +373,16 @@
         <!-- Category tabs -->
         <div class="category-tabs">
             <button class="tab-btn active" data-cat="academic" onclick="switchCategory('academic')">
-                <span data-lang="ja">学術研究</span>
-                <span data-lang="zh">学术研究</span>
+                <span data-lang="ja">イ 学術研究</span>
+                <span data-lang="zh">イ 学术研究</span>
             </button>
             <button class="tab-btn" data-cat="technical" onclick="switchCategory('technical')">
-                <span data-lang="ja">専門技術</span>
-                <span data-lang="zh">专门技术</span>
+                <span data-lang="ja">ロ 専門技術</span>
+                <span data-lang="zh">ロ 专门技术</span>
             </button>
             <button class="tab-btn" data-cat="business" onclick="switchCategory('business')">
-                <span data-lang="ja">経営・管理</span>
-                <span data-lang="zh">经营管理</span>
+                <span data-lang="ja">ハ 経営・管理</span>
+                <span data-lang="zh">ハ 经营管理</span>
             </button>
         </div>
 
@@ -394,24 +396,16 @@
                     <span data-lang="zh">学历</span>
                 </div>
                 <div class="form-group">
-                    <label>
-                        <span data-lang="ja">最終学歴</span>
-                        <span data-lang="zh">最终学历</span>
-                    </label>
                     <select id="education" onchange="calculate()">
-                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
-                        <option value="30" data-ja="博士（30点）" data-zh="博士（30分）">博士（30点）</option>
-                        <option value="25" data-ja="修士（MBA/MOT含む）（25点）" data-zh="硕士（含MBA/MOT）（25分）">修士（MBA/MOT含む）（25点）</option>
-                        <option value="20" data-ja="修士（20点）" data-zh="硕士（20分）">修士（20点）</option>
-                        <option value="10" data-ja="学士（10点）" data-zh="学士（10分）">学士（10点）</option>
+                        <!-- populated by JS -->
                     </select>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="dual-degree" onchange="calculate()">
-                            <span data-lang="ja">複数の学位（+5点）</span>
-                            <span data-lang="zh">多个学位（+5分）</span>
+                            <span data-lang="ja">複数の分野における２以上の博士・修士・専門職学位（+5点）</span>
+                            <span data-lang="zh">多领域2个以上博士/硕士/专门职学位（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -425,58 +419,92 @@
                 </div>
                 <div class="form-group">
                     <select id="experience" onchange="calculate()">
-                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
-                        <option value="0_under3" data-ja="3年未満（0点）" data-zh="不满3年（0分）">3年未満（0点）</option>
-                        <option value="5" data-ja="3年以上〜5年未満（5点）" data-zh="3年以上〜不满5年（5分）">3年以上〜5年未満（5点）</option>
-                        <option value="10" data-ja="5年以上〜7年未満（10点）" data-zh="5年以上〜不满7年（10分）">5年以上〜7年未満（10点）</option>
-                        <option value="15" data-ja="7年以上〜10年未満（15点）" data-zh="7年以上〜不满10年（15分）">7年以上〜10年未満（15点）</option>
-                        <option value="20" data-ja="10年以上（20点）" data-zh="10年以上（20分）">10年以上（20点）</option>
+                        <!-- populated by JS -->
                     </select>
                 </div>
             </div>
 
-            <!-- Age (only for technical/business) -->
-            <div class="form-section category-section" id="age-section" data-categories="technical,business">
+            <!-- Age (イ/ロ only) -->
+            <div class="form-section category-section" id="age-section" data-categories="academic,technical">
                 <div class="form-section-title">
                     <span data-lang="ja">年齢</span>
                     <span data-lang="zh">年龄</span>
                 </div>
                 <div class="form-group">
-                    <select id="age" onchange="calculate()">
-                        <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
-                        <option value="15" data-ja="29歳以下（15点）" data-zh="29岁以下（15分）">29歳以下（15点）</option>
-                        <option value="10" data-ja="30〜34歳（10点）" data-zh="30〜34岁（10分）">30〜34歳（10点）</option>
-                        <option value="5" data-ja="35〜39歳（5点）" data-zh="35〜39岁（5分）">35〜39歳（5点）</option>
-                        <option value="0_40plus" data-ja="40歳以上（0点）" data-zh="40岁以上（0分）">40歳以上（0点）</option>
+                    <select id="age" onchange="updateSalaryNote(); calculate()">
+                        <option value="" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="under30" data-ja="29歳以下（15点）" data-zh="29岁以下（15分）">29歳以下（15点）</option>
+                        <option value="30to34" data-ja="30〜34歳（10点）" data-zh="30〜34岁（10分）">30〜34歳（10点）</option>
+                        <option value="35to39" data-ja="35〜39歳（5点）" data-zh="35〜39岁（5分）">35〜39歳（5点）</option>
+                        <option value="40plus" data-ja="40歳以上（0点）" data-zh="40岁以上（0分）">40歳以上（0点）</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Annual salary -->
-            <div class="form-section">
+            <!-- Annual salary (イ/ロ: age-dependent) -->
+            <div class="form-section category-section" id="salary-at-section" data-categories="academic,technical">
                 <div class="form-section-title">
                     <span data-lang="ja">年収</span>
                     <span data-lang="zh">年收入</span>
                 </div>
-                <div class="form-group bilingual-block">
-                    <label data-lang="ja">年収額（万円）</label>
-                    <label data-lang="zh">年收入（万日元）</label>
-                    <select id="salary" onchange="calculate()">
+                <div class="salary-note" id="salary-note" style="display:none;"></div>
+                <div class="form-group">
+                    <select id="salary-at" onchange="calculate()">
+                        <option value="" data-ja="選択してください" data-zh="请选择">選択してください</option>
+                        <option value="1000" data-ja="1,000万円以上（40点）" data-zh="1000万以上（40分）">1,000万円以上（40点）</option>
+                        <option value="900" data-ja="900万〜1,000万円未満（35点）" data-zh="900万〜不满1000万（35分）">900万〜1,000万円未満（35点）</option>
+                        <option value="800" data-ja="800万〜900万円未満（30点）" data-zh="800万〜不满900万（30分）">800万〜900万円未満（30点）</option>
+                        <option value="700" data-ja="700万〜800万円未満（25点）" data-zh="700万〜不满800万（25分）">700万〜800万円未満（25点）</option>
+                        <option value="600" data-ja="600万〜700万円未満（20点）" data-zh="600万〜不满700万（20分）">600万〜700万円未満（20点）</option>
+                        <option value="500" data-ja="500万〜600万円未満（15点）" data-zh="500万〜不满600万（15分）">500万〜600万円未満（15点）</option>
+                        <option value="400" data-ja="400万〜500万円未満（10点）" data-zh="400万〜不满500万（10分）">400万〜500万円未満（10点）</option>
+                    </select>
+                </div>
+                <div style="font-size:0.8em;color:#64748b;margin-top:4px;">
+                    <span data-lang="ja">※ 年収が300万円に満たない場合、合計70点以上でも高度専門職としては認められません。</span>
+                    <span data-lang="zh">※ 年收入不满300万日元时，即使合计70分以上也不能获得高度专门职资格。</span>
+                </div>
+            </div>
+
+            <!-- Annual salary (ハ: different scale, no age dependency) -->
+            <div class="form-section category-section" id="salary-biz-section" data-categories="business">
+                <div class="form-section-title">
+                    <span data-lang="ja">年収</span>
+                    <span data-lang="zh">年收入</span>
+                </div>
+                <div class="form-group">
+                    <select id="salary-biz" onchange="calculate()">
                         <option value="0" data-ja="選択してください" data-zh="请选择">選択してください</option>
-                        <option value="0_low" data-ja="400万円未満（0点）" data-zh="不满400万（0分）">400万円未満（0点）</option>
-                        <option value="10_400" data-ja="400万〜500万円未満（10点）" data-zh="400万〜不满500万（10分）">400万〜500万円未満（10点）</option>
-                        <option value="15_500" data-ja="500万〜600万円未満（15点）" data-zh="500万〜不满600万（15分）">500万〜600万円未満（15点）</option>
-                        <option value="20_600" data-ja="600万〜700万円未満（20点）" data-zh="600万〜不满700万（20分）">600万〜700万円未満（20点）</option>
-                        <option value="25_700" data-ja="700万〜800万円未満（25点）" data-zh="700万〜不满800万（25分）">700万〜800万円未満（25点）</option>
-                        <option value="30_800" data-ja="800万〜900万円未満（30点）" data-zh="800万〜不满900万（30分）">800万〜900万円未満（30点）</option>
-                        <option value="35_900" data-ja="900万〜1000万円未満（35点）" data-zh="900万〜不满1000万（35分）">900万〜1000万円未満（35点）</option>
-                        <option value="40_1000" data-ja="1000万円以上（40点）" data-zh="1000万以上（40分）">1000万円以上（40点）</option>
+                        <option value="50" data-ja="3,000万円以上（50点）" data-zh="3000万以上（50分）">3,000万円以上（50点）</option>
+                        <option value="40" data-ja="2,500万〜3,000万円未満（40点）" data-zh="2500万〜不满3000万（40分）">2,500万〜3,000万円未満（40点）</option>
+                        <option value="30" data-ja="2,000万〜2,500万円未満（30点）" data-zh="2000万〜不满2500万（30分）">2,000万〜2,500万円未満（30点）</option>
+                        <option value="20" data-ja="1,500万〜2,000万円未満（20点）" data-zh="1500万〜不满2000万（20分）">1,500万〜2,000万円未満（20点）</option>
+                        <option value="10" data-ja="1,000万〜1,500万円未満（10点）" data-zh="1000万〜不满1500万（10分）">1,000万〜1,500万円未満（10点）</option>
+                    </select>
+                </div>
+                <div style="font-size:0.8em;color:#64748b;margin-top:4px;">
+                    <span data-lang="ja">※ 年収が300万円に満たない場合、合計70点以上でも高度専門職としては認められません。</span>
+                    <span data-lang="zh">※ 年收入不满300万日元时，即使合计70分以上也不能获得高度专门职资格。</span>
+                </div>
+            </div>
+
+            <!-- 地位 Position (ハ only) -->
+            <div class="form-section category-section" id="position-section" data-categories="business">
+                <div class="form-section-title">
+                    <span data-lang="ja">地位</span>
+                    <span data-lang="zh">职位</span>
+                </div>
+                <div class="form-group">
+                    <select id="position" onchange="calculate()">
+                        <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
+                        <option value="10" data-ja="代表取締役・代表執行役（10点）" data-zh="代表董事/代表执行役（10分）">代表取締役・代表執行役（10点）</option>
+                        <option value="5" data-ja="取締役・執行役（5点）" data-zh="董事/执行役（5分）">取締役・執行役（5点）</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Research achievements (academic only) -->
-            <div class="form-section category-section" id="research-section" data-categories="academic">
+            <!-- Research achievements (イ: Academic) -->
+            <div class="form-section category-section" id="research-academic-section" data-categories="academic">
                 <div class="form-section-title">
                     <span data-lang="ja">研究実績</span>
                     <span data-lang="zh">研究成果</span>
@@ -484,21 +512,85 @@
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
-                            <input type="checkbox" id="patent" onchange="calculate()">
-                            <span data-lang="ja">発明者として特許を取得（+15点）</span>
-                            <span data-lang="zh">作为发明者取得专利（+15分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="grant" onchange="calculate()">
-                            <span data-lang="ja">公的研究費の補助金を受けた（+10点）</span>
-                            <span data-lang="zh">获得过公共研究补助金（+10分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="papers" onchange="calculate()">
-                            <span data-lang="ja">学術論文3本以上（+10点）</span>
-                            <span data-lang="zh">学术论文3篇以上（+10分）</span>
+                            <input type="checkbox" id="patent-a" onchange="calculate()">
+                            <span data-lang="ja">発明者として特許を取得（20点）</span>
+                            <span data-lang="zh">作为发明者取得专利（20分）</span>
                         </label>
                     </div>
+                </div>
+                <div class="form-group">
+                    <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
+                        <span data-lang="ja">以下のうち2つ以上に該当する場合 25点</span>
+                        <span data-lang="zh">以下项目中符合2项以上时 25分</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="grant-a" onchange="calculate()">
+                            <span data-lang="ja">外国政府等から補助金等を受けた研究に3回以上従事</span>
+                            <span data-lang="zh">3次以上参与获得外国政府等补助金的研究</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="papers-a" onchange="calculate()">
+                            <span data-lang="ja">学術論文データベース掲載の論文が3本以上</span>
+                            <span data-lang="zh">学术论文数据库收录论文3篇以上</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="other-research-a" onchange="calculate()">
+                            <span data-lang="ja">その他法務大臣が認める研究実績</span>
+                            <span data-lang="zh">其他法务大臣认定的研究成果</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research achievements (ロ: Technical) -->
+            <div class="form-section category-section" id="research-technical-section" data-categories="technical">
+                <div class="form-section-title">
+                    <span data-lang="ja">研究実績</span>
+                    <span data-lang="zh">研究成果</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="patent-t" onchange="calculate()">
+                            <span data-lang="ja">発明者として特許を取得（15点）</span>
+                            <span data-lang="zh">作为发明者取得专利（15分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="grant-t" onchange="calculate()">
+                            <span data-lang="ja">外国政府等から補助金等を受けた研究に3回以上従事（15点）</span>
+                            <span data-lang="zh">3次以上参与获得外国政府等补助金的研究（15分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="papers-t" onchange="calculate()">
+                            <span data-lang="ja">学術論文データベース掲載の論文が3本以上（15点）</span>
+                            <span data-lang="zh">学术论文数据库收录论文3篇以上（15分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="other-research-t" onchange="calculate()">
+                            <span data-lang="ja">その他法務大臣が認める研究実績（15点）</span>
+                            <span data-lang="zh">其他法务大臣认定的研究成果（15分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 資格 Qualifications (ロ only) -->
+            <div class="form-section category-section" id="qualification-section" data-categories="technical">
+                <div class="form-section-title">
+                    <span data-lang="ja">資格</span>
+                    <span data-lang="zh">资格</span>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <span data-lang="ja">日本の国家資格（業務独占/名称独占資格）又はIT告示に定める試験合格</span>
+                        <span data-lang="zh">日本国家资格（业务独占/名称独占资格）或IT告示规定的考试合格</span>
+                    </label>
+                    <select id="national-qual" onchange="calculate()">
+                        <option value="0" data-ja="なし" data-zh="无">なし</option>
+                        <option value="5" data-ja="1つ保有（5点）" data-zh="持有1个（5分）">1つ保有（5点）</option>
+                        <option value="10" data-ja="複数保有（10点）" data-zh="持有多个（10分）">複数保有（10点）</option>
+                    </select>
                 </div>
             </div>
 
@@ -510,9 +602,9 @@
                 </div>
                 <div class="form-group">
                     <select id="japanese" onchange="calculate()">
-                        <option value="0" data-ja="なし / 未取得" data-zh="无 / 未取得">なし / 未取得</option>
-                        <option value="15" data-ja="N1 または BJTスコア480以上（15点）" data-zh="N1 或 BJT 480分以上（15分）">N1 または BJTスコア480以上（15点）</option>
-                        <option value="10" data-ja="N2 または BJTスコア400以上（10点）" data-zh="N2 或 BJT 400分以上（10分）">N2 または BJTスコア400以上（10点）</option>
+                        <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
+                        <option value="15" data-ja="日本語専攻で外国の大学を卒業 又は N1合格相当（15点）" data-zh="日语专业外国大学毕业 或 N1合格同等（15分）">日本語専攻で外国の大学を卒業 又は N1合格相当（15点）</option>
+                        <option value="10" data-ja="N2合格相当（10点）※日本の大学卒業者・N1該当者を除く" data-zh="N2合格同等（10分）※日本大学毕业者/N1符合者除外">N2合格相当（10点）※日本の大学卒業者・N1該当者を除く</option>
                     </select>
                 </div>
             </div>
@@ -520,20 +612,66 @@
             <!-- Bonus: common to all categories -->
             <div class="form-section">
                 <div class="form-section-title">
-                    <span data-lang="ja">特別加算（共通）</span>
-                    <span data-lang="zh">特别加分（共通）</span>
+                    <span data-lang="ja">特別加算</span>
+                    <span data-lang="zh">特别加分</span>
+                </div>
+                <div class="form-group">
+                    <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
+                        <span data-lang="ja">契約機関（活動機関）</span>
+                        <span data-lang="zh">签约机构（活动机构）</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="innovation" onchange="calculate()">
+                            <span data-lang="ja">Ⅰ イノベーション促進支援措置を受けている（+10点）</span>
+                            <span data-lang="zh">Ⅰ 接受创新促进支援措施（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="innovation-sme" onchange="calculate()">
+                            <span data-lang="ja">Ⅱ 上記Ⅰかつ中小企業者（追加+10点）</span>
+                            <span data-lang="zh">Ⅱ 上述Ⅰ且为中小企业（追加+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="local-gov" onchange="calculate()">
+                            <span data-lang="ja">Ⅲ 地方公共団体の高度人材受入れ促進支援（+10点）</span>
+                            <span data-lang="zh">Ⅲ 地方政府高级人才接收促进支援（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="rd-expense" onchange="calculate()">
+                            <span data-lang="ja">試験研究費等が売上高の3%超の中小企業（+5点）</span>
+                            <span data-lang="zh">研发费用超过销售额3%的中小企业（+5分）</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
-                            <input type="checkbox" id="jp-university" onchange="calculate()">
-                            <span data-lang="ja">日本の大学を卒業（+10点）</span>
-                            <span data-lang="zh">日本大学毕业（+10分）</span>
+                            <input type="checkbox" id="foreign-qual" onchange="calculate()">
+                            <span data-lang="ja">外国の資格・表彰等で法務大臣が認めるもの（+5点）</span>
+                            <span data-lang="zh">法务大臣认定的外国资格/表彰等（+5分）</span>
                         </label>
                         <label>
+                            <input type="checkbox" id="jp-university" onchange="calculate()">
+                            <span data-lang="ja">日本の大学を卒業又は大学院の課程を修了（+10点）</span>
+                            <span data-lang="zh">日本大学毕业或完成研究生课程（+10分）</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="growth-field" onchange="calculate()">
+                            <span data-lang="ja">成長分野の先端プロジェクトに従事（+10点）</span>
+                            <span data-lang="zh">从事增长领域尖端项目（+10分）</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
+                        <span data-lang="ja">以下のいずれかの大学を卒業（+10点）</span>
+                        <span data-lang="zh">毕业于以下任一大学（+10分）</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <label>
                             <input type="checkbox" id="top-university" onchange="calculate()">
-                            <span data-lang="ja">世界大学ランキング300位以内卒業（+10点）</span>
-                            <span data-lang="zh">世界大学排名前300毕业（+10分）</span>
+                            <span data-lang="ja">大学ランキング300位以内 / スーパーグローバル大学 / イノベーティブ・アジア事業パートナー校</span>
+                            <span data-lang="zh">大学排名前300 / 超级全球化大学 / 创新亚洲事业合作校</span>
                         </label>
                     </div>
                     <div class="uni-search-wrap">
@@ -545,82 +683,51 @@
                         <div class="uni-results" id="uni-results"></div>
                         <div id="uni-match-msg"></div>
                     </div>
-                    <div class="checkbox-group" style="margin-top:10px;">
-                        <label>
-                            <input type="checkbox" id="innovation" onchange="calculate()">
-                            <span data-lang="ja">イノベーション促進支援措置対象機関（+10点）</span>
-                            <span data-lang="zh">创新促进支援措施对象机构（+10分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="innovation-sme" onchange="calculate()">
-                            <span data-lang="ja">上記かつ中小企業（追加+10点）</span>
-                            <span data-lang="zh">上述且为中小企业（追加+10分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="rd-expense" onchange="calculate()">
-                            <span data-lang="ja">試験研究費が売上高3%超の中小企業（+5点）</span>
-                            <span data-lang="zh">研发费用超过销售额3%的中小企业（+5分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="foreign-qual" onchange="calculate()">
-                            <span data-lang="ja">法務大臣認定の外国資格（+5点）</span>
-                            <span data-lang="zh">法务大臣认定的外国资格（+5分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="growth-field" onchange="calculate()">
-                            <span data-lang="ja">成長分野の先端的事業に従事（+10点）</span>
-                            <span data-lang="zh">从事增长领域尖端事业（+10分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="special-zone" onchange="calculate()">
-                            <span data-lang="ja">国家戦略特区プロジェクト（+10点）</span>
-                            <span data-lang="zh">国家战略特区项目（+10分）</span>
-                        </label>
-                        <label>
-                            <input type="checkbox" id="jica" onchange="calculate()">
-                            <span data-lang="ja">JICA研修修了（+5点）</span>
-                            <span data-lang="zh">JICA培训结业（+5分）</span>
-                        </label>
+                    <div style="font-size:0.75em;color:#64748b;margin-top:4px;">
+                        <span data-lang="ja">※ 日本の大学卒業（+10点）と重複加算が認められています。</span>
+                        <span data-lang="zh">※ 可与日本大学毕业（+10分）重复计算。</span>
                     </div>
-                </div>
-            </div>
-
-            <!-- Bonus: technical only -->
-            <div class="form-section category-section" id="bonus-technical-section" data-categories="technical">
-                <div class="form-section-title">
-                    <span data-lang="ja">特別加算（専門技術のみ）</span>
-                    <span data-lang="zh">特别加分（仅限专门技术）</span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
-                            <input type="checkbox" id="national-qual" onchange="calculate()">
-                            <span data-lang="ja">日本の国家資格（1つ: +5点 / 2つ以上: +10点）</span>
-                            <span data-lang="zh">日本国家资格（1个: +5分 / 2个以上: +10分）</span>
+                            <input type="checkbox" id="jica" onchange="calculate()">
+                            <span data-lang="ja">JICA研修修了（イノベーティブ・アジア事業、1年以上）（+5点）</span>
+                            <span data-lang="zh">JICA培训结业（创新亚洲事业、1年以上）（+5分）</span>
                         </label>
-                    </div>
-                    <div class="form-group" style="margin-top:8px;">
-                        <select id="national-qual-count" onchange="calculate()">
-                            <option value="0" data-ja="なし" data-zh="无">なし</option>
-                            <option value="5" data-ja="1つ（5点）" data-zh="1个（5分）">1つ（5点）</option>
-                            <option value="10" data-ja="2つ以上（10点）" data-zh="2个以上（10分）">2つ以上（10点）</option>
-                        </select>
                     </div>
                 </div>
             </div>
 
-            <!-- Bonus: business only -->
-            <div class="form-section category-section" id="bonus-business-section" data-categories="business">
+            <!-- Bonus: ロ/ハ only - 投資運用業 -->
+            <div class="form-section category-section" id="invest-mgmt-section" data-categories="technical,business">
                 <div class="form-section-title">
-                    <span data-lang="ja">特別加算（経営・管理のみ）</span>
-                    <span data-lang="zh">特别加分（仅限经营管理）</span>
+                    <span data-lang="ja">特別加算（ロ・ハ共通）</span>
+                    <span data-lang="zh">特别加分（ロ・ハ共通）</span>
                 </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="invest-mgmt" onchange="calculate()">
-                            <span data-lang="ja">投資運用業等に従事（+10点）</span>
+                            <span data-lang="ja">投資運用業等に係る業務に従事（+10点）</span>
                             <span data-lang="zh">从事投资运用业务（+10分）</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bonus: ハ only - 投資 -->
+            <div class="form-section category-section" id="invest-section" data-categories="business">
+                <div class="form-section-title">
+                    <span data-lang="ja">特別加算（ハのみ）</span>
+                    <span data-lang="zh">特别加分（仅限ハ）</span>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="invest-100m" onchange="calculate()">
+                            <span data-lang="ja">本邦の事業に1億円以上を投資（+5点）</span>
+                            <span data-lang="zh">向日本事业投资1亿日元以上（+5分）</span>
                         </label>
                     </div>
                 </div>
@@ -649,6 +756,69 @@
         let currentCategory = 'academic';
         let currentLang = 'ja';
 
+        // Category-specific option definitions
+        const eduOptions = {
+            academic: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '30', ja: '博士（専門職学位を除く）（30点）', zh: '博士（不含专门职学位）（30分）' },
+                { val: '20', ja: '修士又は専門職学位（20点）', zh: '硕士或专门职学位（20分）' },
+                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+            ],
+            technical: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '30', ja: '博士（専門職学位を除く）（30点）', zh: '博士（不含专门职学位）（30分）' },
+                { val: '25', ja: '経営管理に関する専門職学位（MBA/MOT）（25点）', zh: '经营管理专门职学位（MBA/MOT）（25分）' },
+                { val: '20', ja: '修士又は専門職学位（20点）', zh: '硕士或专门职学位（20分）' },
+                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+            ],
+            business: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '25', ja: '経営管理に関する専門職学位（MBA/MOT）（25点）', zh: '经营管理专门职学位（MBA/MOT）（25分）' },
+                { val: '20', ja: '博士・修士又は専門職学位（20点）', zh: '博士/硕士或专门职学位（20分）' },
+                { val: '10', ja: '大卒又はこれと同等以上（10点）', zh: '大学本科或同等以上（10分）' }
+            ]
+        };
+
+        const expOptions = {
+            academic: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '0_under3', ja: '3年未満（0点）', zh: '不满3年（0分）' },
+                { val: '5', ja: '3年以上〜5年未満（5点）', zh: '3年以上〜不满5年（5分）' },
+                { val: '10', ja: '5年以上〜7年未満（10点）', zh: '5年以上〜不满7年（10分）' },
+                { val: '15', ja: '7年以上（15点）', zh: '7年以上（15分）' }
+            ],
+            technical: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '0_under3', ja: '3年未満（0点）', zh: '不满3年（0分）' },
+                { val: '5', ja: '3年以上〜5年未満（5点）', zh: '3年以上〜不满5年（5分）' },
+                { val: '10', ja: '5年以上〜7年未満（10点）', zh: '5年以上〜不满7年（10分）' },
+                { val: '15', ja: '7年以上〜10年未満（15点）', zh: '7年以上〜不满10年（15分）' },
+                { val: '20', ja: '10年以上（20点）', zh: '10年以上（20分）' }
+            ],
+            business: [
+                { val: '0', ja: '選択してください', zh: '请选择' },
+                { val: '0_under3', ja: '3年未満（0点）', zh: '不满3年（0分）' },
+                { val: '10', ja: '3年以上〜5年未満（10点）', zh: '3年以上〜不满5年（10分）' },
+                { val: '15', ja: '5年以上〜7年未満（15点）', zh: '5年以上〜不满7年（15分）' },
+                { val: '20', ja: '7年以上〜10年未満（20点）', zh: '7年以上〜不满10年（20分）' },
+                { val: '25', ja: '10年以上（25点）', zh: '10年以上（25分）' }
+            ]
+        };
+
+        // Salary table for イ/ロ: salaryRange -> { ageGroup -> points }
+        // "-" means not eligible (0 points)
+        const salaryTableAT = {
+            '1000': { under30: 40, '30to34': 40, '35to39': 40, '40plus': 40 },
+            '900':  { under30: 35, '30to34': 35, '35to39': 35, '40plus': 35 },
+            '800':  { under30: 30, '30to34': 30, '35to39': 30, '40plus': 30 },
+            '700':  { under30: 25, '30to34': 25, '35to39': 25, '40plus': 0 },
+            '600':  { under30: 20, '30to34': 20, '35to39': 20, '40plus': 0 },
+            '500':  { under30: 15, '30to34': 15, '35to39': 0,  '40plus': 0 },
+            '400':  { under30: 10, '30to34': 0,  '35to39': 0,  '40plus': 0 }
+        };
+
+        const agePoints = { under30: 15, '30to34': 10, '35to39': 5, '40plus': 0 };
+
         function setLang(lang) {
             currentLang = lang;
             document.body.classList.toggle('lang-zh', lang === 'zh');
@@ -662,6 +832,34 @@
                     if (text) opt.textContent = text;
                 });
             });
+
+            // Re-populate category-specific dropdowns
+            populateDropdowns();
+            updateSalaryNote();
+            calculate();
+        }
+
+        function populateDropdowns() {
+            populateSelect('education', eduOptions[currentCategory]);
+            populateSelect('experience', expOptions[currentCategory]);
+        }
+
+        function populateSelect(id, options) {
+            const sel = document.getElementById(id);
+            const prevVal = sel.value;
+            sel.innerHTML = '';
+            options.forEach(opt => {
+                const o = document.createElement('option');
+                o.value = opt.val;
+                o.textContent = currentLang === 'zh' ? opt.zh : opt.ja;
+                o.setAttribute('data-ja', opt.ja);
+                o.setAttribute('data-zh', opt.zh);
+                sel.appendChild(o);
+            });
+            // Try to restore previous value
+            if ([...sel.options].some(o => o.value === prevVal)) {
+                sel.value = prevVal;
+            }
         }
 
         function switchCategory(cat) {
@@ -676,7 +874,13 @@
                 section.classList.toggle('active', cats.includes(cat));
             });
 
+            populateDropdowns();
+            updateSalaryNote();
             calculate();
+        }
+
+        function getSelectValue(id) {
+            return document.getElementById(id).value;
         }
 
         function getSelectPoints(id) {
@@ -685,8 +889,35 @@
             return isNaN(num) ? 0 : num;
         }
 
-        function getCheckboxPoints(id, points) {
-            return document.getElementById(id).checked ? points : 0;
+        function isChecked(id) {
+            return document.getElementById(id).checked;
+        }
+
+        function updateSalaryNote() {
+            const noteEl = document.getElementById('salary-note');
+            const age = getSelectValue('age');
+            if (!age) {
+                noteEl.style.display = 'none';
+                return;
+            }
+            const ineligible = [];
+            if (age === '40plus') {
+                ineligible.push('700万円未満');
+            } else if (age === '35to39') {
+                ineligible.push('600万円未満');
+            } else if (age === '30to34') {
+                ineligible.push('500万円未満');
+            }
+            if (ineligible.length > 0) {
+                noteEl.style.display = 'block';
+                if (currentLang === 'zh') {
+                    noteEl.textContent = '⚠ 您的年龄段中，年收入' + ineligible[0].replace('万円未満','万日元以下') + '不计分';
+                } else {
+                    noteEl.textContent = '⚠ お選びの年齢では、年収' + ineligible[0] + 'はポイント対象外です';
+                }
+            } else {
+                noteEl.style.display = 'none';
+            }
         }
 
         function calculate() {
@@ -694,48 +925,81 @@
 
             // Education
             total += getSelectPoints('education');
-            total += getCheckboxPoints('dual-degree', 5);
+            if (isChecked('dual-degree')) total += 5;
 
             // Experience
             total += getSelectPoints('experience');
 
-            // Age (only for technical and business)
-            if (currentCategory === 'technical' || currentCategory === 'business') {
-                total += getSelectPoints('age');
+            // Age (イ/ロ only)
+            if (currentCategory === 'academic' || currentCategory === 'technical') {
+                const age = getSelectValue('age');
+                if (age && agePoints[age] !== undefined) {
+                    total += agePoints[age];
+                }
+
+                // Salary (イ/ロ: age-dependent)
+                const salaryRange = getSelectValue('salary-at');
+                if (salaryRange && age && salaryTableAT[salaryRange]) {
+                    total += salaryTableAT[salaryRange][age] || 0;
+                }
             }
 
-            // Salary
-            total += getSelectPoints('salary');
+            // Salary (ハ)
+            if (currentCategory === 'business') {
+                total += getSelectPoints('salary-biz');
+            }
 
-            // Research (academic only)
+            // Position (ハ only)
+            if (currentCategory === 'business') {
+                total += getSelectPoints('position');
+            }
+
+            // Research (イ: Academic)
             if (currentCategory === 'academic') {
-                total += getCheckboxPoints('patent', 15);
-                total += getCheckboxPoints('grant', 10);
-                total += getCheckboxPoints('papers', 10);
+                if (isChecked('patent-a')) total += 20;
+                // 補助金/論文/その他: 2つ以上該当で25点
+                let researchCount = 0;
+                if (isChecked('grant-a')) researchCount++;
+                if (isChecked('papers-a')) researchCount++;
+                if (isChecked('other-research-a')) researchCount++;
+                if (researchCount >= 2) total += 25;
             }
 
-            // Japanese
+            // Research (ロ: Technical) - each 15 points
+            if (currentCategory === 'technical') {
+                if (isChecked('patent-t')) total += 15;
+                if (isChecked('grant-t')) total += 15;
+                if (isChecked('papers-t')) total += 15;
+                if (isChecked('other-research-t')) total += 15;
+            }
+
+            // 資格 (ロ only)
+            if (currentCategory === 'technical') {
+                total += getSelectPoints('national-qual');
+            }
+
+            // Japanese language
             total += getSelectPoints('japanese');
 
             // Bonus: common
-            total += getCheckboxPoints('jp-university', 10);
-            total += getCheckboxPoints('top-university', 10);
-            total += getCheckboxPoints('innovation', 10);
-            total += getCheckboxPoints('innovation-sme', 10);
-            total += getCheckboxPoints('rd-expense', 5);
-            total += getCheckboxPoints('foreign-qual', 5);
-            total += getCheckboxPoints('growth-field', 10);
-            total += getCheckboxPoints('special-zone', 10);
-            total += getCheckboxPoints('jica', 5);
+            if (isChecked('innovation')) total += 10;
+            if (isChecked('innovation-sme')) total += 10;
+            if (isChecked('local-gov')) total += 10;
+            if (isChecked('rd-expense')) total += 5;
+            if (isChecked('foreign-qual')) total += 5;
+            if (isChecked('jp-university')) total += 10;
+            if (isChecked('growth-field')) total += 10;
+            if (isChecked('top-university')) total += 10;
+            if (isChecked('jica')) total += 5;
 
-            // Bonus: technical only
-            if (currentCategory === 'technical') {
-                total += getSelectPoints('national-qual-count');
+            // 投資運用業 (ロ/ハ)
+            if (currentCategory === 'technical' || currentCategory === 'business') {
+                if (isChecked('invest-mgmt')) total += 10;
             }
 
-            // Bonus: business only
+            // 投資1億円 (ハ only)
             if (currentCategory === 'business') {
-                total += getCheckboxPoints('invest-mgmt', 10);
+                if (isChecked('invest-100m')) total += 5;
             }
 
             updateScoreDisplay(total);
@@ -785,6 +1049,7 @@
             document.getElementById('uni-search').value = '';
             document.getElementById('uni-results').classList.remove('show');
             document.getElementById('uni-match-msg').innerHTML = '';
+            document.getElementById('salary-note').style.display = 'none';
             calculate();
         }
 
@@ -838,12 +1103,11 @@
             resultsEl.classList.remove('show');
 
             if (currentLang === 'zh') {
-                msgEl.innerHTML = `<div class="uni-match-yes">✓ ${ja}（${country}）是加分对象大学！</div>`;
+                msgEl.innerHTML = `<div class="uni-match-yes">\u2713 ${ja}（${country}）是加分对象大学！</div>`;
             } else {
-                msgEl.innerHTML = `<div class="uni-match-yes">✓ ${ja}（${country}）は加点対象大学です！</div>`;
+                msgEl.innerHTML = `<div class="uni-match-yes">\u2713 ${ja}（${country}）は加点対象大学です！</div>`;
             }
 
-            // Auto-check the top-university checkbox
             document.getElementById('top-university').checked = true;
             calculate();
         }
