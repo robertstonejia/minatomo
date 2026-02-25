@@ -520,8 +520,8 @@
                 </div>
                 <div class="form-group">
                     <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
-                        <span data-lang="ja">以下のうち2つ以上に該当する場合 25点</span>
-                        <span data-lang="zh">以下项目中符合2项以上时 25分</span>
+                        <span data-lang="ja">以下のうち1つ以上に該当する場合 20点、2つ以上に該当する場合 25点</span>
+                        <span data-lang="zh">以下项目符合1项时 20分，符合2项以上时 25分</span>
                     </div>
                     <div class="checkbox-group">
                         <label>
@@ -531,7 +531,7 @@
                         </label>
                         <label>
                             <input type="checkbox" id="papers-a" onchange="calculate()">
-                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（※責任著者に限る）</span>
+                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（※責任著者であるものに限る）</span>
                             <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（※限责任作者）</span>
                         </label>
                         <label>
@@ -563,7 +563,7 @@
                         </label>
                         <label>
                             <input type="checkbox" id="papers-t" onchange="calculate()">
-                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（15点）（※責任著者に限る）</span>
+                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（15点）（※責任著者であるものに限る）</span>
                             <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（15分）（※限责任作者）</span>
                         </label>
                         <label>
@@ -963,6 +963,7 @@
                 if (isChecked('papers-a')) researchCount++;
                 if (isChecked('other-research-a')) researchCount++;
                 if (researchCount >= 2) total += 25;
+                else if (researchCount === 1) total += 20;
             }
 
             // Research (ロ: Technical) - each 15 points
