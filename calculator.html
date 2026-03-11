@@ -560,27 +560,31 @@
                     <span data-lang="ja">④〜⑦ 研究実績</span>
                     <span data-lang="zh">④〜⑦ 研究成果</span>
                 </div>
+                <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:8px;margin-top:2px;">
+                    <span data-lang="ja">以下のうち1つ以上に該当する場合 15点</span>
+                    <span data-lang="zh">以下项目符合1项以上时 15分</span>
+                </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-t" onchange="calculate()">
-                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上（15点）</span>
-                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上（15分）</span>
+                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上</span>
+                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上</span>
                         </label>
                         <label>
                             <input type="checkbox" id="grant-t" onchange="calculate()">
-                            <span data-lang="ja">⑤ 外国政府から補助金，競争的資金等を受けた研究に３回以上従事（15点）</span>
-                            <span data-lang="zh">⑤ 3次以上参与获得外国政府补助金、竞争性资金等的研究（15分）</span>
+                            <span data-lang="ja">⑤ 外国政府から補助金，競争的資金等を受けた研究に３回以上従事</span>
+                            <span data-lang="zh">⑤ 3次以上参与获得外国政府补助金、竞争性资金等的研究</span>
                         </label>
                         <label>
                             <input type="checkbox" id="papers-t" onchange="calculate()">
-                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（15点）（※責任著者であるものに限る）</span>
-                            <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（15分）（※限责任作者）</span>
+                            <span data-lang="ja">⑥ 学術論文データベースに登載されている学術雑誌に掲載された論文が３本以上（※責任著者であるものに限る）</span>
+                            <span data-lang="zh">⑥ 学术论文数据库收录的学术期刊论文3篇以上（※限责任作者）</span>
                         </label>
                         <label>
                             <input type="checkbox" id="other-research-t" onchange="calculate()">
-                            <span data-lang="ja">⑦ その他法務大臣が認める研究実績（15点）</span>
-                            <span data-lang="zh">⑦ 其他法务大臣认定的研究成果（15分）</span>
+                            <span data-lang="ja">⑦ その他法務大臣が認める研究実績</span>
+                            <span data-lang="zh">⑦ 其他法务大臣认定的研究成果</span>
                         </label>
                     </div>
                 </div>
@@ -1037,12 +1041,10 @@
                 else if (researchCount === 1) total += 20;
             }
 
-            // Research (ロ: Technical) - each 15 points
+            // Research (ロ: Technical) ④〜⑦: 1つ以上=15点
             if (currentCategory === 'technical') {
-                if (isChecked('patent-t')) total += 15;
-                if (isChecked('grant-t')) total += 15;
-                if (isChecked('papers-t')) total += 15;
-                if (isChecked('other-research-t')) total += 15;
+                const hasResearch = isChecked('patent-t') || isChecked('grant-t') || isChecked('papers-t') || isChecked('other-research-t');
+                if (hasResearch) total += 15;
             }
 
             // 資格 (ロ only)
