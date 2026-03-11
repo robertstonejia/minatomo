@@ -82,27 +82,32 @@
         /* Score display */
         .score-display {
             text-align: center;
-            padding: 24px 20px;
+            padding: 10px 20px;
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-bottom: 2px solid #bfdbfe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         .score-number {
-            font-size: 3em;
+            font-size: 2em;
             font-weight: 800;
             color: #065aa8;
             line-height: 1;
         }
         .score-label {
-            font-size: 0.9em;
+            font-size: 0.8em;
             color: #64748b;
-            margin-bottom: 4px;
+            margin-bottom: 0;
         }
         .score-status {
-            margin-top: 8px;
-            padding: 6px 16px;
+            margin-top: 0;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 600;
-            font-size: 0.9em;
+            font-size: 0.85em;
             display: inline-block;
         }
         .status-default { background: #f1f5f9; color: #64748b; }
@@ -362,11 +367,11 @@
 
         <!-- Score display -->
         <div class="score-display">
-            <div class="score-label">
-                <span data-lang="ja">現在のポイント</span>
-                <span data-lang="zh">当前积分</span>
+            <div>
+                <span class="score-label"><span data-lang="ja">現在のポイント</span><span data-lang="zh">当前积分</span></span>
+                <span class="score-number" id="score-number">0</span>
+                <span class="score-label">pt</span>
             </div>
-            <div class="score-number" id="score-number">0</div>
             <div>
                 <span class="score-status status-default" id="score-status">
                     <span data-lang="ja">情報を入力してください</span>
