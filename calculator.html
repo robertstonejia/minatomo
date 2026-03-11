@@ -523,16 +523,12 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-a" onchange="calculate()">
-                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上（20点）</span>
-                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上（20分）</span>
+                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上</span>
+                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上</span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
-                        <span data-lang="ja">以下のうち1つ以上に該当する場合 20点、2つ以上に該当する場合 25点</span>
-                        <span data-lang="zh">以下项目符合1项时 20分，符合2项以上时 25分</span>
-                    </div>
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="grant-a" onchange="calculate()">
@@ -631,28 +627,32 @@
                             <span data-lang="ja">⑪ Ⅲ 地方公共団体における高度人材外国人の受入れを促進するための支援として法務大臣が認めるものを受けている（+10点）</span>
                             <span data-lang="zh">⑪ Ⅲ 接受法务大臣认定的地方政府促进接收高级人才外国人的支援（+10分）</span>
                         </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="rd-expense" onchange="calculate()">
                             <span data-lang="ja">⑫ 契約機関が中小企業基本法に規定する中小企業者で，試験研究費及び開発費を含む合計金額が，総収入金額から固定資産税額又は有価証券の譲渡による収入金額を控除した金額（売上高）の3％超（+5点）</span>
                             <span data-lang="zh">⑫ 签约机构为中小企业基本法规定的中小企业，试验研究费及开发费等合计金额超过从总收入中扣除固定资产税或有价证券转让收入后的金额（销售额）的3%（+5分）</span>
                         </label>
-                        <div id="rd-calc-area" style="margin-top:8px;padding:10px;background:#fff;border-radius:6px;border:1px solid #e2e8f0;width:100%;">
-                            <div style="display:grid;gap:6px;">
-                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                    <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">試験研究費等</span><span data-lang="zh">试验研究费等</span></span>
-                                    <input type="number" id="rd-expense-amount" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
-                                    <span style="font-size:0.85em;">円</span>
-                                </div>
-                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                    <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">売上高</span><span data-lang="zh">销售额</span></span>
-                                    <input type="number" id="rd-sales" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
-                                    <span style="font-size:0.85em;">円</span>
-                                </div>
-                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                    <span style="font-size:0.85em;min-width:110px;">＝</span>
-                                    <span id="rd-ratio-display" style="font-size:0.9em;font-weight:600;min-width:140px;padding:4px 8px;background:#f1f5f9;border-radius:4px;display:inline-block;">＿＿＿＿＿＿＿＿</span>
-                                    <span style="font-size:0.85em;">％</span>
-                                </div>
+                    </div>
+                    <div id="rd-calc-area" style="margin-top:8px;padding:10px;background:#fff;border-radius:6px;border:1px solid #e2e8f0;">
+                        <div style="display:grid;gap:6px;">
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">試験研究費等</span><span data-lang="zh">试验研究费等</span></span>
+                                <input type="number" id="rd-expense-amount" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
+                                <span style="font-size:0.85em;">円</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">売上高</span><span data-lang="zh">销售额</span></span>
+                                <input type="number" id="rd-sales" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
+                                <span style="font-size:0.85em;">円</span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                <span style="font-size:0.85em;min-width:110px;">＝</span>
+                                <span id="rd-ratio-display" style="font-size:0.9em;font-weight:600;min-width:140px;padding:4px 8px;background:#f1f5f9;border-radius:4px;display:inline-block;">＿＿＿＿＿＿＿＿</span>
+                                <span style="font-size:0.85em;">％</span>
                             </div>
                         </div>
                     </div>
@@ -672,7 +672,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label style="display:block;font-weight:700;color:#1e40af;font-size:0.95em;margin-bottom:6px;">
+                    <label style="display:block;">
                         <span data-lang="ja">⑮ 日本語能力</span>
                         <span data-lang="zh">⑮ 日语能力</span>
                     </label>
@@ -997,11 +997,10 @@
                 total += getSelectPoints('position');
             }
 
-            // Research (イ: Academic)
+            // Research (イ: Academic) ④〜⑦: 1つ以上=20点、2つ以上=25点
             if (currentCategory === 'academic') {
-                if (isChecked('patent-a')) total += 20;
-                // 補助金/論文/その他: 2つ以上該当で25点
                 let researchCount = 0;
+                if (isChecked('patent-a')) researchCount++;
                 if (isChecked('grant-a')) researchCount++;
                 if (isChecked('papers-a')) researchCount++;
                 if (isChecked('other-research-a')) researchCount++;
