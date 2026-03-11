@@ -428,6 +428,20 @@
                     <span data-lang="ja">② 職歴（実務経験年数）</span>
                     <span data-lang="zh">② 工作经历（实际工作年数）</span>
                 </div>
+                <div style="font-size:0.82em;color:#64748b;margin-bottom:8px;">
+                    <span class="exp-subtitle exp-subtitle-academic">
+                        <span data-lang="ja">従事しようとする研究、研究の指導又は教育に係る実務経験</span>
+                        <span data-lang="zh">与拟从事的研究、研究指导或教育相关的实务经验</span>
+                    </span>
+                    <span class="exp-subtitle exp-subtitle-technical" style="display:none;">
+                        <span data-lang="ja">従事しようとする業務に係る実務経験</span>
+                        <span data-lang="zh">与拟从事业务相关的实务经验</span>
+                    </span>
+                    <span class="exp-subtitle exp-subtitle-business" style="display:none;">
+                        <span data-lang="ja">事業の経営又は管理に係る実務経験</span>
+                        <span data-lang="zh">与事业经营或管理相关的实务经验</span>
+                    </span>
+                </div>
                 <div class="form-group">
                     <select id="experience" onchange="calculate()">
                         <!-- populated by JS -->
@@ -601,6 +615,12 @@
                         <span data-lang="ja">従事しようとする業務に関連する日本の国家資格（業務独占資格又は名称独占資格）を保有，又はIT告示に定める試験に合格し若しくは資格を保有</span>
                         <span data-lang="zh">持有与拟从事业务相关的日本国家资格（业务独占资格或名称独占资格），或通过IT告示规定的考试或持有相关资格</span>
                     </label>
+                    <div style="margin-bottom:6px;">
+                        <a href="https://www.moj.go.jp/isa/policies/bill/nyukan_hourei_h09.html" target="_blank" style="font-size:0.8em;color:#065aa8;">
+                            <span data-lang="ja">▶ 対象資格・試験一覧（出入国在留管理庁）</span>
+                            <span data-lang="zh">▶ 对象资格・考试一览（出入国在留管理厅）</span>
+                        </a>
+                    </div>
                     <select id="national-qual" onchange="calculate()">
                         <option value="0" data-ja="なし" data-zh="无">なし</option>
                         <option value="5" data-ja="1つ保有（5点）" data-zh="持有1个（5分）">1つ保有（5点）</option>
@@ -935,6 +955,10 @@
                 const cats = section.dataset.categories.split(',');
                 section.classList.toggle('active', cats.includes(cat));
             });
+
+            // Switch experience subtitle
+            document.querySelectorAll('.exp-subtitle').forEach(el => el.style.display = 'none');
+            document.querySelector('.exp-subtitle-' + cat).style.display = '';
 
             populateDropdowns();
             updateSalaryNote();
