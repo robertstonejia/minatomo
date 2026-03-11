@@ -72,15 +72,19 @@
             border-color: white;
         }
 
+        /* Sticky header */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
         /* Score display */
         .score-display {
             text-align: center;
             padding: 24px 20px;
             background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
             border-bottom: 2px solid #bfdbfe;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
         .score-number {
             font-size: 3em;
@@ -342,6 +346,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="sticky-header">
         <!-- Top bar -->
         <div class="top-bar">
             <a href="index.html">&larr; <span data-lang="ja">トップページへ</span><span data-lang="zh">返回首页</span></a>
@@ -385,6 +390,7 @@
                 <span data-lang="zh">ハ 经营管理</span>
             </button>
         </div>
+        </div><!-- /sticky-header -->
 
         <!-- Form -->
         <div class="form-area">
@@ -509,6 +515,10 @@
                     <span data-lang="ja">④〜⑦ 研究実績</span>
                     <span data-lang="zh">④〜⑦ 研究成果</span>
                 </div>
+                <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:8px;margin-top:2px;">
+                    <span data-lang="ja">以下のうち1つ以上に該当する場合 20点、2つ以上に該当する場合 25点</span>
+                    <span data-lang="zh">以下项目符合1项时 20分，符合2项以上时 25分</span>
+                </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
@@ -594,21 +604,6 @@
                 </div>
             </div>
 
-            <!-- Japanese language -->
-            <div class="form-section">
-                <div class="form-section-title">
-                    <span data-lang="ja">⑮ 日本語能力</span>
-                    <span data-lang="zh">⑮ 日语能力</span>
-                </div>
-                <div class="form-group">
-                    <select id="japanese" onchange="calculate()">
-                        <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
-                        <option value="15" data-ja="Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）" data-zh="Ⅰ 日语专业外国大学毕业或日语能力考试N1合格同等（15分）">Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）</option>
-                        <option value="10" data-ja="Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く" data-zh="Ⅱ 日语能力考试N2合格同等（10分）※⑭及Ⅰ符合者除外">Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く</option>
-                    </select>
-                </div>
-            </div>
-
             <!-- Bonus: common to all categories -->
             <div class="form-section">
                 <div class="form-section-title">
@@ -638,9 +633,28 @@
                         </label>
                         <label>
                             <input type="checkbox" id="rd-expense" onchange="calculate()">
-                            <span data-lang="ja">⑫ 契約機関が中小企業者で，試験研究費及び開発費の合計金額が売上高の３％超（+5点）</span>
-                            <span data-lang="zh">⑫ 签约机构为中小企业，试验研究费及开发费合计金额超过销售额3%（+5分）</span>
+                            <span data-lang="ja">⑫ 契約機関が中小企業基本法に規定する中小企業者で，試験研究費及び開発費を含む合計金額が，総収入金額から固定資産税額又は有価証券の譲渡による収入金額を控除した金額（売上高）の3％超（+5点）</span>
+                            <span data-lang="zh">⑫ 签约机构为中小企业基本法规定的中小企业，试验研究费及开发费等合计金额超过从总收入中扣除固定资产税或有价证券转让收入后的金额（销售额）的3%（+5分）</span>
                         </label>
+                        <div id="rd-calc-area" style="margin-top:8px;padding:10px;background:#fff;border-radius:6px;border:1px solid #e2e8f0;width:100%;">
+                            <div style="display:grid;gap:6px;">
+                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                    <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">試験研究費等</span><span data-lang="zh">试验研究费等</span></span>
+                                    <input type="number" id="rd-expense-amount" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
+                                    <span style="font-size:0.85em;">円</span>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                    <span style="font-size:0.85em;min-width:110px;"><span data-lang="ja">売上高</span><span data-lang="zh">销售额</span></span>
+                                    <input type="number" id="rd-sales" placeholder="0" min="0" oninput="calcRdRatio()" style="width:140px;padding:4px 8px;border:1px solid #cbd5e1;border-radius:4px;font-size:0.9em;">
+                                    <span style="font-size:0.85em;">円</span>
+                                </div>
+                                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                                    <span style="font-size:0.85em;min-width:110px;">＝</span>
+                                    <span id="rd-ratio-display" style="font-size:0.9em;font-weight:600;min-width:140px;padding:4px 8px;background:#f1f5f9;border-radius:4px;display:inline-block;">＿＿＿＿＿＿＿＿</span>
+                                    <span style="font-size:0.85em;">％</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -655,6 +669,21 @@
                             <span data-lang="ja">⑭ 日本の大学を卒業又は大学院の課程を修了（+10点）</span>
                             <span data-lang="zh">⑭ 日本大学毕业或完成研究生课程（+10分）</span>
                         </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="display:block;font-weight:700;color:#1e40af;font-size:0.95em;margin-bottom:6px;">
+                        <span data-lang="ja">⑮ 日本語能力</span>
+                        <span data-lang="zh">⑮ 日语能力</span>
+                    </label>
+                    <select id="japanese" onchange="calculate()">
+                        <option value="0" data-ja="該当なし" data-zh="无">該当なし</option>
+                        <option value="15" data-ja="Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）" data-zh="Ⅰ 日语专业外国大学毕业或日语能力考试N1合格同等（15分）">Ⅰ 日本語専攻で外国の大学を卒業又は日本語能力試験Ｎ１合格相当（15点）</option>
+                        <option value="10" data-ja="Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く" data-zh="Ⅱ 日语能力考试N2合格同等（10分）※⑭及Ⅰ符合者除外">Ⅱ 日本語能力試験Ｎ２合格相当（10点）※⑭及びⅠに該当する者を除く</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="growth-field" onchange="calculate()">
                             <span data-lang="ja">⑯ 各省が関与する成長分野の先端プロジェクトに従事（+10点）</span>
@@ -891,6 +920,20 @@
 
         function isChecked(id) {
             return document.getElementById(id).checked;
+        }
+
+        function calcRdRatio() {
+            const amount = parseFloat(document.getElementById('rd-expense-amount').value) || 0;
+            const sales = parseFloat(document.getElementById('rd-sales').value) || 0;
+            const display = document.getElementById('rd-ratio-display');
+            if (sales > 0) {
+                const ratio = (amount / sales * 100).toFixed(2);
+                display.textContent = ratio;
+                display.style.color = parseFloat(ratio) > 3 ? '#16a34a' : '#64748b';
+            } else {
+                display.textContent = '＿＿＿＿＿＿＿＿';
+                display.style.color = '';
+            }
         }
 
         function updateSalaryNote() {
