@@ -404,9 +404,21 @@
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="dual-degree" onchange="calculate()">
-                            <span data-lang="ja">複数の分野における２以上の博士・修士・専門職学位（+5点）</span>
-                            <span data-lang="zh">多领域2个以上博士/硕士/专门职学位（+5分）</span>
+                            <span data-lang="ja">複数の分野における２以上の博士若しくは修士の学位又は専門職学位（注2）（+5点）</span>
+                            <span data-lang="zh">多领域2个以上博士/硕士/专门职学位（注2）（+5分）</span>
                         </label>
+                    </div>
+                </div>
+                <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;font-size:0.82em;color:#1e40af;margin-top:4px;">
+                    <div data-lang="ja">
+                        <div>（注1）最終学歴が対象となります（例えば、博士と修士の両方の学位を有している場合は、30点です）。</div>
+                        <div style="margin-top:4px;">（注2）学位の組み合わせを問わず、専攻が異なることが分かる資料（学位記又は学位証明書で確認できない場合は、成績証明書）を提出して下さい。</div>
+                        <div style="margin-top:6px;padding-top:6px;border-top:1px solid #bfdbfe;color:#1d4ed8;">💡 例えば、大学を卒業し、MBA、MOT以外の修士の学位を有している場合は、20点です。</div>
+                    </div>
+                    <div data-lang="zh">
+                        <div>（注1）以最终学历为准（例如，同时持有博士和硕士学位的情况下，为30分）。</div>
+                        <div style="margin-top:4px;">（注2）无论学位组合如何，需提交能证明专业不同的材料（学位证书无法确认时，提交成绩单）。</div>
+                        <div style="margin-top:6px;padding-top:6px;border-top:1px solid #bfdbfe;color:#1d4ed8;">💡 例如，大学本科毕业，持有MBA/MOT以外的硕士学位的情况下，为20分。</div>
                     </div>
                 </div>
             </div>
@@ -509,21 +521,17 @@
                     <span data-lang="ja">④〜⑦ 研究実績</span>
                     <span data-lang="zh">④〜⑦ 研究成果</span>
                 </div>
+                <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:10px;">
+                    <span data-lang="ja">以下のうち1つ以上に該当する場合 20点、2つ以上に該当する場合 25点</span>
+                    <span data-lang="zh">以下项目符合1项时 20分，符合2项以上时 25分</span>
+                </div>
                 <div class="form-group">
                     <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="patent-a" onchange="calculate()">
-                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上（20点）</span>
-                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上（20分）</span>
+                            <span data-lang="ja">④ 発明者として特許を受けた発明が１件以上</span>
+                            <span data-lang="zh">④ 作为发明者获得专利的发明1件以上</span>
                         </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div style="font-size:0.85em;color:#334155;font-weight:600;margin-bottom:6px;">
-                        <span data-lang="ja">以下のうち1つ以上に該当する場合 20点、2つ以上に該当する場合 25点</span>
-                        <span data-lang="zh">以下项目符合1项时 20分，符合2项以上时 25分</span>
-                    </div>
-                    <div class="checkbox-group">
                         <label>
                             <input type="checkbox" id="grant-a" onchange="calculate()">
                             <span data-lang="ja">⑤ 外国政府から補助金，競争的資金等を受けた研究に３回以上従事</span>
@@ -761,8 +769,9 @@
             academic: [
                 { val: '0', ja: '選択してください', zh: '请选择' },
                 { val: '30', ja: '博士学位（専門職学位を除く）（30点）', zh: '博士学位（不含专门职学位）（30分）' },
+                { val: '25', ja: '経営管理に関する専門職学位（MBA、MOT）を保有（25点）', zh: '持有经营管理专门职学位（MBA/MOT）（25分）' },
                 { val: '20', ja: '修士又は専門職学位（20点）', zh: '硕士或专门职学位（20分）' },
-                { val: '10', ja: '大卒又はこれと同等以上の教育（10点）', zh: '大学本科或同等以上教育（10分）' }
+                { val: '10', ja: '大卒又はこれと同等以上の教育（博士、修士を除く）（10点）', zh: '大学本科或同等以上教育（博士、硕士除外）（10分）' }
             ],
             technical: [
                 { val: '0', ja: '選択してください', zh: '请选择' },
@@ -954,11 +963,10 @@
                 total += getSelectPoints('position');
             }
 
-            // Research (イ: Academic)
+            // Research (イ: Academic) ④〜⑦: 1つ以上=20点、2つ以上=25点
             if (currentCategory === 'academic') {
-                if (isChecked('patent-a')) total += 20;
-                // 補助金/論文/その他: 2つ以上該当で25点
                 let researchCount = 0;
+                if (isChecked('patent-a')) researchCount++;
                 if (isChecked('grant-a')) researchCount++;
                 if (isChecked('papers-a')) researchCount++;
                 if (isChecked('other-research-a')) researchCount++;
