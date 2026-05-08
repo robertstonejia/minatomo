@@ -538,7 +538,8 @@ h2::after {
 /* 画像を統一サイズに */
 .links .card-image,
 .nihongo-class .card-image,
-.gachi-chuka .card-image {
+.gachi-chuka .card-image,
+.calculator-section .card-image {
     height: 140px;
     object-fit: cover;
     background: #f8fafc;
