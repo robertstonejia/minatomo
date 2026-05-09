@@ -21,19 +21,12 @@ export default async function handler(req, res) {
 
   try {
     await transporter.sendMail({
-      from: '"みんなの日中交流会" <kahyousei@gmail.com>',
+      from: '"minatomo" <kahyousei@gmail.com>',
       to: 'kahyousei@gmail.com',
       replyTo: email,
-      subject: `=?UTF-8?B?${Buffer.from(subject ? `【お問い合わせ】${subject}` : '【お問い合わせ】（件名なし）').toString('base64')}?=`,
-      text: `お名前：${name}\nメール：${email}\n\n${message}`,
-      html: `
-        <meta charset="UTF-8">
-        <p><strong>お名前：</strong>${name}</p>
-        <p><strong>メール：</strong>${email}</p>
-        <hr>
-        <p style="white-space:pre-wrap;">${message}</p>
-      `,
-      encoding: 'base64',
+      subject: subject ? `[Contact] ${subject}` : '[Contact] (no subject)',
+      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      html: `<p><b>Name:</b> ${name}</p><p><b>Email:</b> ${email}</p><hr><p style="white-space:pre-wrap;">${message}</p>`,
     });
 
     return res.status(200).json({ ok: true });
