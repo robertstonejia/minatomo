@@ -37,10 +37,7 @@
             transition: all 0.2s ease;
             white-space: nowrap;
         }
-        .back-link:hover {
-            background: #065aa8;
-            color: white;
-        }
+        .back-link:hover { background: #065aa8; color: white; }
         .page-title {
             font-size: 1.4em;
             font-weight: 700;
@@ -52,88 +49,73 @@
             color: #64748b;
             margin: 3px 0 0 0;
         }
-        .region-section {
-            margin-bottom: 28px;
-        }
+        .region-section { margin-bottom: 24px; }
         .region-title {
-            font-size: 0.92em;
+            font-size: 0.88em;
             font-weight: 700;
             color: #fff;
             background: #065aa8;
-            padding: 5px 14px;
+            padding: 4px 12px;
             border-radius: 5px;
             display: inline-block;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             letter-spacing: 0.05em;
         }
         .tongxiang-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 8px;
         }
         .tongxiang-card {
             background: white;
             border: 1px solid #e0f2fe;
             border-radius: 10px;
-            padding: 14px 15px;
+            padding: 10px 14px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
             transition: all 0.2s ease;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .tongxiang-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(59,130,246,0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59,130,246,0.12);
             border-color: #93c5fd;
         }
         .card-favicon {
-            width: 40px;
-            height: 40px;
-            background: #f1f5f9;
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: #eff6ff;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            flex-shrink: 0;
-            font-size: 1.4em;
+            font-size: 1em;
+            font-weight: 700;
+            color: #065aa8;
             text-decoration: none;
             transition: opacity 0.2s;
         }
-        .card-favicon:hover {
-            opacity: 0.75;
-        }
+        .card-favicon:hover { opacity: 0.7; }
         .card-favicon img {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             object-fit: contain;
         }
-        .org-name {
-            font-size: 0.82em;
-            color: #334155;
+        .org-link {
+            font-size: 0.85em;
+            color: #1e40af;
+            text-decoration: none;
             font-weight: 600;
             line-height: 1.4;
-            flex-grow: 1;
+            flex: 1;
         }
-        .tongxiang-link {
-            display: inline-block;
-            margin-top: 4px;
-            padding: 5px 12px;
-            background: #065aa8;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.75em;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            word-break: keep-all;
-        }
-        .tongxiang-link:hover {
-            background: #1280e6;
-            transform: translateY(-1px);
-            box-shadow: 0 3px 8px rgba(6,90,168,0.25);
+        .org-link:hover {
+            color: #1280e6;
+            text-decoration: underline;
         }
         .note-box {
             background: #f8fafc;
@@ -149,11 +131,8 @@
         @media (max-width: 600px) {
             .page-header { padding: 14px 16px; flex-wrap: wrap; }
             .page-title { font-size: 1.1em; }
-            .tongxiang-grid { grid-template-columns: 1fr 1fr; }
-            main { padding: 20px 16px 30px !important; }
-        }
-        @media (max-width: 380px) {
             .tongxiang-grid { grid-template-columns: 1fr; }
+            main { padding: 20px 16px 30px !important; }
         }
     </style>
 </head>
@@ -162,7 +141,6 @@
         <div class="page-topbar">
             <a href="/">🌸 みんなの日中交流会</a>
         </div>
-
         <div class="page-header">
             <a href="/" class="back-link">← トップへ</a>
             <div>
@@ -171,195 +149,160 @@
             </div>
         </div>
 
-        <main style="padding: 26px 28px 40px;">
+        <main style="padding: 24px 28px 40px;">
 
-            <!-- 全国 -->
             <div class="region-section">
                 <div class="region-title">全国</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://cccj.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=cccj.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏛'"></a>
-                        <div class="org-name">日本中華總商会</div>
-                        <a href="https://cccj.jp/" target="_blank" class="tongxiang-link">日本中華總商会</a>
+                        <a href="https://cccj.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=cccj.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='中'"></a>
+                        <a href="https://cccj.jp/" target="_blank" class="org-link">日本中華總商会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 东北 -->
             <div class="region-section">
                 <div class="region-title">东北</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://hlj-japan.net/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hlj-japan.net&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">在日黒龍江省同郷会</div>
-                        <a href="https://hlj-japan.net/" target="_blank" class="tongxiang-link">在日黒龍江省同郷会</a>
+                        <a href="https://hlj-japan.net/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hlj-japan.net&sz=64" alt="" onerror="this.parentElement.innerHTML='黒'"></a>
+                        <a href="https://hlj-japan.net/" target="_blank" class="org-link">在日黒龍江省同郷会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://dccwj.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=dccwj.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">西日本大連総商会</div>
-                        <a href="https://dccwj.com/" target="_blank" class="tongxiang-link">西日本大連総商会</a>
+                        <a href="https://dccwj.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=dccwj.com&sz=64" alt="" onerror="this.parentElement.innerHTML='大'"></a>
+                        <a href="https://dccwj.com/" target="_blank" class="org-link">西日本大連総商会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 华北 -->
             <div class="region-section">
                 <div class="region-title">华北</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://www.tianjin-japan.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=tianjin-japan.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本天津総商会</div>
-                        <a href="https://www.tianjin-japan.com/" target="_blank" class="tongxiang-link">日本天津総商会</a>
+                        <a href="https://www.tianjin-japan.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=tianjin-japan.com&sz=64" alt="" onerror="this.parentElement.innerHTML='津'"></a>
+                        <a href="https://www.tianjin-japan.com/" target="_blank" class="org-link">日本天津総商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://shanxiren.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=shanxiren.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本山西同乡会</div>
-                        <a href="https://shanxiren.jp/" target="_blank" class="tongxiang-link">日本山西同乡会</a>
+                        <a href="https://shanxiren.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=shanxiren.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='晋'"></a>
+                        <a href="https://shanxiren.jp/" target="_blank" class="org-link">日本山西同乡会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 华东 -->
             <div class="region-section">
                 <div class="region-title">华东</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://www.cn-sd-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=cn-sd-jp.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">在日山東同郷会</div>
-                        <a href="https://www.cn-sd-jp.com/" target="_blank" class="tongxiang-link">在日山東同郷会</a>
+                        <a href="https://www.cn-sd-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=cn-sd-jp.com&sz=64" alt="" onerror="this.parentElement.innerHTML='鲁'"></a>
+                        <a href="https://www.cn-sd-jp.com/" target="_blank" class="org-link">在日山東同郷会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="http://japansa.org/connect.html" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=japansa.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本上海同乡会</div>
-                        <a href="http://japansa.org/connect.html" target="_blank" class="tongxiang-link">日本上海同乡会</a>
+                        <a href="http://japansa.org/connect.html" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=japansa.org&sz=64" alt="" onerror="this.parentElement.innerHTML='沪'"></a>
+                        <a href="http://japansa.org/connect.html" target="_blank" class="org-link">日本上海同乡会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://ccsj-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=ccsj-jp.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本江苏总商会</div>
-                        <a href="https://ccsj-jp.com/" target="_blank" class="tongxiang-link">日本江苏总商会</a>
+                        <a href="https://ccsj-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=ccsj-jp.com&sz=64" alt="" onerror="this.parentElement.innerHTML='苏'"></a>
+                        <a href="https://ccsj-jp.com/" target="_blank" class="org-link">日本江苏总商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://huishang-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=huishang-jp.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本徽商協会</div>
-                        <a href="https://huishang-jp.com/" target="_blank" class="tongxiang-link">日本徽商協会</a>
+                        <a href="https://huishang-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=huishang-jp.com&sz=64" alt="" onerror="this.parentElement.innerHTML='徽'"></a>
+                        <a href="https://huishang-jp.com/" target="_blank" class="org-link">日本徽商協会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://www.jccj.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jccj.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本江西総商会</div>
-                        <a href="https://www.jccj.jp/" target="_blank" class="tongxiang-link">日本江西総商会</a>
+                        <a href="https://www.jccj.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jccj.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='赣'"></a>
+                        <a href="https://www.jccj.jp/" target="_blank" class="org-link">日本江西総商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://zhejiang.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=zhejiang.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本浙江侨团联合会</div>
-                        <a href="https://zhejiang.jp/" target="_blank" class="tongxiang-link">日本浙江侨团联合会</a>
+                        <a href="https://zhejiang.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=zhejiang.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='浙'"></a>
+                        <a href="https://zhejiang.jp/" target="_blank" class="org-link">日本浙江侨团联合会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://www.zccj.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=zccj.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本浙江総商会</div>
-                        <a href="https://www.zccj.org/" target="_blank" class="tongxiang-link">日本浙江総商会</a>
+                        <a href="https://www.zccj.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=zccj.org&sz=64" alt="" onerror="this.parentElement.innerHTML='浙'"></a>
+                        <a href="https://www.zccj.org/" target="_blank" class="org-link">日本浙江総商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://wenzhou-jp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=wenzhou-jp.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本温州同郷会</div>
-                        <a href="https://wenzhou-jp.org/" target="_blank" class="tongxiang-link">日本温州同郷会</a>
+                        <a href="https://wenzhou-jp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=wenzhou-jp.org&sz=64" alt="" onerror="this.parentElement.innerHTML='温'"></a>
+                        <a href="https://wenzhou-jp.org/" target="_blank" class="org-link">日本温州同郷会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="http://www.jfcoc.org/jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jfcoc.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本福建省総商会</div>
-                        <a href="http://www.jfcoc.org/jp/" target="_blank" class="tongxiang-link">日本福建省総商会</a>
+                        <a href="http://www.jfcoc.org/jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jfcoc.org&sz=64" alt="" onerror="this.parentElement.innerHTML='闽'"></a>
+                        <a href="http://www.jfcoc.org/jp/" target="_blank" class="org-link">日本福建省総商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://fzsyjp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=fzsyjp.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本福州十邑社団聯合総会</div>
-                        <a href="https://fzsyjp.org/" target="_blank" class="tongxiang-link">日本福州十邑社団聯合総会</a>
+                        <a href="https://fzsyjp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=fzsyjp.org&sz=64" alt="" onerror="this.parentElement.innerHTML='榕'"></a>
+                        <a href="https://fzsyjp.org/" target="_blank" class="org-link">日本福州十邑社団聯合総会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://fjcljp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=fjcljp.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本福建長楽同郷会</div>
-                        <a href="https://fjcljp.org/" target="_blank" class="tongxiang-link">日本福建長楽同郷会</a>
+                        <a href="https://fjcljp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=fjcljp.org&sz=64" alt="" onerror="this.parentElement.innerHTML='楽'"></a>
+                        <a href="https://fjcljp.org/" target="_blank" class="org-link">日本福建長楽同郷会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 华中 -->
             <div class="region-section">
                 <div class="region-title">华中</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://www.henan.or.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=henan.or.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本河南同郷会</div>
-                        <a href="https://www.henan.or.jp/" target="_blank" class="tongxiang-link">日本河南同郷会</a>
+                        <a href="https://www.henan.or.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=henan.or.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='豫'"></a>
+                        <a href="https://www.henan.or.jp/" target="_blank" class="org-link">日本河南同郷会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="http://hunan.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hunan.jp&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本湖南人会</div>
-                        <a href="http://hunan.jp/" target="_blank" class="tongxiang-link">日本湖南人会</a>
+                        <a href="http://hunan.jp/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hunan.jp&sz=64" alt="" onerror="this.parentElement.innerHTML='湘'"></a>
+                        <a href="http://hunan.jp/" target="_blank" class="org-link">日本湖南人会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://hunan-txh.jimdofree.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hunan-txh.jimdofree.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本湖南同乡会</div>
-                        <a href="https://hunan-txh.jimdofree.com/" target="_blank" class="tongxiang-link">日本湖南同乡会</a>
+                        <a href="https://hunan-txh.jimdofree.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hunan-txh.jimdofree.com&sz=64" alt="" onerror="this.parentElement.innerHTML='湘'"></a>
+                        <a href="https://hunan-txh.jimdofree.com/" target="_blank" class="org-link">日本湖南同乡会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 华南 -->
             <div class="region-section">
                 <div class="region-title">华南</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="http://www.guangdong-jp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=guangdong-jp.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">廣東同郷會</div>
-                        <a href="http://www.guangdong-jp.org/" target="_blank" class="tongxiang-link">廣東同郷會</a>
+                        <a href="http://www.guangdong-jp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=guangdong-jp.org&sz=64" alt="" onerror="this.parentElement.innerHTML='粤'"></a>
+                        <a href="http://www.guangdong-jp.org/" target="_blank" class="org-link">廣東同郷會</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="http://tzcjj.gxzf.gov.cn/tzzn/tzcjjg/t809253.shtml" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=tzcjj.gxzf.gov.cn&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本广西同乡会</div>
-                        <a href="http://tzcjj.gxzf.gov.cn/tzzn/tzcjjg/t809253.shtml" target="_blank" class="tongxiang-link">日本广西同乡会</a>
+                        <a href="http://tzcjj.gxzf.gov.cn/tzzn/tzcjjg/t809253.shtml" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=tzcjj.gxzf.gov.cn&sz=64" alt="" onerror="this.parentElement.innerHTML='桂'"></a>
+                        <a href="http://tzcjj.gxzf.gov.cn/tzzn/tzcjjg/t809253.shtml" target="_blank" class="org-link">日本广西同乡会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://hainanese-japan.jimdofree.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hainanese-japan.jimdofree.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本海南同乡会</div>
-                        <a href="https://hainanese-japan.jimdofree.com/" target="_blank" class="tongxiang-link">日本海南同乡会</a>
+                        <a href="https://hainanese-japan.jimdofree.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=hainanese-japan.jimdofree.com&sz=64" alt="" onerror="this.parentElement.innerHTML='琼'"></a>
+                        <a href="https://hainanese-japan.jimdofree.com/" target="_blank" class="org-link">日本海南同乡会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 西南 -->
             <div class="region-section">
                 <div class="region-title">西南</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="https://www.ccja-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=ccja-jp.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本川渝総商会</div>
-                        <a href="https://www.ccja-jp.com/" target="_blank" class="tongxiang-link">日本川渝総商会</a>
+                        <a href="https://www.ccja-jp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=ccja-jp.com&sz=64" alt="" onerror="this.parentElement.innerHTML='川'"></a>
+                        <a href="https://www.ccja-jp.com/" target="_blank" class="org-link">日本川渝総商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="http://jsa.cyzshjp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jsa.cyzshjp.com&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">在日四川同乡会</div>
-                        <a href="http://jsa.cyzshjp.com/" target="_blank" class="tongxiang-link">在日四川同乡会</a>
+                        <a href="http://jsa.cyzshjp.com/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jsa.cyzshjp.com&sz=64" alt="" onerror="this.parentElement.innerHTML='蜀'"></a>
+                        <a href="http://jsa.cyzshjp.com/" target="_blank" class="org-link">在日四川同乡会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://www.gzcjp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=gzcjp.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本贵州总商会</div>
-                        <a href="https://www.gzcjp.org/" target="_blank" class="tongxiang-link">日本贵州总商会</a>
+                        <a href="https://www.gzcjp.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=gzcjp.org&sz=64" alt="" onerror="this.parentElement.innerHTML='黔'"></a>
+                        <a href="https://www.gzcjp.org/" target="_blank" class="org-link">日本贵州总商会</a>
                     </div>
                     <div class="tongxiang-card">
-                        <a href="https://jyfa.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jyfa.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本雲南聯誼協会</div>
-                        <a href="https://jyfa.org/" target="_blank" class="tongxiang-link">日本雲南聯誼協会</a>
+                        <a href="https://jyfa.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=jyfa.org&sz=64" alt="" onerror="this.parentElement.innerHTML='滇'"></a>
+                        <a href="https://jyfa.org/" target="_blank" class="org-link">日本雲南聯誼協会</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 西北 -->
             <div class="region-section">
                 <div class="region-title">西北</div>
                 <div class="tongxiang-grid">
                     <div class="tongxiang-card">
-                        <a href="http://shaanxijapan.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=shaanxijapan.org&sz=64" alt="" onerror="this.parentElement.textContent='🏠'"></a>
-                        <div class="org-name">日本陝西総商会</div>
-                        <a href="http://shaanxijapan.org/" target="_blank" class="tongxiang-link">日本陝西総商会</a>
+                        <a href="http://shaanxijapan.org/" target="_blank" class="card-favicon"><img src="https://www.google.com/s2/favicons?domain=shaanxijapan.org&sz=64" alt="" onerror="this.parentElement.innerHTML='秦'"></a>
+                        <a href="http://shaanxijapan.org/" target="_blank" class="org-link">日本陝西総商会</a>
                     </div>
                 </div>
             </div>
