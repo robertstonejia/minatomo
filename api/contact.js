@@ -7,6 +7,9 @@ module.exports = async (req, res) => {
 
   const { name, email, subject, message } = req.body || {};
 
+  // debug: return received data
+  return res.status(200).json({ name, email, subject, message });
+
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
