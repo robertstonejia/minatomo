@@ -7,9 +7,6 @@ module.exports = async (req, res) => {
 
   const { name, email, subject, message } = req.body || {};
 
-  // debug: return received data
-  return res.status(200).json({ name, email, subject, message });
-
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
@@ -37,10 +34,10 @@ ${message}
 
   try {
     await transporter.sendMail({
-      from: 'minatomo <kahyousei@gmail.com>',
+      from: 'みんなの日中交流会 <kahyousei@gmail.com>',
       to: 'kahyousei@gmail.com',
       replyTo: email,
-      subject: `[Contact] ${subject || 'no subject'}`,
+      subject: `【お問い合わせ】${subject || '件名なし'}`,
       text: mailText,
       textEncoding: 'base64',
     });
