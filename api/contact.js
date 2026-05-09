@@ -34,11 +34,12 @@ ${message}
 
   try {
     await transporter.sendMail({
-      from: 'みんなの日中交流会 <kahyousei@gmail.com>',
+      from: 'minatomo <kahyousei@gmail.com>',
       to: 'kahyousei@gmail.com',
       replyTo: email,
-      subject: `[お問い合わせ] ${subject || '（件名なし）'}`,
+      subject: `[Contact] ${subject || 'no subject'}`,
       text: mailText,
+      textEncoding: 'base64',
     });
 
     return res.status(200).json({ ok: true });
